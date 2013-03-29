@@ -593,12 +593,12 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `jc_config`;
 CREATE TABLE `jc_config` (
   `config_id` int(11) NOT NULL,
-  `context_path` varchar(20) default '/JeeCms' COMMENT '部署路径',
+  `context_path` varchar(20) default '/eCms' COMMENT '部署路径',
   `servlet_point` varchar(20) default NULL COMMENT 'Servlet挂载点',
   `port` int(11) default NULL COMMENT '端口',
   `db_file_uri` varchar(50) NOT NULL default '/dbfile.svl?n=' COMMENT '数据库附件访问地址',
   `is_upload_to_db` tinyint(1) NOT NULL default '0' COMMENT '上传附件至数据库',
-  `def_img` varchar(255) NOT NULL default '/JeeCms/r/cms/www/default/no_picture.gif' COMMENT '图片不存在时默认图片',
+  `def_img` varchar(255) NOT NULL default '/eCms/r/cms/www/default/no_picture.gif' COMMENT '图片不存在时默认图片',
   `login_url` varchar(255) NOT NULL default '/login.jspx' COMMENT '登录地址',
   `process_url` varchar(255) default NULL COMMENT '登录后处理地址',
   `mark_on` tinyint(1) NOT NULL default '1' COMMENT '开启图片水印',

@@ -115,6 +115,6 @@
 	</bean>
 	<context:annotation-config/>
 	
-	<import resource="jeecms-servlet-front-action.xml"/>
+	<import resource="ecms-servlet-front-action.xml"/>
 
 </beans>
