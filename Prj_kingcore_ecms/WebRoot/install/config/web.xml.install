@@ -3,7 +3,7 @@
 	<display-name>JeeCms2012</display-name>	
 	<servlet>
 		<servlet-name>Install</servlet-name>
-		<servlet-class>com.kingcore.cms.InstallServlet</servlet-class>
+		<servlet-class>com.jeecms.cms.InstallServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Install</servlet-name>
