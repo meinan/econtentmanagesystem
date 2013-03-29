@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>系统参数设置--JEECMS安装向导</title>
+<title>系统参数设置--eCMS安装向导</title>
 <link href="img/style.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript">
 	function formSubmit() {
@@ -60,7 +60,7 @@
 			<tr>
 				<td height="30" align="right">数据库名称：</td>
 				<td align="left"><input name="dbName" type="text" class="input"
-					id="dbName" value="jeecms_2012" /></td>
+					id="dbName" value="ecms_2013" /></td>
 				<td align="left">&nbsp;</td>
 			</tr>
 			<tr>
@@ -131,8 +131,8 @@
 </div>
 
 <input type="hidden" name="dbFileName"
-	value="/install/db/jeecms-db-2012.sql" /> <input type="hidden"
-	name="initFileName" value="/install/db/jeecms-init-2012.sql" />
+	value="/install/db/ecms-db-2013.sql" /> <input type="hidden"
+	name="initFileName" value="/install/db/ecms-init-2013.sql" />
 </form>
 </body>
 </html>

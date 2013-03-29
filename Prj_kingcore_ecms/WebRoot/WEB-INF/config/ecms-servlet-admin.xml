@@ -104,5 +104,5 @@
 	<context:annotation-config/>
 	
 	<!--包含action-->
-	<import resource="jeecms-servlet-admin-action.xml"/>
+	<import resource="ecms-servlet-admin-action.xml"/>
 </beans>
