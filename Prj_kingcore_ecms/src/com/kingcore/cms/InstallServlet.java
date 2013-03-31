@@ -24,6 +24,8 @@ public class InstallServlet extends HttpServlet {
 		String isCreateDb = request.getParameter("isCreateDb");
 		String isCreateTable = request.getParameter("isCreateTable");
 		String isInitData = request.getParameter("isInitData");
+		String isUpdateConf = request.getParameter("isUpdateConf");
+		
 		String domain = request.getParameter("domain");
 		String cxtPath = request.getParameter("cxtPath");
 		String port = request.getParameter("port");
@@ -33,45 +35,50 @@ public class InstallServlet extends HttpServlet {
 		String dbXmlFileName = "/WEB-INF/config/jdbc.properties";
 		String webXmlFrom = "/install/config/web.xml";
 		String webXmlTo = "/WEB-INF/web.xml";
-		// 创建数据库
+		String forwardUrl = "/install/addWebSite_success.jspw"; //默认forward
 		try {
-			if ("true".equals(isCreateDb)) {
+			// 创建数据库
+			if (isCreateDb==null || "true".equals(isCreateDb)) {
 				Install.createDb(dbHost, dbPort, dbName, dbUser, dbPassword);
 			} else {
 				Install.changeDbCharset(dbHost, dbPort, dbName, dbUser,
 						dbPassword);
 			}
 			// 创建表
-			if ("true".equals(isCreateTable)) {
+			if (isCreateTable==null || "true".equals(isCreateTable)) {
 				String sqlPath = getServletContext().getRealPath(dbFileName);
 				List<String> sqlList = Install.readSql(sqlPath);
 				Install.createTable(dbHost, dbPort, dbName, dbUser, dbPassword,
 						sqlList);
 			}
 			// 初始化数据
-			if ("true".equals(isInitData)) {
+			if (isInitData==null || "true".equals(isInitData)) {
 				String initPath = getServletContext().getRealPath(initFileName);
 				List<String> initList = Install.readSql(initPath);
 				Install.createTable(dbHost, dbPort, dbName, dbUser, dbPassword,
 						initList);
 			}
-			// 更新配置
-			Install.updateConfig(dbHost, dbPort, dbName, dbUser, dbPassword,
-					domain, cxtPath, port);
-			// 处理数据库配置文件
-			String dbXmlPath = getServletContext().getRealPath(dbXmlFileName);
-			Install
-					.dbXml(dbXmlPath, dbHost, dbPort, dbName, dbUser,
-							dbPassword);
-			// 处理web.xml
-			String webXmlFromPath = getServletContext().getRealPath(webXmlFrom);
-			String webXmlToPath = getServletContext().getRealPath(webXmlTo);
-			Install.webXml(webXmlFromPath, webXmlToPath);
+			//更新系统配置文件
+			if(isUpdateConf==null || "true".equals(isUpdateConf)){
+				// 更新配置
+				Install.updateConfig(dbHost, dbPort, dbName, dbUser, dbPassword,
+						domain, cxtPath, port);
+				// 处理数据库配置文件
+				String dbXmlPath = getServletContext().getRealPath(dbXmlFileName);
+				Install
+						.dbXml(dbXmlPath, dbHost, dbPort, dbName, dbUser,
+								dbPassword);
+				// 处理web.xml
+				String webXmlFromPath = getServletContext().getRealPath(webXmlFrom);
+				String webXmlToPath = getServletContext().getRealPath(webXmlTo);
+				Install.webXml(webXmlFromPath, webXmlToPath);
+				forwardUrl = "/install/install_success.jspw";
+			}
 		} catch (Exception e) {
 			throw new ServletException("install failed!", e);
 		}
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/install/install_setup.jsp");
+				.getRequestDispatcher( forwardUrl );
 		dispatcher.forward(request, response);
 	}
 }
