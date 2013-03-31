@@ -1,0 +1,6 @@
+<%@ page contentType="text/html; charset=utf-8" language="java"
+	pageEncoding="utf-8"%>
+<% 
+System.out.println( "sessionId="+request.getSession().getId() );
+
+%>
