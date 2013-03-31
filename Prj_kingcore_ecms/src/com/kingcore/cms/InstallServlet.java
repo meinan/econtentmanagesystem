@@ -40,6 +40,7 @@ public class InstallServlet extends HttpServlet {
 			// 创建数据库
 			if (isCreateDb==null || "true".equals(isCreateDb)) {
 				Install.createDb(dbHost, dbPort, dbName, dbUser, dbPassword);
+				System.out.println("创建数据库完成!");
 			} else {
 				Install.changeDbCharset(dbHost, dbPort, dbName, dbUser,
 						dbPassword);
@@ -50,6 +51,7 @@ public class InstallServlet extends HttpServlet {
 				List<String> sqlList = Install.readSql(sqlPath);
 				Install.createTable(dbHost, dbPort, dbName, dbUser, dbPassword,
 						sqlList);
+				System.out.println("创建表完成!");
 			}
 			// 初始化数据
 			if (isInitData==null || "true".equals(isInitData)) {
@@ -57,6 +59,7 @@ public class InstallServlet extends HttpServlet {
 				List<String> initList = Install.readSql(initPath);
 				Install.createTable(dbHost, dbPort, dbName, dbUser, dbPassword,
 						initList);
+				System.out.println("初始化数据完成!");
 			}
 			//更新系统配置文件
 			if(isUpdateConf==null || "true".equals(isUpdateConf)){
@@ -73,6 +76,7 @@ public class InstallServlet extends HttpServlet {
 				String webXmlToPath = getServletContext().getRealPath(webXmlTo);
 				Install.webXml(webXmlFromPath, webXmlToPath);
 				forwardUrl = "/install/install_success.jspw";
+				System.out.println("更新系统配置文件完成!");
 			}
 		} catch (Exception e) {
 			throw new ServletException("install failed!", e);
