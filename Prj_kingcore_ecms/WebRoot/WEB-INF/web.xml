@@ -117,6 +117,35 @@
 		<servlet-name>DbFile</servlet-name>
 		<servlet-class>com.kingcore.core.action.front.DbFileServlet</servlet-class>
 	</servlet>
+	
+    <!-- add by wzw -->
+    <servlet>
+        <servlet-name>JspServlet</servlet-name>
+        <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+        <init-param>
+            <param-name>fork</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>xpoweredBy</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JspServlet</servlet-name>
+        <url-pattern>*.jspw</url-pattern>
+    </servlet-mapping>
+	<servlet>
+		<servlet-name>Install</servlet-name>
+		<servlet-class>com.kingcore.cms.InstallServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Install</servlet-name>
+		<url-pattern>/install/install_setup.svl</url-pattern>
+	</servlet-mapping>
+    <!-- end of add by wzw -->
+	
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForAdmin</servlet-name>
 		<url-pattern>/jeeadmin/jeecms/*</url-pattern>
