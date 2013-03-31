@@ -31,7 +31,7 @@ function formSubmit() {
   <table width="980" border="0" align="center" cellpadding="0" cellspacing="0" class="rg-tbg">
     <tr>
       <td height="76" align="center"><h2>3、添加新站点完成</h2>
-	  <span style="color:#016dd0;">安装系统安装完成，请重启TOMCAT服务。</span></td>
+	  <span style="color:#016dd0;">添加新站点完成，请重启TOMCAT服务。</span></td>
     </tr>
     <tr>
       <td>
