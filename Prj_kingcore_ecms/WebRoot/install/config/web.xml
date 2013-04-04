@@ -170,6 +170,14 @@
 		<servlet-name>DbFile</servlet-name>
 		<url-pattern>/dbfile.svl</url-pattern>
 	</servlet-mapping>
+	
+	<!-- add by wzw -->
+	<listener>
+		<description>It's better to declare current listener first</description>
+		<listener-class>com.kingcore.common.web.listener.HttpServletRequestThreadLocalServletRequestListener</listener-class>
+	</listener>
+	<!-- end of add listener by wzw -->
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
