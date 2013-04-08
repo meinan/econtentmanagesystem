@@ -37,6 +37,7 @@ $(function() {
 <form id="jvForm" action="${base}/login.jspx" method="post">
       <table width="800" border="0" align="center" cellpadding="0" cellspacing="5">		  
 			<tr>
+				<td height="30" align="left" width="460"></td>
 				<td height="30" align="left">				
 				[#if message??]
 				<div style="color:red">
@@ -48,9 +49,9 @@ $(function() {
 				[#if processUrl??]<input type="hidden" name="processUrl" value="${processUrl}"/>[/#if]
 				[#if returnUrl??]<input type="hidden" name="returnUrl" value="${returnUrl}"/>[#else]<input type="hidden" name="returnUrl" value="${base}/"/>[/#if]
 				[#if errors??]
-					<ul>
+					<ul><font color="red">
 					[#list errors as error]<li>${error}</li>[/#list]
-					</ul>
+					</font></ul>
 				[/#if]
 				</td>
 			</tr>
