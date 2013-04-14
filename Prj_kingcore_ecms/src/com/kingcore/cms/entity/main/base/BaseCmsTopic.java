@@ -2,6 +2,8 @@ package com.kingcore.cms.entity.main.base;
 
 import java.io.Serializable;
 
+import com.kingcore.cms.entity.main.CmsSite;
+
 
 /**
  * This is an object that contains data related to the jc_topic table.
@@ -26,6 +28,7 @@ public abstract class BaseCmsTopic  implements Serializable {
 	public static String PROP_ID = "id";
 	public static String PROP_TPL_CONTENT = "tplContent";
 	public static String PROP_CONTENT_IMG = "contentImg";
+	public static String PROP_SITE_ID = "siteId";
 
 
 	// constructors
@@ -76,11 +79,21 @@ public abstract class BaseCmsTopic  implements Serializable {
 	private java.lang.String tplContent;
 	private java.lang.Integer priority;
 	private java.lang.Boolean recommend;
-
+	//add by wzw 
+	private java.lang.Integer siteId;
+	
 	// many to one
-	private com.kingcore.cms.entity.main.Channel channel;
+	private com.kingcore.cms.entity.main.Channel channel; 
+ 
+	
+	
+	public java.lang.Integer getSiteId() {
+		return siteId;
+	}
 
-
+	public void setSiteId(java.lang.Integer siteId) {
+		this.siteId = siteId;
+	}
 
 	/**
 	 * Return the unique identifier of this class

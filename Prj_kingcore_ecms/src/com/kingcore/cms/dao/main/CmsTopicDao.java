@@ -7,10 +7,10 @@ import com.kingcore.common.hibernate3.Updater;
 import com.kingcore.common.page.Pagination;
 
 public interface CmsTopicDao {
-	public List<CmsTopic> getList(Integer channelId, boolean recommend,
+	public List<CmsTopic> getList(Integer siteId, Integer channelId, boolean recommend,
 			Integer count, boolean cacheable);
 
-	public Pagination getPage(Integer channelId, boolean recommend, int pageNo,
+	public Pagination getPage(Integer siteId, Integer channelId, boolean recommend, int pageNo,
 			int pageSize, boolean cacheable);
 
 	public List<CmsTopic> getGlobalTopicList();

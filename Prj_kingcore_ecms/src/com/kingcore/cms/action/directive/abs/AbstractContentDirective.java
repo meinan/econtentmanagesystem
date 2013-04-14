@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kingcore.cms.base.controller.CmsBaseDirective;
 import com.kingcore.cms.entity.main.Channel;
 import com.kingcore.cms.entity.main.CmsSite;
 import com.kingcore.cms.entity.main.ContentTag;
@@ -29,8 +30,8 @@ import freemarker.template.TemplateModel;
  * @author liufang
  * 
  */
-public abstract class AbstractContentDirective implements
-		TemplateDirectiveModel {
+public abstract class AbstractContentDirective extends CmsBaseDirective 
+         implements TemplateDirectiveModel {
 	/**
 	 * 输入参数，TAG ID。允许多个TAG ID，用","分开。和tagNames之间二选一，ID优先级更高。
 	 */
@@ -389,6 +390,11 @@ public abstract class AbstractContentDirective implements
 			}
 		}
 		// 主要条件为空，则执行此处代码。
+		if(siteIds==null){  //add by wzw
+			CmsSite site = FrontUtils.getSite(env);
+			siteIds = new Integer[1];
+			siteIds[0] = site.getId();
+		}
 		if (isPage()) {
 			int pageNo = FrontUtils.getPageNo(env);
 			return contentMng.getPageBySiteIdsForTag(siteIds, typeIds,

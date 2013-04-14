@@ -7,13 +7,13 @@ import com.kingcore.common.page.Pagination;
 
 public interface CmsTopicMng {
 
-	public List<CmsTopic> getListForTag(Integer channelId, boolean recommend,
+	public List<CmsTopic> getListForTag(Integer siteId, Integer channelId, boolean recommend,
 			Integer count);
 
-	public Pagination getPageForTag(Integer channelId, boolean recommend,
+	public Pagination getPageForTag(Integer siteId, Integer channelId, boolean recommend,
 			int pageNo, int pageSize);
 
-	public Pagination getPage(int pageNo, int pageSize);
+	public Pagination getPage(Integer siteId, int pageNo, int pageSize);
 
 	public List<CmsTopic> getListByChannel(Integer channelId);
 

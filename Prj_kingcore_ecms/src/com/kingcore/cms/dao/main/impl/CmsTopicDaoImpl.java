@@ -15,9 +15,13 @@ import com.kingcore.common.page.Pagination;
 public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 		implements CmsTopicDao {
 	@SuppressWarnings("unchecked")
-	public List<CmsTopic> getList(Integer channelId, boolean recommend,
+	public List<CmsTopic> getList(Integer siteId,Integer channelId, boolean recommend,
 			Integer count, boolean cacheable) {
 		Finder f = Finder.create("from CmsTopic bean where 1=1");
+		if (siteId != null) {
+			f.append(" and bean.siteId=:siteId" );  //:siteId
+			f.setParam("siteId", siteId);
+		}
 		if (channelId != null) {
 			f.append(" and bean.channel.id=:channelId");
 			f.setParam("channelId", channelId);
@@ -33,9 +37,13 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 		return find(f);
 	}
 
-	public Pagination getPage(Integer channelId, boolean recommend, int pageNo,
+	public Pagination getPage(Integer siteId, Integer channelId, boolean recommend, int pageNo,
 			int pageSize, boolean cacheable) {
 		Finder f = Finder.create("from CmsTopic bean where 1=1");
+		if (siteId != null) {
+			f.append(" and bean.siteId=:siteId" );
+			f.setParam("siteId", siteId);
+		}
 		if (channelId != null) {
 			f.append(" and bean.channel.id=:channelId");
 			f.setParam("channelId", channelId);

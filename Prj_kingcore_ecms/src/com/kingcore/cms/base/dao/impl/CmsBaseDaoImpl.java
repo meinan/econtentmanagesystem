@@ -14,15 +14,11 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.base.controller;
+package com.kingcore.cms.base.dao.impl;
 
-import java.util.Map;
-
-import com.kingcore.cms.entity.main.CmsSite;
-import com.kingcore.common.web.freemarker.DirectiveUtils;
-
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateModel;
+import com.kingcore.cms.base.dao.CmsBaseDao;
+import com.kingcore.cms.entity.main.Content;
+import com.kingcore.common.hibernate3.HibernateBaseDao;
 
 /**
  * <p>java类文件的说明...</p>
@@ -32,23 +28,9 @@ import freemarker.template.TemplateModel;
  * @since	JDK5
  */
 
-public class BaseDirective {
+public class CmsBaseDaoImpl  extends HibernateBaseDao<Content, Integer>
+    implements CmsBaseDao {
 
-	/**
-	 * 输入参数，站点ID。
-	 */
-	public static final String PARAM_SITE_ID = "siteId";
-
-	//mod by wzw
-	protected Integer getSiteId(CmsSite site, Map<String, TemplateModel> params)
-			throws TemplateException {
-		Integer siteId = DirectiveUtils.getInt(PARAM_SITE_ID, params);
-		if (siteId == null) {
-			siteId = site.getId();
-		}
-		return siteId;
-	}
-	
 	/**
 	 * <p>java方法的说明...</p>
 	 * @author Zeven on Apr 14, 2013
@@ -57,6 +39,12 @@ public class BaseDirective {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected Class<Content> getEntityClass() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

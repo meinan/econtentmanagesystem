@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kingcore.cms.base.controller.CmsBaseDirective;
 import com.kingcore.cms.manager.assist.CmsCommentMng;
 import com.kingcore.common.web.freemarker.DirectiveUtils;
 
@@ -17,8 +18,8 @@ import freemarker.template.TemplateModel;
  * @author liufang
  * 
  */
-public abstract class AbstractCmsCommentDirective implements
-		TemplateDirectiveModel {
+public abstract class AbstractCmsCommentDirective extends CmsBaseDirective 
+         implements TemplateDirectiveModel {
 
 	/**
 	 * 输入参数，内容ID。

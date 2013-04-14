@@ -44,7 +44,8 @@ public class CmsTopicAct {
 	@RequestMapping("/topic/v_list.do")
 	public String list(Integer pageNo, HttpServletRequest request,
 			ModelMap model) {
-		Pagination pagination = manager.getPage(cpn(pageNo), CookieUtils
+		CmsSite site = CmsUtils.getSite(request);
+		Pagination pagination = manager.getPage(site.getId(), cpn(pageNo), CookieUtils
 				.getPageSize(request));
 		model.addAttribute("pagination", pagination);
 		return "topic/list";
@@ -102,6 +103,7 @@ public class CmsTopicAct {
 		if (!StringUtils.isBlank(bean.getTplContent())) {
 			bean.setTplContent(site.getTplPath() + bean.getTplContent());
 		}
+		bean.setSiteId(site.getId()); //add by wzw
 		bean = manager.save(bean, channelId);
 		log.info("save CmsTopic id={}", bean.getId());
 		cmsLogMng.operating(request, "cmsTopic.log.save", "id=" + bean.getId()

@@ -13,7 +13,7 @@ import com.kingcore.common.util.HttpServletRequestThreadLocal;
 
 /**
  * A implementation of {@link ServletRequestListener} for {@link HttpServletRequestThreadLocal}
- * @author mercy
+ * @author
  * @since 
  * @version 2:22:40 PM Mar 8, 2010
  */
