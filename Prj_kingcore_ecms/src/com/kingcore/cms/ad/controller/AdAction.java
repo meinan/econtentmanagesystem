@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +71,9 @@ public class AdAction extends CmsBaseAction {
 		Random rad = new Random();
 		int random = rad.nextInt(10);//取小于10的正整数
 		Content content = list.get(random);
-		adHtmlStr = "<a href='"+content.getUrl()+"'><FONT SIZE='2px'>"
-								+content.getTitle()+"</FONT></a>";
+		adHtmlStr = "<a href='"+content.getUrl()+"' title='"
+		                         +convert(content.getTitle())+"'><FONT SIZE='2px'>"
+								 +convert(content.getTitle())+"</FONT></a>";
 		try {
 			response.setContentType("text/html;charset=utf-8");
 			response.getWriter().print( adHtmlStr );
@@ -81,6 +83,10 @@ public class AdAction extends CmsBaseAction {
 		return null;
 	}
  
+	private String convert(String title) {
+		return StringUtils.replace(title, "'", "&acute;");
+	}
+
 	@Autowired
 	private AdService adService;
 //	@Autowired
