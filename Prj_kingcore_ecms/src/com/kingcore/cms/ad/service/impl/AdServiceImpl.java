@@ -16,6 +16,7 @@
 
 package com.kingcore.cms.ad.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,16 @@ public class AdServiceImpl extends CmsBaseServiceImpl implements AdService {
 	public List<Content> getListBySiteIdsForTag(Integer[] siteIds,
 			Integer[] typeIds, Boolean titleImg, Boolean recommend,
 			String title, int orderBy, Integer first, Integer count) {
-		return dao.getListBySiteIdsForTag(siteIds, typeIds, titleImg,
+		List<Content> list = dao.getListBySiteIdsForTag(siteIds, typeIds, titleImg,
 				recommend, title, orderBy, first, count);
- 
+		List<Content> cacheList = new ArrayList<Content>();
+		for (Content content : list) {
+			Content cacheContent = new Content();
+			cacheContent.setTitle( content.getTitle() );
+			cacheContent.setUrl( content.getUrl() );
+			cacheList.add(cacheContent);
+		}
+		return cacheList;
 	}
 
 	@Autowired
