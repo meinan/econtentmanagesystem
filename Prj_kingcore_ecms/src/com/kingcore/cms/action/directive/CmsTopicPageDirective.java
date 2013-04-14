@@ -15,6 +15,7 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kingcore.cms.base.controller.CmsBaseDirective;
 import com.kingcore.cms.entity.main.CmsSite;
 import com.kingcore.cms.manager.main.CmsTopicMng;
 import com.kingcore.cms.web.FrontUtils;
@@ -35,7 +36,8 @@ import freemarker.template.TemplateModel;
  * @author liufang
  * 
  */
-public class CmsTopicPageDirective implements TemplateDirectiveModel {
+public class CmsTopicPageDirective extends CmsBaseDirective 
+		implements TemplateDirectiveModel {
 	/**
 	 * 模板名称
 	 */
@@ -53,7 +55,7 @@ public class CmsTopicPageDirective implements TemplateDirectiveModel {
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody body) throws TemplateException, IOException {
 		CmsSite site = FrontUtils.getSite(env);
-		Pagination page = cmsTopicMng.getPageForTag(getChannelId(params),
+		Pagination page = cmsTopicMng.getPageForTag(getSiteId(site, params), getChannelId(params),
 				getRecommend(params), FrontUtils.getPageNo(env), FrontUtils
 						.getCount(params));
 

@@ -14,7 +14,9 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.base.dao;
+package com.kingcore.cms.base.service.impl;
+
+import com.kingcore.cms.base.service.CmsBaseService;
 
 /**
  * <p>java类文件的说明...</p>
@@ -24,6 +26,16 @@ package com.kingcore.cms.base.dao;
  * @since	JDK5
  */
 
-public interface BaseDao {
+public class CmsBaseServiceImpl implements CmsBaseService {
+
+	/**
+	 * <p>java方法的说明...</p>
+	 * @author Zeven on Apr 14, 2013
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

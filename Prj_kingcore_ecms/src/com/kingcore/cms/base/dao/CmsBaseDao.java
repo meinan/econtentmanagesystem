@@ -14,7 +14,7 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.base.controller;
+package com.kingcore.cms.base.dao;
 
 /**
  * <p>java类文件的说明...</p>
@@ -24,16 +24,6 @@ package com.kingcore.cms.base.controller;
  * @since	JDK5
  */
 
-public class BaseAction {
-
-	/**
-	 * <p>java方法的说明...</p>
-	 * @author Zeven on Apr 14, 2013
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+public interface CmsBaseDao {
 
 }

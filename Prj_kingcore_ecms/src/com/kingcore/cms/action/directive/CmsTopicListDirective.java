@@ -15,6 +15,7 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kingcore.cms.base.controller.CmsBaseDirective;
 import com.kingcore.cms.entity.main.CmsSite;
 import com.kingcore.cms.entity.main.CmsTopic;
 import com.kingcore.cms.manager.main.CmsTopicMng;
@@ -35,7 +36,8 @@ import freemarker.template.TemplateModel;
  * @author liufang
  * 
  */
-public class CmsTopicListDirective implements TemplateDirectiveModel {
+public class CmsTopicListDirective extends CmsBaseDirective
+		implements TemplateDirectiveModel {
 	/**
 	 * 模板名称
 	 */
@@ -55,7 +57,7 @@ public class CmsTopicListDirective implements TemplateDirectiveModel {
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody body) throws TemplateException, IOException {
 		CmsSite site = FrontUtils.getSite(env);
-		List<CmsTopic> list = cmsTopicMng.getListForTag(getChannelId(params),
+		List<CmsTopic> list = cmsTopicMng.getListForTag(getSiteId(site, params),getChannelId(params),
 				getRecommend(params), FrontUtils.getCount(params));
 
 		Map<String, TemplateModel> paramWrap = new HashMap<String, TemplateModel>(

@@ -42,7 +42,7 @@ public class CmsGuestbookListDirective extends AbstractCmsGuestbookDirective {
 	/**
 	 * 输入参数，内容ID。
 	 */
-	public static final String PARAM_SITE_ID = "siteId";
+//	public static final String PARAM_SITE_ID = "siteId";
 
 	@SuppressWarnings("unchecked")
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
@@ -50,7 +50,11 @@ public class CmsGuestbookListDirective extends AbstractCmsGuestbookDirective {
 		CmsSite site = FrontUtils.getSite(env);
 		int first = FrontUtils.getFirst(params);
 		int max = FrontUtils.getCount(params);
-		List<CmsGuestbook> list = cmsGuestbookMng.getList(getSiteId(params),
+		Integer siteId = getSiteId(params);
+		if (siteId == null) {
+			siteId = site.getId();
+		}
+		List<CmsGuestbook> list = cmsGuestbookMng.getList( siteId, //getSiteId(params),
 				getCtgId(params), getRecommend(params), getChecked(params),
 				getDesc(params), true, first, max);
 

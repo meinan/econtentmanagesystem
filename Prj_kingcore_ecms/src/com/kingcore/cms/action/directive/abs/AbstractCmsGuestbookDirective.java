@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kingcore.cms.base.controller.CmsBaseDirective;
 import com.kingcore.cms.manager.assist.CmsGuestbookMng;
 import com.kingcore.common.web.freemarker.DirectiveUtils;
 
@@ -17,8 +18,9 @@ import freemarker.template.TemplateModel;
  * @author liufang
  * 
  */
-public abstract class AbstractCmsGuestbookDirective implements
-		TemplateDirectiveModel {
+public abstract class AbstractCmsGuestbookDirective  extends CmsBaseDirective 
+		implements TemplateDirectiveModel {
+	
 	/**
 	 * 输入参数，站点ID。
 	 */

@@ -19,20 +19,20 @@ import com.kingcore.common.page.Pagination;
 @Transactional
 public class CmsTopicMngImpl implements CmsTopicMng, ChannelDeleteChecker {
 	@Transactional(readOnly = true)
-	public List<CmsTopic> getListForTag(Integer channelId, boolean recommend,
+	public List<CmsTopic> getListForTag(Integer siteId, Integer channelId, boolean recommend,
 			Integer count) {
-		return dao.getList(channelId, recommend, count, true);
+		return dao.getList(siteId, channelId, recommend, count, true);
 	}
 
 	@Transactional(readOnly = true)
-	public Pagination getPageForTag(Integer channelId, boolean recommend,
+	public Pagination getPageForTag(Integer siteId, Integer channelId, boolean recommend,
 			int pageNo, int pageSize) {
-		return dao.getPage(channelId, recommend, pageNo, pageSize, true);
+		return dao.getPage(siteId, channelId, recommend, pageNo, pageSize, true);
 	}
 
 	@Transactional(readOnly = true)
-	public Pagination getPage(int pageNo, int pageSize) {
-		Pagination page = dao.getPage(null, false, pageNo, pageSize, false);
+	public Pagination getPage(Integer siteId, int pageNo, int pageSize) {
+		Pagination page = dao.getPage(siteId, null, false, pageNo, pageSize, false);
 		return page;
 	}
 

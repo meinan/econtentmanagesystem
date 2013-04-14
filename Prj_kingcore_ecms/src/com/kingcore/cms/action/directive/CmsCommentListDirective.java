@@ -38,18 +38,16 @@ public class CmsCommentListDirective extends AbstractCmsCommentDirective {
 	 * 模板名称
 	 */
 	public static final String TPL_NAME = "comment_list";
-
-	/**
-	 * 输入参数，站点ID。
-	 */
-	public static final String PARAM_SITE_ID = "siteId";
+ 
+//	public static final String PARAM_SITE_ID = "siteId";
 
 	@SuppressWarnings("unchecked")
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody body) throws TemplateException, IOException {
 		CmsSite site = FrontUtils.getSite(env);
-
-		List<CmsComment> list = cmsCommentMng.getListForTag(getSiteId(params),
+		//add by wzw
+		Integer siteId = getSiteId(site, params);
+		List<CmsComment> list = cmsCommentMng.getListForTag(siteId, //getSiteId(params),
 				getContentId(params), getGreaterThen(params),
 				getChecked(params), getRecommend(params), getDesc(params),
 				FrontUtils.getCount(params));
@@ -79,11 +77,6 @@ public class CmsCommentListDirective extends AbstractCmsCommentDirective {
 			throw new RuntimeException("invoke type not handled: " + type);
 		}
 		DirectiveUtils.removeParamsFromVariable(env, paramWrap, origMap);
-	}
-
-	protected Integer getSiteId(Map<String, TemplateModel> params)
-			throws TemplateException {
-		return DirectiveUtils.getInt(PARAM_SITE_ID, params);
 	}
 
 }
