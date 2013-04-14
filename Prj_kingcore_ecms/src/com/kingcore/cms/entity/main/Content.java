@@ -71,11 +71,28 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	/**
+	 * add by wzw
+	 */
+	private String url=null;
+	private String title=null;
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
 	 * 获得URL地址
 	 * 
 	 * @return
 	 */
 	public String getUrl() {
+		if(this.url!=null){  //add by wzw
+			return this.url;
+		}
 		if (!StringUtils.isBlank(getLink())) {
 			return getLink();
 		}
@@ -526,6 +543,10 @@ public class Content extends BaseContent implements ContentInterface {
 	}
 
 	public String getTitle() {
+		if(this.title!=null){  //add by wzw
+			return this.title;
+		}
+		
 		ContentExt ext = getContentExt();
 		if (ext != null) {
 			return ext.getTitle();
