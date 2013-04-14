@@ -20,6 +20,7 @@
 	<bean id="rssAct" class="com.kingcore.cms.action.front.RssAct"/>
 	<bean id="csiCustomAct" class="com.kingcore.cms.action.front.CsiCustomAct"/>
 	<bean id="advertisingAct" class="com.kingcore.cms.action.front.AdvertisingAct"/>
+	<bean id="adAction" class="com.kingcore.cms.ad.controller.AdAction"/>
 	
 	<bean id="casLoginAct" class="com.kingcore.cms.action.member.CasLoginAct"/>
 	<bean id="loginAct" class="com.kingcore.cms.action.member.LoginAct"/>

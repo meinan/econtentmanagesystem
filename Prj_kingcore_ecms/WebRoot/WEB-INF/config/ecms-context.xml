@@ -17,15 +17,19 @@
 	<bean id="cms_channel_page" class="com.kingcore.cms.action.directive.ChannelPageDirective"/>
 	<bean id="cms_channel" class="com.kingcore.cms.action.directive.ChannelDirective"/>
 	<bean id="cms_content" class="com.kingcore.cms.action.directive.ContentDirective"/>
+	<!-- mod by wzw -->
 	<bean id="cms_content_list" class="com.kingcore.cms.action.directive.ContentListDirective"/>
 	<bean id="cms_content_page" class="com.kingcore.cms.action.directive.ContentPageDirective"/>
 	<bean id="cms_tag_list" class="com.kingcore.cms.action.directive.ContentTagListDirective"/>
 	<bean id="cms_tag_page" class="com.kingcore.cms.action.directive.ContentTagPageDirective"/>
+	<!-- mod by wzw -->
 	<bean id="cms_topic_list" class="com.kingcore.cms.action.directive.CmsTopicListDirective"/>
 	<bean id="cms_topic_page" class="com.kingcore.cms.action.directive.CmsTopicPageDirective"/>
+	<!-- mod by wzw -->
 	<bean id="cms_comment_list" class="com.kingcore.cms.action.directive.CmsCommentListDirective"/>
 	<bean id="cms_comment_page" class="com.kingcore.cms.action.directive.CmsCommentPageDirective"/>
 	<bean id="cms_guestbook_ctg_list" class="com.kingcore.cms.action.directive.CmsGuestbookCtgListDirective"/>
+	<!-- mod by wzw -->
 	<bean id="cms_guestbook_list" class="com.kingcore.cms.action.directive.CmsGuestbookListDirective"/>
 	<bean id="cms_guestbook_page" class="com.kingcore.cms.action.directive.CmsGuestbookPageDirective"/>
 	<bean id="cms_vote" class="com.kingcore.cms.action.directive.CmsVoteDirective"/>
@@ -164,7 +168,12 @@
 	
 	<bean id="cmsSiteFlowMng" class="com.kingcore.cms.manager.assist.impl.CmsSiteFlowMngImpl"/>
 	
+	<!-- Service -->
+	<bean id="adService" class="com.kingcore.cms.ad.service.impl.AdServiceImpl"/>
+
 	<!--DAO-->
+	<bean id="adDao" class="com.kingcore.cms.ad.dao.impl.AdDaoImpl"/>
+
 	<bean id="channelDao" class="com.kingcore.cms.dao.main.impl.ChannelDaoImpl"/>
 	<bean id="channelExtDao" class="com.kingcore.cms.dao.main.impl.ChannelExtDaoImpl"/>
 	<bean id="channelTxtDao" class="com.kingcore.cms.dao.main.impl.ChannelTxtDaoImpl"/>
