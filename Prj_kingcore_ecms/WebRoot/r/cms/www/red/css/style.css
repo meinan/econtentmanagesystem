@@ -139,7 +139,8 @@
 .news-txt{float:right; text-align:left; padding-right:10px; width:203px; color:#9b9b9b; line-height:20px; padding-top:5px;}
 .news-ul{margin-top:5px;}
 .news-ul li{line-height:24px; background:url(../img/images/li-hicon.jpg) no-repeat 0px 11px; text-indent:8px;}
-.news-ul li a{color:#6e6e6e;}
+.news-ul li a{color:#333;}  /*--6e6e6e by wzw-*/
+li span a:link,li span a:visited{color:#f50000;font-size:12px;} /*--by wzw-*/
 .jjsd-con{width:212px; margin:0 auto; margin-top:13px;}
 .jjsd-img{width:212px; height:77px; overflow:hidden; padding-bottom:10px;}
 .jjsd-img img{ max-width:212px; max-height:77px; text-align:center;}

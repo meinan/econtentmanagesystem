@@ -41,16 +41,22 @@ $(function() {
               <ul class="top-ul">
                 [@cms_content_list channelId='81' count='6' typeId='4' titLen='20' append='...' channelOption='1']
                     [#list tag_list as a]
-              	  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+              	  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                     [/#list]
                  [/@cms_content_list]   
               </ul>
           </div>
      </div>
      <div class="news-rgslide fr">
-     	  <div class="news-t"><h1>资讯排行榜</h1></div>
+     	  <div class="news-t">
+              <h1>
+              [@cms_channel id='103']
+                        <a href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+              </h1>
+          </div>
           <ul class="news-ph">
-              [@cms_content_list count='9' titLen='15' orderBy='8' channelOption='1' channelId='1']
+              [@cms_content_list count='9' titLen='15' orderBy='8' channelOption='1' channelId='103']
                   [#list tag_list as a]
                   <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                   [/#list]
@@ -79,7 +85,7 @@ $(function() {
                  [/#list]
                [/@cms_content_list]
                <ul class="news-ul">
-                [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='82' typeId='1' append='...']
+                [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='82' typeId='1' append='...']
               	   [#list tag_list as a]
               	  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                   [/#list]
@@ -106,7 +112,7 @@ $(function() {
                  [/#list]
                [/@cms_content_list]
                <ul class="news-ul">
-                [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='83' typeId='1' append='...']
+                [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='83' typeId='1' append='...']
               	   [#list tag_list as a]
               	  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                   [/#list]
@@ -118,21 +124,21 @@ $(function() {
      <div class="w228 fr h259">
      	  <div class="news-t">
               <h1>
-              [@cms_channel id='40']
+              [@cms_channel id='113']
                         <a href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
                 [/@cms_channel]
               </h1>
           </div>
      	  <div class="jjsd-con">
-          	   <div class="jjsd-img">
-                 [@cms_content_list count='1' titLen='0' orderBy='4' channelOption='1' channelId='40' typeId='2' ]
+              <div class="jjsd-img">
+                 [@cms_content_list count='1' titLen='0' orderBy='4' channelOption='1' channelId='113' typeId='2' ]
                  	[#list tag_list as a]
                   <a href="${a.url}" title="${a.title}" target="_blank"><img src="${a.typeImg!site.defImg}" alt="${a.title}"  width="212" height="77" /></a> 
                      [/#list] 
                   [/@cms_content_list] 
                </div>
                 <ul class="news-ul">
-             [@cms_content_list count='5' titLen='11' orderBy='4' channelOption='1' channelId='40' typeId='1' ]
+             [@cms_content_list count='5' titLen='11' orderBy='4' channelOption='1' channelId='113' typeId='1' ]
              	 [#list tag_list as a]
               	  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                   [/#list]
@@ -177,7 +183,7 @@ $(function() {
                      [/#list]
                    [/@cms_content_list]
                    <ul class="news-ul">
-                    [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='84' typeId='1' append='...']
+                    [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='84' typeId='1' append='...']
                        [#list tag_list as a]
                       <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                       [/#list]
@@ -204,7 +210,7 @@ $(function() {
                      [/#list]
                    [/@cms_content_list]
                    <ul class="news-ul">
-                    [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='85' typeId='1' append='...']
+                    [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='85' typeId='1' append='...']
                        [#list tag_list as a]
                       <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                       [/#list]
@@ -233,7 +239,7 @@ $(function() {
                      [/#list]
                    [/@cms_content_list]
                    <ul class="news-ul">
-                    [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='86' typeId='1' append='...']
+                    [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='86' typeId='1' append='...']
                        [#list tag_list as a]
                       <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                       [/#list]
@@ -260,7 +266,7 @@ $(function() {
                      [/#list]
                    [/@cms_content_list]
                    <ul class="news-ul">
-                    [@cms_content_list count='9' titLen='22' orderBy='4' channelOption='1' channelId='87' typeId='1' append='...']
+                    [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='87' typeId='1' append='...']
                        [#list tag_list as a]
                       <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                       [/#list]
@@ -273,21 +279,21 @@ $(function() {
      <div class="news3-rg fr">
      	  <div class="news-t">
             <h1>
-                    [@cms_channel id='41']
+                    [@cms_channel id='124']
                             <a href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
                     [/@cms_channel]
              </h1>
           </div>
           <div class="jjsd-con">
-          	    <div class="jjsd-img">
-          	  	  [@cms_content_list count='1' titLen='0' orderBy='4' channelOption='1' channelId='41' typeId='2' ]
+              <div class="jjsd-img">
+          	   [@cms_content_list count='1' titLen='0' orderBy='4' channelOption='1' channelId='124' typeId='2' ]
                  	[#list tag_list as a]
-                  <a href="${a.url}" title="${a.title}" target="_blank"><img src="${a.typeImg!site.defImg}" alt="${a.title}"  width="212" height="91" /></a> 
-                     [/#list] 
-                  [/@cms_content_list] 
+                     <a href="${a.url}" title="${a.title}" target="_blank"><img src="${a.typeImg!site.defImg}" alt="${a.title}"  width="212" height="91" /></a> 
+                        [/#list] 
+                    [/@cms_content_list] 
                </div>
                   <ul class="news-ul">
-                     [@cms_content_list count='12' titLen='11' orderBy='4' channelOption='1' channelId='41' typeId='1' ]
+                     [@cms_content_list count='12' titLen='11' orderBy='4' channelOption='1' channelId='124' typeId='1' ]
                          [#list tag_list as  a]
                           <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                           [/#list]

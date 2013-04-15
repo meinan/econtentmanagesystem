@@ -168,10 +168,14 @@ ul.order li{height:24px; line-height:22px !important; line-height:24px;}
 /*右侧专题列表样式*/
 dl.list{height:86px;margin:6px 3px 3px 6px;overflow:hidden;}
 dl.list dt{float:right;width:150px; line-height:25px; font-size:13px; font-weight:800; color:#06c;}
-dl.list dt a,dl.list dt a:visited{color:#f54100;}
+dl.list dt a:link{color:#000000;}
+dl.list dt a:visited{color:#f54100;}  /*split by wzw*/
 dl.list dd.pic{float:left;}
 dl.list dd.pic img{width:75px;height:80px;border:1px solid #dddddd; padding:1px; background-color:#FFFFFF;}
 dl.list dd.text{float:right; width:150px; line-height:20px;}
+
+/*add by wzw*/
+.dtList{float:left;width:120px; color:#000000;}
 
 dl.zt{float:left; width:315px; margin:15px 10px 0 10px;}
 
@@ -299,4 +303,3 @@ dl.gb dd.relpy{margin-top:10px;color:#006600;}
 .normaltab{background-image:url(../img/title003-01-a.gif);width:95px; height:28px;}
 .dis{display:block;padding-top:10px;}
 .undis{display:none;padding-top:10px;}
-
