@@ -12,8 +12,11 @@ $(function() {
   Cms.siteFlow("${base}", location.href, document.referrer);
 });
 </script>
-   </head>
-    <body xmlns="">
+</head>
+<body xmlns="">
+<!--top_begin-->
+[#include "../include/页头顶栏.html"/]
+<!--top_end-->
         <p>[#include "../include/页头导航栏.html"/]</p>
         <div id="main">
         <div class="page4 position1">您现在正在浏览： <a href="${base}/">首页</a> &raquo; [#list channel.nodeList as n]<a target="_blank" href="${n.url}">${n.name}</a>[#if n_has_next] &raquo; [/#if][/#list] &raquo; 正文</div>

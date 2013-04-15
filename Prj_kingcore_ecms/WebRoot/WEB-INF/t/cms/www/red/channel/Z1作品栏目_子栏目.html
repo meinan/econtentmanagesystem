@@ -28,12 +28,17 @@ $(function() {
               <ul>
               [@cms_channel_list parentId=channel.nodeList[0].id]
                  [#list tag_list as sub]
-              	 <li><h3><div class="type-tit"><a href="${sub.url}">${sub.name}</a> </div></h3></li>
+              	 <li><h3><div class="type-tit" onClick="$('#${sub.id}').toggle();"><a href="${sub.url}">${sub.name}</a> </div></h3></li>
+                 <div style="display:block;" id="${sub.id}">
                  [@cms_channel_list parentId=sub.id]
                      [#list tag_list as sub1]
-                 <dd class="sub"><a href="${sub1.url}">${sub1.name}</a></dd>
+                     <dd style="width:100px;" class="sub"><a href="${sub1.url}">${sub1.name}</a></dd>
                      [/#list]
+                     <!-- 根据需要补一个 --> 
+                     [#if tag_list?size%2=1]<dd style="width:100px;background-image:url('#');" class="sub"></dd>[/#if]
+
                     [/@cms_channel_list]  
+                  </div>
                   [/#list]
               [/@cms_channel_list]   
               </ul>
@@ -41,20 +46,17 @@ $(function() {
          <div class="works-right fr">
               <div class="works-rgmk">
               	   <div class="works-tit"><h1>${channel.name!}</h1></div>
-                   <ul class="works-ul">
-                   [@cms_content_page count='16' orderBy='4' channelId=channel.id  titLen='14' append='...' typeId='2' dateFormat='yyyy-MM-dd' channelOption='1']  
-                      [#list tag_pagination.list as a]
-                   	  <li>
-                      	 <a href="${a.url}" target="_blank" title="${a.title}"><img src="${a.typeImg!site.defImg}" width="157" height="94" /></a>
-                        <p> <a href="${a.url}" target="_blank" title="${a.title}">[@text_cut s=a.title len=titLen append=append /]</a></p>
-                         <p>${a.date?string(dateFormat)}</p>
-                      </li>
-                      [/#list]
-                    
-                      <div class="clear"></div>
-                   </ul>
-                   <div class="pagination">[@cms_pagination sysPage='1'/] </div>
-                   [/@cms_content_page]   
+                   <ul class="works-ul"> 
+
+		<dl class="list line box">
+                [@cms_topic_list channelId=channel.id  count='16' descLen='35' append='...']
+	            [#list tag_list as t]
+		         <dt style="float:left;"><a href="${base}/topic/${t.id}.jspx" target="_blank">*${t.shortName}</a></dt>
+	            [/#list]
+	        [/@cms_topic_list]
+                </dl>
+
+              </ul> 
               </div>
          </div>
          <div class="clear"></div>
