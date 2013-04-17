@@ -41,8 +41,18 @@ Copyright: KingCoreCMS
 #topmenu dt a.selected:link,#topmenu dt a.selected:visited{font-weight: bold; height:36px;color:#000000; background-image: url(../img/dhlBG02.gif); line-height: 40px;}
 #topmenu dt a:link {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
 #topmenu dt a:visited {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
-#topmenu dt a:hover {text-decoration:none;background:url(../img/dhlBG02.gif) repeat-x;color:#ffffff; }
-
+#topmenu dt a:hover {text-decoration:none;background:url(../img/dhlBG02.gif) repeat-x;color:#000000; }
+.nav_menu_line{
+	list-style-type :none;
+	background-attachment: scroll;
+	background-image: url(../img/nav_line.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	float:left;
+	width: 3px;
+	height:35px;
+	margin:8px 0px 0px 0px;
+}
 #sub1 li.notice{display:inline;width:800px;float:left; text-align:left;}
 
 /* search
