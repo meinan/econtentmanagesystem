@@ -51,7 +51,7 @@ function HoverLi(m,n,counter){
 <!--焦点图片_end-->
 <!--精彩专题_begin-->
 <div class="left_top2"><h2><a href="${base}/topic.jspx" target="_blank">精彩专题</a></h2></div>
-	<div class="rb_right_div" style="height:194px;">
+<div class="rb_right_div" style="height:194px;">
 	   [@cms_topic_list count='2' recommend='1' descLen='35' append='...']
 	   [#list tag_list as t]
 		<dl class="list[#if t_index=0] line[#else] mt5[/#if] box">
@@ -62,6 +62,7 @@ function HoverLi(m,n,counter){
 		[/#list]
 	   [/@cms_topic_list]
 </div>
+
 <!--精彩专题_end-->
 </div>
 
@@ -73,7 +74,7 @@ function HoverLi(m,n,counter){
 </div>
 <div class="fl" style="padding:5px; width:454px; height:243px; border:1px #d8d8d8 solid; padding:2px;">
      <ul class="topnews w450 line">
-	 [@cms_content_list channelId='82' count='1' typeId='4' descLen='60' append='...' channelOption='1']
+	 [@cms_content_list channelId='276' count='1' typeId='4' descLen='60' append='...' channelOption='1']
 		[#list tag_list as a]		
 		<li class="toptext[#if a_index gt 0] line[/#if]">
 		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
@@ -83,7 +84,7 @@ function HoverLi(m,n,counter){
 		[/#list]
 	  [/@cms_content_list]
 	  </ul>  
-	 [@cms_content_list count='6' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='82']
+	 [@cms_content_list count='6' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='276']
       <ul class="topnews">
 		[#list tag_list as a]
 		<li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a><em>${a.date?string(dateFormat)}</em></li>
@@ -118,7 +119,7 @@ function HoverLi(m,n,counter){
 </div>
 <div style="margin-bottom:3px; height:152px;">
   <ul class="jctw">	
-	[@cms_content_list typeId='2' count='4' titLen='10' channelOption='1' channelId='209']
+	[@cms_content_list typeId='2' count='4' titLen='10' channelOption='1' channelId='1209']
 	[#list tag_list as a]
         <li><a href="${a.url}" title="${a.title}" target="_blank"><img src="${a.typeImg!site.defImg}" alt="${a.title}" /></a><span><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.stit len=titLen append=append/]</a></span></li>
 	[/#list]
@@ -129,266 +130,92 @@ function HoverLi(m,n,counter){
 <!--精彩图文_end
 <img src="/${res}/img/banner2.jpg" style="margin:10px 0px 10px 0px;"/>-->
 <!--下载_begin-->
-<div class="w720 fl box mt10">
 
-<div class="w355 fr h259" style="margin-bottom:5px;">
-	<div class="left_top box">
-      <h2>[@cms_channel id='81']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-    </div>
-    
-	  <div class="left_div box h230">
-      <div class="mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='84' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>	
-    </div>
-    <div class="left_low"></div>
-</div>
+[@cms_channel_list parentId=null]
+[#list tag_list as sub]
 
-<div class="w355 fl h259" style="margin-right:8px; margin-bottom:5px;">
-    <div class="left_top box">
-      <h2>[@cms_channel id='88']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-	</div> 
-	
-<div class="left_div box h230">
-      <div class="pr10 mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='96' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>
-	  </div>
-	  <div class="left_low"></div>
-</div>
+[#if sub_index=0]
+<div class="w720 fl box mt10">[/#if]
+[#if sub_index=2]
+<div class="w720 fl box">[/#if]
 
-</div>	
-<div class="w250 fr mt10">
- 	<div class="blue_right_top"><h2><a href="#">网友投票</a></h2></div>
-	<div class="blue_right_div" style="height:249px !important;height:245px;">
-	<div class="rmpl">
-	[#include "../include/投票栏.html"/]
+	<div class="w355 fr [#if sub_index<2]h259[/#if]" style="margin-bottom:5px;[#if sub_index%2=1]margin-right:8px;[/#if]">
+		<div class="left_top box">
+		  <h2>[@cms_channel id='${sub.id}']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
+		</div>
+		
+		  <div class="left_div box h230">
+		  <div class="mt5">
+			<ul class="list w355">
+			[@cms_content_list channelId='${sub.id}' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			  [#list tag_list as a]
+			  [#if a_index = 0]
+			  <li class="toptext">
+			  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
+			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
+			  </li>
+			  [#else]
+			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#if]
+			  [/#list]
+			 [/@cms_content_list]
+			</ul>
+		  </div>	
+		</div>
+		<div class="left_low"></div>
 	</div>
+ 
+
+[#if sub_index=1 || tag_list?size=1]
+</div>
+	<div class="w250 fr mt10">
+		<div class="blue_right_top"><h2><a href="#">网友投票</a></h2></div>
+		<div class="blue_right_div" style="height:249px !important;height:245px;">
+		<div class="rmpl">
+		[#include "../include/投票栏.html"/]
+		</div>
+		</div>
+		<div class="pink_right_low"></div>
+		
 	</div>
-	<div class="pink_right_low"></div>
-	
+[/#if]
+
+[#if sub_index>1 && sub_index+1=tag_list?size]
 </div>
-<!--下载_end-->
-<!--<img src="/${res}/img/banner2.jpg"/>  mt10-->
-<div class="w720 fl box">
-<!--cjbd_begin-->
-<div class="w355 fl" style="margin-right:8px; margin-bottom:5px;">
-    <div class="left_top box">
-      <h2>[@cms_channel id='98']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-	</div> 
-	
-<div class="left_div box h230">
-      <div class="pr10 mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='103' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>
-	  </div>
-	  <div class="left_low"></div>
-</div>		  
-	
-<div class="w355 fr" style="margin-bottom:5px;">
-	<div class="left_top box">
-      <h2>[@cms_channel id='109']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-    </div>
-    
-	  <div class="left_div box h230">
-      <div class="mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='119' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>	
-    </div>
-    <div class="left_low"></div>
-</div>
-
-<div class="w355 fl" style="margin-right:8px;margin-bottom:5px;">
-    <div class="left_top box">
-      <h2>[@cms_channel id='124']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-	</div> 
-	
-	<div class="left_div box h230">
-      <div class="pr10 mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='124' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>
-	  </div>
-	  <div class="left_low"></div>
-</div>
-
-<div class="w355 fr" style="margin-bottom:5px;">
-	<div class="left_top box">
-      <h2>[@cms_channel id='126']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-    </div>
-    
-	  <div class="left_div box h230">
-      <div class="mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='126' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>	
-    </div>
-    <div class="left_low"></div>
-</div>
-
-
-<div class="w355 fl" style="margin-right:8px;margin-bottom:5px;">
-    <div class="left_top box">
-      <h2>[@cms_channel id='117']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-	</div> 
-	
-	<div class="left_div box h230">
-      <div class="pr10 mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='117' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>
-	  </div>
-	  <div class="left_low"></div>
-</div>
-
-<div class="w355 fr" style="margin-bottom:5px;">
-	<div class="left_top box">
-      <h2>[@cms_channel id='118']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
-    </div>
-    
-	  <div class="left_div box h230">
-      <div class="mt5">
-        <ul class="list w355">
-		[@cms_content_list channelId='118' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
-          [#list tag_list as a]
-		  [#if a_index = 0]
-          <li class="toptext">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p>[@text_cut s=a.description len=descLen append=append/]</p>
-		  </li>
-		  [#else]
-          <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		  [/#if]
-		  [/#list]
-         [/@cms_content_list]
-        </ul>
-      </div>	
-    </div>
-    <div class="left_low"></div>
-</div>
-
-
-<!-- remove tow blocks by wzw --> 
-<!--cjbd_end-->	
-</div>
-
 <!--mright_begin mt10-->		
-<div class="w250 fr">
- 	<div class="blue_right_top"><h2><a href="#" target="_blank">热门评论</a></h2></div>
-	<div class="blue_right_div" style="height:360px !important;height:358px;">
-		[@cms_comment_list  count='5'  checked='1' textLen='50' append='...']
-		<dl class="rmpl">
-		[#list tag_list as c]
-			<dt><span>${(c.commentUser.username)!"匿名网友"}</span> 对 <a href="${c.content.url}" target="_blank">${c.content.title}</a> 评论道:</dt>
-			<dd>[@text_cut s=c.textHtml len=textLen append=append/]</dd>
-			<dd class="line"></dd>
-		[/#list]
-		</dl>
-		[/@cms_comment_list]
+	<div class="w250 fr">
+		<div class="blue_right_top"><h2><a href="#" target="_blank">热门评论</a></h2></div>
+		<div class="blue_right_div" style="height:360px !important;height:358px;">
+			[@cms_comment_list count='5'  checked='1' textLen='50' append='...']
+			<dl class="rmpl">
+			[#list tag_list as c]
+				<dt><span>${(c.commentUser.username)!"匿名网友"}</span> 对 <a href="${c.content.url}" target="_blank">${c.content.title}</a> 评论道:</dt>
+				<dd>[@text_cut s=c.textHtml len=textLen append=append/]</dd>
+				<dd class="line"></dd>
+			[/#list]
+			</dl>
+			[/@cms_comment_list]
 
-	</div>
-	<div class="blue_right_top mt10"><h2><a href="${base}/guestbook.jspx" target="_blank">网友留言</a></h2></div>
-	<div class="blue_right_div" style="height:357px !important;height:345px;">
-		<div class="w96">
-		[@cms_guestbook_list count='5' recommend='1' checked='1']
-		 [#list tag_list as m]
-			<dl class="gb">
-				<dt><span>[${m.ctg.name!}]</span>${m.titleHtml!}</dt>
-				<dd>${m.contentHtml!}</dd>
-		   </dl>
-		 [/#list]		   
-		 [/@cms_guestbook_list]	
-	    </div>		
-	</div>
-	</div>
+		</div>
+		<div class="blue_right_top mt10"><h2><a href="${base}/guestbook.jspx" target="_blank">网友留言</a></h2></div>
+		<div class="blue_right_div" style="height:357px !important;height:345px;">
+			<div class="w96">
+			[@cms_guestbook_list count='5' recommend='1' checked='1']
+			 [#list tag_list as m]
+				<dl class="gb">
+					<dt><span>[${m.ctg.name!}]</span>${m.titleHtml!}</dt>
+					<dd>${m.contentHtml!}</dd>
+			   </dl>
+			 [/#list]		   
+			 [/@cms_guestbook_list]	
+			</div>		
+		</div>
+		</div>
+[/#if]
+
+[/#list]
+[/@cms_channel_list] 
+
 <!--mright_end-->
 
 <!--hotlink_begin-->
