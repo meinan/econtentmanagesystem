@@ -162,7 +162,11 @@ public class CmsTopicAct {
 			throws JSONException {
 		JSONArray arr = new JSONArray();
 		if (channelId != null) {
-			List<CmsTopic> list = manager.getListByChannel(channelId);
+			//add by wzw
+//			CmsSite site = CmsUtils.getSite(request);
+//			Integer siteId = site.getId();
+			
+			List<CmsTopic> list = manager.getListByChannel(null, channelId);
 			JSONObject o;
 			for (CmsTopic t : list) {
 				o = new JSONObject();

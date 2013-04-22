@@ -17,7 +17,7 @@ public interface CmsTopicDao {
 
 	public List<CmsTopic> getListByChannelId(Integer channelId);
 
-	public List<CmsTopic> getListByChannelIds(Integer[] channelIds);
+	public List<CmsTopic> getListByChannelIds(Integer siteId, Integer[] channelIds);
 
 	public CmsTopic findById(Integer id);
 

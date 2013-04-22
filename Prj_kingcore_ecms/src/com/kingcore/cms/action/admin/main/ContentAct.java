@@ -238,7 +238,7 @@ public class ContentAct {
 		// 专题列表
 		List<CmsTopic> topicList;
 		if (c != null) {
-			topicList = cmsTopicMng.getListByChannel(c.getId());
+			topicList = cmsTopicMng.getListByChannel(siteId, c.getId());
 		} else {
 			topicList = new ArrayList<CmsTopic>();
 		}
@@ -330,7 +330,7 @@ public class ContentAct {
 
 		// 专题列表
 		List<CmsTopic> topicList = cmsTopicMng
-				.getListByChannel(channel.getId());
+				.getListByChannel(siteId, channel.getId());
 		Set<CmsTopic> topics = content.getTopics();
 		for (CmsTopic t : topics) {
 			if (!topicList.contains(t)) {

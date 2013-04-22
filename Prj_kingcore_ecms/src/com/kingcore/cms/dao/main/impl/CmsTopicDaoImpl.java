@@ -55,11 +55,26 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 		return find(f, pageNo, pageSize);
 	}
 
+	/**
+	 * mod by wzw
+	 * //		return getSession().createQuery(hql)
+//				.setParameterList("ids", channelIds)
+//				.setParameter("siteId", siteId).list();
+	 */
 	@SuppressWarnings("unchecked")
-	public List<CmsTopic> getListByChannelIds(Integer[] channelIds) {
-		String hql = "from CmsTopic bean where bean.channel.id in (:ids) order by bean.id asc";
-		return getSession().createQuery(hql)
-				.setParameterList("ids", channelIds).list();
+	public List<CmsTopic> getListByChannelIds(Integer siteId, Integer[] channelIds) {
+		String hql = "from CmsTopic bean where bean.channel.id in (:ids)";
+		if (siteId!=null) {
+			hql += " and bean.siteId=:siteId";
+		}
+		hql += " order by bean.id asc";
+		Query query = getSession().createQuery(hql);
+		query.setParameterList("ids", channelIds);
+		if (siteId != null) {
+			query.setParameter("siteId", siteId);
+		}
+		return query.list();
+		
 	}
 
 	@SuppressWarnings("unchecked")

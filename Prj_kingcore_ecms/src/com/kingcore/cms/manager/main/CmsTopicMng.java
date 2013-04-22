@@ -15,7 +15,7 @@ public interface CmsTopicMng {
 
 	public Pagination getPage(Integer siteId, int pageNo, int pageSize);
 
-	public List<CmsTopic> getListByChannel(Integer channelId);
+	public List<CmsTopic> getListByChannel(Integer siteId,Integer channelId);
 
 	public CmsTopic findById(Integer id);
 
