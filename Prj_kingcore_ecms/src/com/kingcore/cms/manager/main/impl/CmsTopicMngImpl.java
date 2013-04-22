@@ -36,11 +36,14 @@ public class CmsTopicMngImpl implements CmsTopicMng, ChannelDeleteChecker {
 		return page;
 	}
 
+	/**
+	 * mod by wzw
+	 */
 	@Transactional(readOnly = true)
-	public List<CmsTopic> getListByChannel(Integer channelId) {
+	public List<CmsTopic> getListByChannel(Integer siteId, Integer channelId) {
 		List<CmsTopic> list = dao.getGlobalTopicList();
 		Channel c = channelMng.findById(channelId);
-		list.addAll(dao.getListByChannelIds(c.getNodeIds()));
+		list.addAll(dao.getListByChannelIds(siteId, c.getNodeIds()));
 		return list;
 	}
 
