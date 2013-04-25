@@ -26,14 +26,14 @@
      	  <div class="gblist-box">
           	   <div class="w96">
                	    <div class="gb-tit">
-                    	 留言列表
+                    	 留言列表a
                     </div>
                  [@cms_guestbook_page siteId=site.id count='5' checked='1']
 		             [#list tag_pagination.list as m]
                     <dl class="gb-dl w96">
                     	<dt class="fr"><span class="red">[${m.ctg.name!}]</span>${m.titleHtml!}</dt>
                         <dd class="gb-photo fl">
-                            [#if m.member.userImg??]
+                            [#if m.member?exists && m.member.userImg??]
                                 [#if m.member.userImg!=""]
                                 <img src="${guestbook.member.userImg!}"  height="50" width="50"/>
                                [#else]
