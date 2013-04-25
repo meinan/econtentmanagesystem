@@ -42,7 +42,7 @@ function formSubmit() {
             <td height="280" align="left"
 			style="padding: 10px; line-height: 1.7em;">恭喜您，添加新站点成功！<br />
               请重启TOMCAT服务。只有重启TOMCAT服务之后，安装才能生效。<br />
-               <%-- 后台登录地址“网站根路径/jeeadmin/jeecms/index.do”<br />
+               <%-- 后台登录地址“网站根路径/sysadmin/index.do”<br />
                后台管理员admin，密码password。 --%>
               </td>
           </tr>
