@@ -1,9 +1,9 @@
 /*----------------------------------------
 Name: layout.css
-Developed by: JEECMS
+Developed by: KingCoreCMS
 Date Created: 2010-05-02
 Last Updated: 2011-06-06
-Copyright: JEECMS
+Copyright: KingCoreCMS
 ----------------------------------------*/
 
 @charset "utf-8";
@@ -35,14 +35,24 @@ Copyright: JEECMS
 ----------------------------------------*/
 #menu{background:url(../img/dhlbg.jpg) repeat-x;  height:40px; width:980px;}
 #topmenu{display:inline; margin:0; height: 40px; float:left; position:relative;}
-#topmenu dt{text-align:center;padding:0 10px; float:left; display:inline;margin:0px 0px 0px -2px; line-height: 40px; font-weight:bold;}
+#topmenu dt{text-align:center;padding:0 10px; float:left; display:inline;margin:0px 0px 0px -2px; line-height: 40px; font-weight:bold; font-size:14px;}
 #topmenu dt .menu_first{padding-left:15px;}
 #topmenu dt a{display:block;float:left;width:82px;color:#fff;height:40px;}
-#topmenu dt a.selected:link,#topmenu dt a.selected:visited{font-weight: bold; height:36px;color:#ffffff; background-image: url(../img/dhlBG02.gif); line-height: 40px;}
+#topmenu dt a.selected:link,#topmenu dt a.selected:visited{font-weight: bold; height:40px;color:#000000; background-image: url(../img/dhlBG02.gif); line-height: 40px;}
 #topmenu dt a:link {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
 #topmenu dt a:visited {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
-#topmenu dt a:hover {text-decoration:none;background:url(../img/dhlBG02.gif) repeat-x;color:#ffffff; }
-
+#topmenu dt a:hover {text-decoration:none;background:url(../img/dhlBG02.gif) repeat-x;color:#000000; }
+.nav_menu_line{
+	list-style-type :none;
+	background-attachment: scroll;
+	background-image: url(../img/nav_line.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	float:left;
+	width: 3px;
+	height:35px;
+	margin:8px 0px 0px 0px;
+}
 #sub1 li.notice{display:inline;width:800px;float:left; text-align:left;}
 
 /* search
@@ -72,6 +82,7 @@ Copyright: JEECMS
 .w96{width:96%; margin:0 auto;}
 .w98{width:98%; margin:0 auto;}
 .h400{height:400px;}
+.h230{height:230px;}
 .pagination{height:30px; line-height:30px;; text-align:center; clear:both; margin-top:10px;}
 
 .rb_top{height:6px;background-position:0 -35px;overflow:hidden;}
@@ -167,10 +178,14 @@ ul.order li{height:24px; line-height:22px !important; line-height:24px;}
 /*右侧专题列表样式*/
 dl.list{height:86px;margin:6px 3px 3px 6px;overflow:hidden;}
 dl.list dt{float:right;width:150px; line-height:25px; font-size:13px; font-weight:800; color:#06c;}
-dl.list dt a,dl.list dt a:visited{color:#f54100;}
+dl.list dt a:link{color:#000000;}
+dl.list dt a:visited{color:#f54100;}  /*split by wzw*/
 dl.list dd.pic{float:left;}
 dl.list dd.pic img{width:75px;height:80px;border:1px solid #dddddd; padding:1px; background-color:#FFFFFF;}
 dl.list dd.text{float:right; width:150px; line-height:20px;}
+
+/*add by wzw*/
+.dtList{float:left;width:120px; color:#000000;}
 
 dl.zt{float:left; width:315px; margin:15px 10px 0 10px;}
 
@@ -298,4 +313,3 @@ dl.gb dd.relpy{margin-top:10px;color:#006600;}
 .normaltab{background-image:url(../img/title003-01-a.gif);width:95px; height:28px;}
 .dis{display:block;padding-top:10px;}
 .undis{display:none;padding-top:10px;}
-
