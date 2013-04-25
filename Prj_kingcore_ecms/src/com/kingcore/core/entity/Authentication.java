@@ -9,6 +9,7 @@ public class Authentication extends BaseAuthentication {
 	private static final long serialVersionUID = 1L;
 
 	public void init() {
+		
 		Date now = new Timestamp(System.currentTimeMillis());
 		setLoginTime(now);
 		setUpdateTime(now);

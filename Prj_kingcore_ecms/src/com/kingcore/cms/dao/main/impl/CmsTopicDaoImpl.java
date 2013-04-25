@@ -57,23 +57,44 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 
 	/**
 	 * mod by wzw
-	 * //		return getSession().createQuery(hql)
-//				.setParameterList("ids", channelIds)
-//				.setParameter("siteId", siteId).list();
 	 */
 	@SuppressWarnings("unchecked")
-	public List<CmsTopic> getListByChannelIds(Integer siteId, Integer[] channelIds) {
+	public List<CmsTopic> getListByChannelIds(Integer[] channelIds) {
+
 		String hql = "from CmsTopic bean where bean.channel.id in (:ids)";
-		if (siteId!=null) {
-			hql += " and bean.siteId=:siteId";
-		}
-		hql += " order by bean.id asc";
-		Query query = getSession().createQuery(hql);
-		query.setParameterList("ids", channelIds);
-		if (siteId != null) {
-			query.setParameter("siteId", siteId);
-		}
-		return query.list();
+		return getSession().createQuery(hql)
+		       .setParameterList("ids", channelIds).list();
+		 
+		//mod by wzw,using Finder,if channel id/ids is not null, then site id can be ignored.
+//		Finder f = Finder.create("from CmsTopic bean where 1=1");
+//		if (channelIds != null) {
+//			f.append(" and bean.channel.id in (:ids)" );
+//			f.setParamList("ids", channelIds);
+//		}
+//		if (siteId != null) {
+//			f.append(" and bean.siteId=:siteId" );
+//			f.setParam("siteId", siteId);
+//		}
+//		//new Exception().printStackTrace();
+//		f.append(" order by bean.id asc");
+//		int count=10;
+//		Boolean cacheable=false;
+//		f.setMaxResults(count);
+//		f.setCacheable(cacheable);
+//		List<CmsTopic> list = find(f);
+//		return list;
+		
+//		String hql = "from CmsTopic bean where bean.channel.id in (:ids)";
+//		if (siteId!=null) {
+//			hql += " and bean.siteId=:siteId";
+//		}
+//		hql += " order by bean.id asc";
+//		Query query = getSession().createQuery(hql);
+//		query.setParameterList("ids", channelIds);
+//		if (siteId != null) {
+//			query.setParameter("siteId", siteId);
+//		}
+//		return query.list();
 		
 	}
 
@@ -87,10 +108,14 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CmsTopic> getGlobalTopicList() {
+	public List<CmsTopic> getGlobalTopicList(Integer siteId) {
 		String hql = "from CmsTopic bean where bean.channel.id is null"
+				+ " and bean.siteId=:siteId"
 				+ " order by bean.priority asc,bean.id desc";
-		return find(hql);
+		Query query = getSession().createQuery(hql);
+		query.setParameter("siteId", siteId);
+		return query.list();
+//		return find(hql, siteId);
 	}
 
 	public CmsTopic findById(Integer id) {

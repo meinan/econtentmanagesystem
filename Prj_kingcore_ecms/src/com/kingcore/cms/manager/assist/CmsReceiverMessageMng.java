@@ -8,7 +8,7 @@ import com.kingcore.cms.entity.assist.CmsReceiverMessage;
 import com.kingcore.common.page.Pagination;
 
 /**
- *江西金磊科技发展有限公司jeecms研发
+ *KingCore Software eCMS
  */
 public interface CmsReceiverMessageMng {
 	public Pagination getPage(Integer siteId, Integer sendUserId,

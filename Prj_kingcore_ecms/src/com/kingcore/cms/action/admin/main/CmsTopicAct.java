@@ -158,20 +158,21 @@ public class CmsTopicAct {
 	}
 
 	@RequestMapping("/topic/by_channel.do")
-	public void topicsByChannel(Integer channelId, HttpServletResponse response)
+	public void topicsByChannel(Integer channelId, HttpServletRequest request, 
+													HttpServletResponse response)
 			throws JSONException {
 		JSONArray arr = new JSONArray();
 		if (channelId != null) {
 			//add by wzw
-//			CmsSite site = CmsUtils.getSite(request);
-//			Integer siteId = site.getId();
+			CmsSite site = CmsUtils.getSite(request);
+			Integer siteId = site.getId();
 			
-			List<CmsTopic> list = manager.getListByChannel(null, channelId);
+			List<CmsTopic> list = manager.getListByChannel(siteId, channelId);
 			JSONObject o;
 			for (CmsTopic t : list) {
 				o = new JSONObject();
 				o.put("id", t.getId());
-				o.put("name", t.getName());
+				o.put("name", t.getShortName()); //mod by wzw from name to shortName
 				arr.put(o);
 			}
 		}
