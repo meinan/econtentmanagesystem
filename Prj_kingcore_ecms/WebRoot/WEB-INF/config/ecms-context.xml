@@ -7,7 +7,7 @@
 		<property name="cacheSeconds" value="0"/>
 		<property name="basenames">
 			<list>
-				<value>/WEB-INF/languages/jeecms_tpl/messages</value>
+				<value>/WEB-INF/languages/ecms_tpl/messages</value>
 			</list>
 		</property>
 	</bean>
