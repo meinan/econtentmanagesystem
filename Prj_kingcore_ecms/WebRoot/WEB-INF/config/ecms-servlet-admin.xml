@@ -10,9 +10,9 @@
 		<property name="cacheSeconds" value="-1"/>
 		<property name="basenames">
 			<list>
-				<value>/WEB-INF/languages/jeecore_admin/messages</value>
-				<value>/WEB-INF/languages/jeecms_admin/messages</value>
-				<value>/WEB-INF/languages/jeecms_tpl/messages</value>
+				<value>/WEB-INF/languages/ecmscore_admin/messages</value>
+				<value>/WEB-INF/languages/ecms_admin/messages</value>
+				<value>/WEB-INF/languages/ecms_tpl/messages</value>
 				<value>/WEB-INF/languages/fck/messages</value>
 			</list>
 		</property>
@@ -39,8 +39,8 @@
 	<bean id="adminContextInterceptor" class="com.kingcore.cms.web.AdminContextInterceptor">
 		<!--<property name="adminId" value="1"/>-->
 		<property name="auth" value="true"/>
-		<property name="loginUrl" value="/jeeadmin/jeecms/login.do"/>
-		<property name="returnUrl" value="/jeeadmin/jeecms/index.do"/>
+		<property name="loginUrl" value="/sysadmin/login.do"/>
+		<property name="returnUrl" value="/sysadmin/index.do"/>
 		<property name="excludeUrls">
 			<list>
 				<value>/login.do</value>
@@ -65,7 +65,7 @@
 		</property>
 	</bean>
 	<bean id="freemarkerViewResolver" class="com.kingcore.common.web.springmvc.RichFreeMarkerViewResolver">
-		<property name="prefix" value="/jeecms_sys/"/>
+		<property name="prefix" value="/ecms_sys/"/>
 		<property name="suffix" value=".html"/>
 		<property name="contentType" value="text/html; charset=UTF-8"/>
 		<property name="exposeRequestAttributes" value="false"/>
@@ -77,7 +77,7 @@
 		<property name="freemarkerVariables">
 			<map>
 				<!--在FCK编辑器中需要用到appBase，以确定connector路径。-->
-				<entry key="appBase" value="/jeeadmin/jeecms"/>
+				<entry key="appBase" value="/sysadmin"/>
 				<!--后台管理权限控制-->
 				<entry key="cms_perm" value-ref="cms_perm"/>
 				<entry key="text_cut" value-ref="text_cut"/>
