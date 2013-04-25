@@ -13,7 +13,7 @@ import com.kingcore.cms.manager.assist.CmsReceiverMessageMng;
 import com.kingcore.common.page.Pagination;
 
 /**
- *江西金磊科技发展有限公司jeecms研发
+ *KingCore Software eCMS
  */
 
 @Service

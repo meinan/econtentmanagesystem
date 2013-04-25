@@ -106,7 +106,7 @@ public class CmsSite extends BaseCmsSite {
 	}
 
 	/**
-	 * 获得上传路径。如：/u/jeecms/path
+	 * 获得上传路径。如：/u/ecms/path
 	 * 
 	 * @return
 	 */

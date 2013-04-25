@@ -188,8 +188,8 @@ public class MagickImageScale {
 	public static void main(String[] args) throws Exception {
 		long time = System.currentTimeMillis();
 		MagickImageScale.resizeFix(
-				new File("test/com/jeecms/common/util/1.bmp"), new File(
-						"test/com/jeecms/common/util/1-n-3.bmp"), 310, 310, 50,
+				new File("test/com/ecms/common/util/1.bmp"), new File(
+						"test/com/ecms/common/util/1-n-3.bmp"), 310, 310, 50,
 				50, 320, 320);
 		time = System.currentTimeMillis() - time;
 		System.out.println("resize new img in " + time + "ms");

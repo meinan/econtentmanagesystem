@@ -310,8 +310,8 @@ public class AverageImageScale {
 	public static void main(String[] args) throws Exception {
 		long time = System.currentTimeMillis();
 		AverageImageScale.resizeFix(new File(
-				"test/com/jeecms/common/util/1.bmp"), new File(
-				"test/com/jeecms/common/util/1-n-2.bmp"), 310, 310, 50, 50,
+				"test/com/ecms/common/util/1.bmp"), new File(
+				"test/com/ecms/common/util/1-n-2.bmp"), 310, 310, 50, 50,
 				320, 320);
 		time = System.currentTimeMillis() - time;
 		System.out.println("resize2 img in " + time + "ms");

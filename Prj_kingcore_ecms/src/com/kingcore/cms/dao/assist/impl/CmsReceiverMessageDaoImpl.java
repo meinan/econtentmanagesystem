@@ -12,7 +12,7 @@ import com.kingcore.common.hibernate3.HibernateBaseDao;
 import com.kingcore.common.page.Pagination;
 
 /**
- *江西金磊科技发展有限公司jeecms研发
+ *KingCore Software eCMS
  */
 
 public class CmsReceiverMessageDaoImpl extends

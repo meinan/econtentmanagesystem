@@ -13,11 +13,11 @@ public interface CmsTopicDao {
 	public Pagination getPage(Integer siteId, Integer channelId, boolean recommend, int pageNo,
 			int pageSize, boolean cacheable);
 
-	public List<CmsTopic> getGlobalTopicList();
+	public List<CmsTopic> getGlobalTopicList(Integer siteId);
 
 	public List<CmsTopic> getListByChannelId(Integer channelId);
 
-	public List<CmsTopic> getListByChannelIds(Integer siteId, Integer[] channelIds);
+	public List<CmsTopic> getListByChannelIds(Integer[] channelIds);
 
 	public CmsTopic findById(Integer id);
 
