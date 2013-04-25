@@ -148,7 +148,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForAdmin</servlet-name>
-		<url-pattern>/jeeadmin/jeecms/*</url-pattern>
+		<url-pattern>/sysadmin/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
