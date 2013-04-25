@@ -38,7 +38,7 @@ Copyright: KingCoreCMS
 #topmenu dt{text-align:center;padding:0 10px; float:left; display:inline;margin:0px 0px 0px -2px; line-height: 40px; font-weight:bold; font-size:14px;}
 #topmenu dt .menu_first{padding-left:15px;}
 #topmenu dt a{display:block;float:left;width:82px;color:#fff;height:40px;}
-#topmenu dt a.selected:link,#topmenu dt a.selected:visited{font-weight: bold; height:36px;color:#000000; background-image: url(../img/dhlBG02.gif); line-height: 40px;}
+#topmenu dt a.selected:link,#topmenu dt a.selected:visited{font-weight: bold; height:40px;color:#000000; background-image: url(../img/dhlBG02.gif); line-height: 40px;}
 #topmenu dt a:link {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
 #topmenu dt a:visited {text-decoration: none;background:url(../img/dhlGB01.gif) repeat-x;color:#ffffff; }
 #topmenu dt a:hover {text-decoration:none;background:url(../img/dhlBG02.gif) repeat-x;color:#000000; }
