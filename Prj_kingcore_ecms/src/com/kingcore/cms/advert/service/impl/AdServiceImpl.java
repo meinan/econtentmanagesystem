@@ -14,7 +14,7 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.ad.service.impl;
+package com.kingcore.cms.advert.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kingcore.cms.ad.dao.AdDao;
-import com.kingcore.cms.ad.service.AdService;
+import com.kingcore.cms.advert.dao.AdDao;
+import com.kingcore.cms.advert.service.AdService;
 import com.kingcore.cms.base.service.impl.CmsBaseServiceImpl;
 import com.kingcore.cms.entity.main.Content;
 

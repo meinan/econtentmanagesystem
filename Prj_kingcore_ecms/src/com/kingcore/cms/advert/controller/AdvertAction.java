@@ -1,4 +1,4 @@
-package com.kingcore.cms.ad.controller;
+package com.kingcore.cms.advert.controller;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -18,7 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kingcore.cms.ad.service.AdService;
+import com.kingcore.cms.advert.service.AdService;
 import com.kingcore.cms.base.controller.CmsBaseAction;
 import com.kingcore.cms.entity.main.Content;
 
@@ -32,15 +32,15 @@ import com.kingcore.cms.entity.main.Content;
  * @since	JDK5
  */
 @Controller
-public class AdAction extends CmsBaseAction {
+public class AdvertAction extends CmsBaseAction {
 	private static final Logger log = LoggerFactory
-			.getLogger(AdAction.class);
+			.getLogger(AdvertAction.class);
 
 	public static final String COOKIE_ERROR_REMAINING = "_error_remaining";
 
 	private static final long Half_Day_Micsecd = 1000*60*60*12L;
 
-	@RequestMapping(value = "/ad/directorAd.jspx", method = RequestMethod.GET)
+	@RequestMapping(value = "/advert/directorAd.jspx", method = RequestMethod.GET)
 	public String directorAd(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
 		String type = request.getParameter("type");

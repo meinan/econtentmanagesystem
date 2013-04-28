@@ -1,4 +1,4 @@
-package com.kingcore.cms.ad.dao;
+package com.kingcore.cms.advert.dao;
 
 import java.util.List;
 

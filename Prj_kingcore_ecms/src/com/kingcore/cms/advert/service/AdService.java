@@ -14,7 +14,7 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.ad.service;
+package com.kingcore.cms.advert.service;
 
 import java.util.List;
 

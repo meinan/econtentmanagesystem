@@ -14,7 +14,7 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.ad.dao.impl;
+package com.kingcore.cms.advert.dao.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
-import com.kingcore.cms.ad.dao.AdDao;
+import com.kingcore.cms.advert.dao.AdDao;
 import com.kingcore.cms.base.dao.impl.CmsBaseDaoImpl;
 import com.kingcore.cms.entity.main.Content;
 import com.kingcore.cms.entity.main.ContentCheck;

@@ -56,12 +56,12 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 	}
 
 	/**
-	 * mod by wzw
+	 * mod by wzw:不推荐的不获取，前面已经获取了。
 	 */
 	@SuppressWarnings("unchecked")
 	public List<CmsTopic> getListByChannelIds(Integer[] channelIds) {
 
-		String hql = "from CmsTopic bean where bean.channel.id in (:ids)";
+		String hql = "from CmsTopic bean where bean.channel.id in (:ids) and bean.recommend=false";
 		return getSession().createQuery(hql)
 		       .setParameterList("ids", channelIds).list();
 		 
@@ -107,9 +107,12 @@ public class CmsTopicDaoImpl extends HibernateBaseDao<CmsTopic, Integer>
 		return find(hql, channelId);
 	}
 
+	/**
+	 * mod by wzw:获取属于所有渠道或者推荐的。
+	 */
 	@SuppressWarnings("unchecked")
 	public List<CmsTopic> getGlobalTopicList(Integer siteId) {
-		String hql = "from CmsTopic bean where bean.channel.id is null"
+		String hql = "from CmsTopic bean where (bean.channel.id is null or bean.recommend=true)"
 				+ " and bean.siteId=:siteId"
 				+ " order by bean.priority asc,bean.id desc";
 		Query query = getSession().createQuery(hql);
