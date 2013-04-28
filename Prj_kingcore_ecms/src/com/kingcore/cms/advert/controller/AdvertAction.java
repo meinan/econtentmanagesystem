@@ -32,6 +32,7 @@ import com.kingcore.cms.entity.main.Content;
  * @since	JDK5
  */
 @Controller
+@RequestMapping("/advert")//类级别,可以不需要,如果要了,下面所有的请求路径前都需要加入/aaa
 public class AdvertAction extends CmsBaseAction {
 	private static final Logger log = LoggerFactory
 			.getLogger(AdvertAction.class);
@@ -40,7 +41,7 @@ public class AdvertAction extends CmsBaseAction {
 
 	private static final long Half_Day_Micsecd = 1000*60*60*12L;
 
-	@RequestMapping(value = "/advert/directorAd.jspx", method = RequestMethod.GET)
+	@RequestMapping(value = "/directorAd.jspx", method = RequestMethod.GET)
 	public String directorAd(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
 		String type = request.getParameter("type");
