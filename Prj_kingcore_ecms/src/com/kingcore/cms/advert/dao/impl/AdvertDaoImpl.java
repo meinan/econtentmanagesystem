@@ -23,7 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
-import com.kingcore.cms.advert.dao.AdDao;
+import com.kingcore.cms.advert.dao.AdvertDao;
 import com.kingcore.cms.base.dao.impl.CmsBaseDaoImpl;
 import com.kingcore.cms.entity.main.Content;
 import com.kingcore.cms.entity.main.ContentCheck;
@@ -38,8 +38,8 @@ import com.kingcore.common.hibernate3.Finder;
  */
 
 @Repository
-public class AdDaoImpl extends CmsBaseDaoImpl 
-   implements AdDao {
+public class AdvertDaoImpl extends CmsBaseDaoImpl 
+   implements AdvertDao {
 
 
 	@SuppressWarnings("unchecked")

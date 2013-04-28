@@ -18,7 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kingcore.cms.advert.service.AdService;
+import com.kingcore.cms.advert.service.AdvertService;
 import com.kingcore.cms.base.controller.CmsBaseAction;
 import com.kingcore.cms.entity.main.Content;
 
@@ -59,7 +59,7 @@ public class AdvertAction extends CmsBaseAction {
 		Object date = request.getSession().getServletContext().getAttribute("Ad_Content_Time");
 		if(obj==null || date==null
 				|| (Calendar.getInstance().getTime().getTime()-((Date)date).getTime())> Half_Day_Micsecd ){
-			list = adService.getListBySiteIdsForTag(null, null, null, null, //Boolean.FALSE, Boolean.FALSE,
+			list = advertService.getListBySiteIdsForTag(null, null, null, null, //Boolean.FALSE, Boolean.FALSE,
 							null, -1, null, 10);
 			request.getSession().getServletContext()
 				.setAttribute("Ad_Content_List", list );
@@ -89,7 +89,7 @@ public class AdvertAction extends CmsBaseAction {
 	}
 
 	@Autowired
-	private AdService adService;
+	private AdvertService advertService;
 //	@Autowired
 //	private UnifiedUserMng unifiedUserMng; 
 }

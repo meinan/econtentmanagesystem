@@ -29,7 +29,7 @@ import com.kingcore.cms.entity.main.Content;
  * @since	JDK5
  */
 
-public interface AdService extends CmsBaseService {
+public interface AdvertService extends CmsBaseService {
 	
 	public List<Content> getListBySiteIdsForTag(Integer[] siteIds,
 			Integer[] typeIds, Boolean titleImg, Boolean recommend,
