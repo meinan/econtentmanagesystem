@@ -134,16 +134,21 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JspServlet</servlet-name>
+        <url-pattern>*.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping><!-- jspex -->
+        <servlet-name>JspServlet</servlet-name>
         <url-pattern>*.jspw</url-pattern>
     </servlet-mapping>
-	<servlet>
+	
+	<!-- <servlet>
 		<servlet-name>Install</servlet-name>
 		<servlet-class>com.kingcore.cms.InstallServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Install</servlet-name>
 		<url-pattern>/install/install_setup.svl</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
     <!-- end of add by wzw -->
 	
 	<servlet-mapping>
@@ -158,10 +163,10 @@
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.jspx</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
+	<!-- <servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.jsp</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.htm</url-pattern>
