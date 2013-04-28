@@ -169,10 +169,10 @@
 	<bean id="cmsSiteFlowMng" class="com.kingcore.cms.manager.assist.impl.CmsSiteFlowMngImpl"/>
 	
 	<!-- Service -->
-	<bean id="adService" class="com.kingcore.cms.ad.service.impl.AdServiceImpl"/>
+	<bean id="advertService" class="com.kingcore.cms.advert.service.impl.AdvertServiceImpl"/>
 
 	<!--DAO-->
-	<bean id="adDao" class="com.kingcore.cms.ad.dao.impl.AdDaoImpl"/>
+	<bean id="advertDao" class="com.kingcore.cms.advert.dao.impl.AdvertDaoImpl"/>
 
 	<bean id="channelDao" class="com.kingcore.cms.dao.main.impl.ChannelDaoImpl"/>
 	<bean id="channelExtDao" class="com.kingcore.cms.dao.main.impl.ChannelExtDaoImpl"/>
