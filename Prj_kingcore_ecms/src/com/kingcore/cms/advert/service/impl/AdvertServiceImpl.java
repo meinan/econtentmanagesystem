@@ -23,8 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kingcore.cms.advert.dao.AdDao;
-import com.kingcore.cms.advert.service.AdService;
+import com.kingcore.cms.advert.dao.AdvertDao;
+import com.kingcore.cms.advert.service.AdvertService;
 import com.kingcore.cms.base.service.impl.CmsBaseServiceImpl;
 import com.kingcore.cms.entity.main.Content;
 
@@ -38,10 +38,10 @@ import com.kingcore.cms.entity.main.Content;
 
 @Service
 @Transactional
-public class AdServiceImpl extends CmsBaseServiceImpl implements AdService {
+public class AdvertServiceImpl extends CmsBaseServiceImpl implements AdvertService {
 
 
-	private AdDao dao;
+	private AdvertDao dao;
 
 	@Transactional(readOnly = true)
 	public List<Content> getListBySiteIdsForTag(Integer[] siteIds,
@@ -60,7 +60,7 @@ public class AdServiceImpl extends CmsBaseServiceImpl implements AdService {
 	}
 
 	@Autowired
-	public void setDao(AdDao dao) {
+	public void setDao(AdvertDao dao) {
 		this.dao = dao;
 	}
 	
