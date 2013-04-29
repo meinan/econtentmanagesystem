@@ -22,6 +22,8 @@
 	<bean id="advertisingAct" class="com.kingcore.cms.action.front.AdvertisingAct"/>
 	<!-- add by wzw -->
 	<bean id="advertAction" class="com.kingcore.cms.advert.controller.AdvertAction"/>
+	<bean id="clipperUploadAction" class="com.kingcore.cms.clipper.controller.ClipperUploadAction"/>
+	
 	
 	<bean id="casLoginAct" class="com.kingcore.cms.action.member.CasLoginAct"/>
 	<bean id="loginAct" class="com.kingcore.cms.action.member.LoginAct"/>
