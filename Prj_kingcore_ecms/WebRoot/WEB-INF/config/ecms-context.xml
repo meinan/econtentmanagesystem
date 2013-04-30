@@ -170,6 +170,7 @@
 	
 	<!-- Service -->
 	<bean id="advertService" class="com.kingcore.cms.advert.service.impl.AdvertServiceImpl"/>
+	<bean id="clipperUploadService" class="com.kingcore.cms.clipper.service.impl.ClipperUploadServiceImpl"/>
 
 	<!--DAO-->
 	<bean id="advertDao" class="com.kingcore.cms.advert.dao.impl.AdvertDaoImpl"/>
