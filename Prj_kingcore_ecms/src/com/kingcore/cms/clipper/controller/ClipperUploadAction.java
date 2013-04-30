@@ -16,20 +16,34 @@
 
 package com.kingcore.cms.clipper.controller;
 
-import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kingcore.cms.base.controller.CmsBaseAction;
+import com.kingcore.cms.clipper.service.ClipperUploadService;
+import com.kingcore.cms.entity.main.Channel;
+import com.kingcore.cms.entity.main.CmsSite;
+import com.kingcore.cms.entity.main.CmsUser;
+import com.kingcore.cms.entity.main.Content;
+import com.kingcore.cms.entity.main.ContentExt;
+import com.kingcore.cms.entity.main.ContentTxt;
+import com.kingcore.cms.manager.main.ContentMng;
+import com.kingcore.cms.web.CmsUtils;
+import com.kingcore.cms.web.WebErrors;
+import com.kingcore.common.util.StrUtils;
+import com.kingcore.common.web.RequestUtils;
+import com.kingcore.common.web.springmvc.MessageResolver;
 
 /**
  * <p>java类文件的说明...</p>
@@ -43,6 +57,11 @@ import com.kingcore.cms.base.controller.CmsBaseAction;
 public class ClipperUploadAction extends CmsBaseAction {
 
 	private final static Logger log = Logger.getLogger(ClipperUploadAction.class);
+
+	@Autowired
+	private ClipperUploadService clipperUploadService;
+	@Autowired
+	private ContentMng manager;
 	
 	/**
 	 * <p>java方法的说明...</p>
@@ -53,32 +72,71 @@ public class ClipperUploadAction extends CmsBaseAction {
 		// TODO Auto-generated method stub
 
 	}
-	
 
-	@RequestMapping(value = "/upload.jspx", method = RequestMethod.POST)  //
-	public String upload(HttpServletRequest request,
+
+	@RequestMapping(value = "/openPanel.jspx", method = RequestMethod.POST)  //
+	public String openPanel(HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
 
-		log.debug("begin save ...");
-		
-//		response.setCharacterEncoding("gbk");
-//		response.getWriter().print("保存成功！");
+		log.debug("begin open ...");
 
-		Enumeration names = request.getParameterNames();
-		while(names.hasMoreElements()){
-			String name = names.nextElement().toString();
-			System.out.println( name );
-			System.out.println( request.getParameter( name ) );
-		}
+		CmsSite site = CmsUtils.getSite(request);
+		//获取栏目列表
+		List<Channel> channelList = clipperUploadService.getAllChannelList(site.getId(), true);
+
+		model.addAttribute("channelList", channelList);
+		request.setAttribute("model", model);
+		//转向视图层
+		requestForward(request,response,"/clipper/upload.jsp");
 		
-		try {
-			request.getRequestDispatcher( "/clipper/success.jsp" ).forward(request,response);
-		} catch (ServletException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		}
 		return null;
+	}
+
+
+	@RequestMapping(value = "/upload.jspx", method = RequestMethod.POST)  //
+	public String upload(Content bean, ContentExt ext, ContentTxt txt,
+	Integer[] channelIds, Integer[] topicIds, Integer[] viewGroupIds,
+	String[] attachmentPaths, String[] attachmentNames,
+	String[] attachmentFilenames, String[] picPaths, String[] picDescs,
+	Integer channelId, Integer typeId, String tagStr, Boolean draft,
+	Integer cid, HttpServletRequest request, 
+	HttpServletResponse response, ModelMap model) {
+//		WebErrors errors = validateSave(bean, channelId, request);
+//		if (errors.hasErrors()) {
+//			return errors.showErrorPage(model);
+//		}
+		// 加上模板前缀
+		CmsSite site = CmsUtils.getSite(request);
+		CmsUser user = createAdminUser(); //CmsUtils.getUser(request);
+		
+		String tplPath = site.getTplPath();
+		if (!StringUtils.isBlank(ext.getTplContent())) {
+			ext.setTplContent(tplPath + ext.getTplContent());
+		}
+		bean.setContentExt(ext);
+//		bean.setContentTxt(txt);
+		bean.setSite(site);
+		typeId = 1;//普通
+		bean.setAttr(RequestUtils.getRequestMap(request, "attr_"));
+		String[] tagArr = null; //StrUtils.splitAndTrim(tagStr, ",", MessageResolver
+//				.getMessage(request, "content.tagStr.split"));
+		bean = manager.save(bean, ext, txt, channelIds, topicIds, viewGroupIds,
+				tagArr, attachmentPaths, attachmentNames, attachmentFilenames,
+				picPaths, picDescs, channelId, typeId, draft, user, false);
+		log.info("save Content id={}"+bean.getId());
+		
+		requestForward(request, response, "/clipper/success.jsp");
+		
+		return null;
+	}
+
+
+	private CmsUser createAdminUser() {
+		CmsUser user = new CmsUser();
+		user.setAdmin(true);
+		user.setId(1);
+		user.setUsername("admin"); 
+		return user;
 	}
 
 }

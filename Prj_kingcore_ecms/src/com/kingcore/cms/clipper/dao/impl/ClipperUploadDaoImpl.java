@@ -14,9 +14,10 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.clipper.dao;
+package com.kingcore.cms.clipper.dao.impl;
 
-import com.kingcore.cms.base.dao.CmsBaseDao;
+import com.kingcore.cms.base.dao.impl.CmsBaseDaoImpl;
+import com.kingcore.cms.clipper.dao.ClipperUploadDao;
 
 /**
  * <p>java类文件的说明...</p>
@@ -26,6 +27,17 @@ import com.kingcore.cms.base.dao.CmsBaseDao;
  * @since	JDK5
  */
 
-public interface ClipperUpdateDao extends CmsBaseDao {
+public class ClipperUploadDaoImpl extends CmsBaseDaoImpl implements
+		ClipperUploadDao {
+
+	/**
+	 * <p>java方法的说明...</p>
+	 * @author Zeven on Apr 29, 2013
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
