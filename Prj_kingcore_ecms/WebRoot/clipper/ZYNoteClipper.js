@@ -7,11 +7,11 @@
 var YWebClipperConfiguration = {
     logEnabled: !1,
     clipperBaseURL: "http://localhost:8080/clipper",
-    clipperUploadApp: "/upload.jsp", // "/mapi/wcp?method=putfile&keyfrom=wcp",
+    clipperUploadApp: "/openPanel.jspx", // "/mapi/wcp?method=putfile&keyfrom=wcp",
     logurl: "/login.jsp", // "/mapi/ilogrpt?method=putwcplog",
     clipperClipType: "OnlyHTML",
     clipperDomPrefix: "_YNote",
-    loadingHTML: '<div id="_YNoteLoaddingTips" name="_YNoteLoaddingTips" style="position:absolute;z-index:999999;top:50%;left:50%;width:180px;margin:-12px 0 0 -91px;font-weight:bold;text-align:center;line-height:22px;border:1px solid #fff999;background-color:rgba(255,249,153,.9)!important;background:#fff999;border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;">ÕıÔÚ¼ÓÔØÖĞ£¬ÇëÉÔºò¡­</div>',
+    loadingHTML: '<div id="_YNoteLoaddingTips" name="_YNoteLoaddingTips" style="position:absolute;z-index:999999;top:50%;left:50%;width:180px;margin:-12px 0 0 -91px;font-weight:bold;text-align:center;line-height:22px;border:1px solid #fff999;background-color:rgba(255,249,153,.9)!important;background:#fff999;border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;">æ­£åœ¨åŠ è½½ä¸­ï¼Œè¯·ç¨å€™â€¦</div>',
     clipperFormFields: [["title", "text", "tl"], ["path", "text", "p"], ["content", "area", "bs"], ["source", "text", "src"], ["type", "text", "type"], ["userid", "text", "userid"], ["len", "text", "len"], ["charset", "text", "cs"], ["sign", "text", "e"]],
     clipperStyle: "position:fixed;right:10px;top:10px;padding-bottom:10px;font:12px/100% arial,sans-serif;color:#333; width: 420px;_right:expression(eval(document.documentElement.scrollLeft));_top:expression(eval(document.documentElement.scrollTop+10));_position:absolute;",
     styleMerge: {
@@ -105,7 +105,7 @@ var YWebClipperConfiguration = {
         mainContent: null,
         mainContentTag: null,
         container: window.document,
-        contentType: "1"
+        contentType: "3"
     }
 }; (function() {
     var e = function(e) {
@@ -574,15 +574,15 @@ function() {
             this.loadingView.style.display = "block";
             try {
                 var t = YWebClipperConfiguration.doc.container;
-                return this.hasSelection() ? (YNote.Common.log("has selection"), YWebClipperConfiguration.doc.contentType = "3", this.range = this.selector.getSelectionRange(), this.content = this.getSelectedContent(), this.state = YNote.Clipper.CLIPPED, this.content) : t.body ? (YNote.Common.log("no selection!"), this.content = this.getNodeText(t.body), this.state = YNote.Clipper.CLIPPED, this.content) : (YNote.Common.log("No Body!"), document.getElementById("_YNoteLoaddingTips").innerHTML = "±§Ç¸£¬ÓÉÓÚÒ³ÃæÉèÖÃ£¬ÎŞ·¨»ñÈ¡ËùÑ¡ÄÚÈİ", this.state = YNote.Clipper.ERROR_NO_BODY, YNote.Common.serverlog(2), "");
+                return this.hasSelection() ? (YNote.Common.log("has selection"), YWebClipperConfiguration.doc.contentType = "3", this.range = this.selector.getSelectionRange(), this.content = this.getSelectedContent(), this.state = YNote.Clipper.CLIPPED, this.content) : t.body ? (YNote.Common.log("no selection!"), this.content = this.getNodeText(t.body), this.state = YNote.Clipper.CLIPPED, this.content) : (YNote.Common.log("No Body!"), document.getElementById("_YNoteLoaddingTips").innerHTML = "æŠ±æ­‰ï¼Œç”±äºé¡µé¢è®¾ç½®ï¼Œæ— æ³•è·å–æ‰€é€‰å†…å®¹", this.state = YNote.Clipper.ERROR_NO_BODY, YNote.Common.serverlog(2), "");
                 var n
             } catch(r) {
                 try {
-                    document.getElementById("_YNoteLoaddingTips").innerHTML = "±§Ç¸£¬ÓÉÓÚÒ³ÃæÉèÖÃ£¬ÕûÒ³×¥È¡Ê§°Ü£¬ÇëÑ¡Ôñ²¿·ÖÄÚÈİºóÖØÊÔ",
+                    document.getElementById("_YNoteLoaddingTips").innerHTML = "æŠ±æ­‰ï¼Œç”±äºé¡µé¢è®¾ç½®ï¼Œæ•´é¡µæŠ“å–å¤±è´¥ï¼Œè¯·é€‰æ‹©éƒ¨åˆ†å†…å®¹åé‡è¯•",
                     YNote.Common.serverlog(3)
                 } catch(i) {
                     YNote.Common.serverlog(4),
-                    alert("±§Ç¸£¬ÓÉÓÚÒ³ÃæÉèÖÃ£¬Ò³Ãæ×¥È¡Ê§°Ü!")
+                    alert("æŠ±æ­‰ï¼Œç”±äºé¡µé¢è®¾ç½®ï¼Œé¡µé¢æŠ“å–å¤±è´¥!")
                 }
             }
         },
@@ -794,7 +794,8 @@ function() {
             var e = YWebClipperConfiguration,
             t = "ydNoteWebClipper",
             r = n.getElementById(t);
-            r != null && r.parentNode != null && r.parentNode.removeChild(r);
+            if(r != null && r.parentNode != null && r.parentNode.removeChild(r))
+            	return ; //add by wzw
             var i = YNote.Common.mkel("div");
             i.id = t,
             i.name = t,
@@ -1008,7 +1009,6 @@ function() {
         }
     }),
     YNote.ClipperManager = function() {
-      alert(1);
         this.init()
     },
     YNote.Common.extend(YNote.ClipperManager.prototype, {
@@ -1133,8 +1133,9 @@ function() {
                 u[2] = this.creatDiv("yShade2", n, i, l, t),
                 u[3] = this.creatDiv("yShade3", s - r - n, i, r + n + l, t),
                 u[4] = this.creatDiv("yShade4", r, i, n - 5 + l, t - 5, f);
-                for (var c = 0,
-                h = u.length; c < h; c++) document.body.appendChild(u[c])
+                //drop by wzw
+                //for (var c = 0,
+                //h = u.length; c < h; c++) document.body.appendChild(u[c])
             }
             this.shadeStatu = !0
         },
@@ -1182,7 +1183,7 @@ function() {
                 yApp.clipperManager.clipper.close();
                 var t = document.createElement("div");
                 t.style.cssText = "position:fixed;_position:absolute;right:20px; top:20px;padding:10px;color:#d98736;border:1px solid #ffebb4;background:#fffff6;border-radius:5px;z-index:999999;",
-                t.innerHTML = "±£´æ³É¹¦",
+                t.innerHTML = "ä¿å­˜æˆåŠŸ",
                 document.body.appendChild(t),
                 setTimeout(function() {
                     document.body.removeChild(t),

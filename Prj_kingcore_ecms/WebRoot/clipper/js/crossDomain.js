@@ -30,7 +30,7 @@
         }
         if (object.length === undefined || croDomain.isFunction(object)) {
             for (var name in object) {
-                if (object.hasOwnProperty(name)) {  //只有此元素本身属性调用回调
+                if (object.hasOwnProperty(name)) {  //只有此元素本身属性调用回谄1�7
                     if (callback.call(context || object[name], name, object[name]) === false) {
                         break;
                     }
@@ -62,12 +62,17 @@
         return param.join('&').replace( r20, '+' );
     };
     croDomain.postMessage = function( message, target_url, target ) {
+    	return;
         if ( !target_url ) { return; }
         message = typeof message === 'string' ? message : croDomain.param( message);
         target = target || parent;
+        //alert(target_url+"  "+message + "  " + has_postMessage);
+		//alert(target.document.location.href);        
         if ( has_postMessage ) {
+        	//alert(1);
             target[postMessage]( message, target_url.replace( /([^:]+:\/\/[^\/]+).*/, '$1' ) );
         } else if ( target_url ) {
+        	//alert(2)
             target.location = target_url.replace( /#.*$/, '' ) + '#' + (+new Date) + (cache_bust++) + '&' + message;
        }
     };
