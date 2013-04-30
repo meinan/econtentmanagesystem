@@ -1,0 +1,115 @@
+a{color:#06c;text-decoration:none}
+#ydNoteWebClipper{padding-bottom:10px;font:12px/100% arial,sans-serif;color:#333;}
+#ydNoteWebClipper p,#ydNoteWebClipper form{margin:0;padding:0;}
+#ydNoteWebClipper a:hover{text-decoration:underline}
+#ydNoteWebClipper input[type='text']{outline:none}
+#ydNoteWebClipper select{width:160px;}
+#ydNoteWebClipper img{border:none; vertical-align:center;}
+
+/* ------- dialog ------- */
+#ydNoteWebClipper .ydnwc-dialog{position:absolute;z-index:1000;padding:5px;background-color:rgba(92,184,229,.5)!important;background:#5cb8e5;
+    border-radius:5px;box-shadow:0 0 2px #5cb8e5;
+    -khtml-border-radius:5px;
+    -webkit-border-radius:5px;-webkit-box-shadow:0 0 2px #5cb8e5;
+    -moz-border-radius:5px;-moz-box-shadow:0 0 2px #5cb8e5;
+    width:400px;
+}
+#ydNoteWebClipper .ydnwc-dialog-inner{border:1px solid #5cb8e5}
+#ydNoteWebClipper .ydnwc-dialog-hd{position:relative;height:30px;line-height:30px;border-bottom:1px solid #d9d9d9;background:#f5f5f5;
+    background:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f5f5f5));
+    background:-moz-linear-gradient(top, #fff, #f5f5f5 100%);
+}
+#logout{position:absolute;right:30px;top:0px; text-decoration:underline;color:#06C;cursor:pointer;}
+#ydNoteWebClipper .ydnwc-dialog-hd-closable{padding-right:30px; padding-left: 10px;}
+#ydNoteWebClipper .ydnwc-dialog-title{display:inline-block;zoom:1;font-weight:bold;_margin-top:6px;}
+#ydNoteWebClipper .ydnwc-dialog-title img{vertical-align:-5px;margin:-1px 0 1px;_vertical-align:middle;}
+
+#ydnwcUser{position:absolute;right:60px;top:0px;}
+#ydNoteWebClipper .ydnwc-dialog-close{position:absolute;right:10px;top:10px;width:10px;height:0;padding-top:10px;overflow:hidden;background:url(/clipper/image/note-web-sprite.png) no-repeat -120px top}
+#ydNoteWebClipper .ydnwc-dialog-close:hover{background-position:-120px -10px}
+#ydNoteWebClipper .ydnwc-dialog-bd{padding:10px; border-top:1px solid #f2f2f2;background:#fff}
+#ydNoteWebClipper .openid a:hover{text-decoration:none;}
+
+.left,.right{display:inline-block;*display:inline;zoom:1;vertical-align:middle;}
+.right{width:264px;}
+.left{height:180px;width:225px;border-left:1px solid #dedede;margin-left:15px;}
+.left iframe{width:100%;height:100%;border:0;}
+.left .openid{padding:20px 0 0 40px;}
+.left a:hover{text-decoration:none;background-color:#ffffff;}
+.sina,.qq,.tqq,.download{background:url(../images/sprit.png) no-repeat;height:29px;line-height:28px;font-family:微软雅黑;}
+.sina,.qq,.tqq{display:block;background-color:#f2f4f5;border:1px solid #dedede;width:120px;color:#757575;margin-bottom:10px;padding-left:40px;color:#757575;}
+.sina{background-position:5px 5px}
+.qq{background-position:5px -25px}
+.tqq{background-position:5px -57px}
+.download{*display:inline;zoom:1;display:inline-block;background-position:0px -90px;width:110px;margin-left:50px;text-align:right;}
+
+.commonClipper .left {display:none;}
+
+
+:root #ydNoteWebClipper .ydnwc-dialog-bd{padding:15px 10px \0/IE9;}
+#ydNoteWebClipper .ydnwc-dialog-form .row{font-size:14px;margin-bottom:10px;line-height:26px}
+#ydNoteWebClipper .ydnwc-dialog-form .ydnwc-dialog-error{margin-bottom:5px;line-height:120%}
+#ydNoteWebClipper .ydnwc-dialog-form .row:last-child{margin-bottom:0}
+#ydNoteWebClipper .ydnwc-dialog-form .row-hd,#ydNoteWebClipper .ydnwc-dialog-form .row-bd{display:inline-block;vertical-align:middle}
+#ydNoteWebClipper .ydnwc-dialog-form .row-hd{min-width:3em;_width:3em;margin-right:.7em;text-align:right}
+#ydNoteWebClipper .ydnwc-dialog-form .btns-row{margin-left:3.7em;padding-left:3px}
+#ydNoteWebClipper .ydnwc-dialog-text{_width:195px;min-width:195px;padding:2px;border:1px solid;border-color:#666 #d9d9d9 #d9d9d9 #666;}
+#ydNoteWebClipper .title{min-width:256px;}
+#ydNoteWebClipper .ydnwc-dialog-text:focus{border-color:#06c;background:#fff;
+    outline:none;
+    box-shadow:0 0 3px #06c;
+    background:-webkit-gradient(linear, 0 0, 0 10%, from(#e5e5e5), to(#fff));-webkit-box-shadow:0 0 3px #06c;
+    background:-moz-linear-gradient(top, #e5e5e5, #fff 10%);
+    -moz-box-shadow:0 0 3px #06c;
+}
+#ydNoteWebClipper-Login .row-bd label{margin-right:65px;}
+#rem{vertical-align:-1px;}
+#loginbtn{margin-right:30px;}
+#ydNoteWebClipper .ydnwc-dialog-btn{width:70px;height:28px;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #d9d9d9;background:url(../images/note-web-sprite-x.png) repeat-x left -520px;
+    border-radius:3px;
+    text-shadow:0 1px 0 #fff;
+    -khtml-border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+}
+#ydNoteWebClipper .ydnwc-dialog-btn:hover{border-color:#06c;background-position:left -548px;
+    box-shadow:0 0 3px #06c;
+    -webkit-box-shadow:0 0 3px #06c;
+    -moz-box-shadow:0 0 3px #06c;
+}
+#ydNoteWebClipper .ydnwc-dialog-btn:active{background-position:left -576px}
+#ydNoteWebClipper .ydnwc-dialog-btn-gray{background:#fff}
+#ydNoteWebClipper .ydnwc-dialog-btn-gray:hover{border-color:#999;background:#f2f2f2;
+    box-shadow:0 0 0;
+    -webkit-box-shadow:0 0 0;
+    -moz-box-shadow:0 0 0;
+}
+#ydNoteWebClipper .ydnwc-dialog-btn-gray:active{background:url(../images/note-web-sprite-x.png) repeat-x left -576px}
+#ydNoteWebClipper .ydnwc-dialog-btn-disabled{background:#e2e2e2;cursor:default}
+#ydNoteWebClipper .ydnwc-dialog-btn-disabled:hover{border-color:#d9d9d9;
+    box-shadow:0 0 0;
+    -webkit-box-shadow:0 0 0;
+    -moz-box-shadow:0 0 0;
+}
+#ydNoteWebClipper .ydnwc-dialog p{margin-bottom:10px}
+#ydNoteWebClipper .ydnwc-dialog-headline{font-size:1.6em}
+#ydNoteWebClipper .ydnwc-dialog-highlight{color:red}
+#ydNoteWebClipper .ydnwc-dialog-ft{height:20px;*height:30px;padding:10px;background:#fafafa;border-top:1px solid #f2f2f2}
+.ydnwc-dialog-ft { padding:15px; background: #FAFAFA;border-top: 1px solid #F2F2F2;color:#666 }
+/* ------- loading ------- */
+#ydNoteWebClipper .ydnwc-dialog-loading{position:absolute;z-index:9999;top:50%;left:50%;width:180px;height:22px;margin:-12px 0 0 -91px;font-weight:bold;text-align:center;line-height:22px;border:1px solid #fff999;background-color:rgba(255,249,153,.9)!important;background:#fff999;
+    border-radius:5px;
+    -khtml-border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+}
+
+#ydNoteWebClipper-Login .ydnwc-dialog-text{height:22px;line-height:22px;}
+
+#ydNoteWebClipper-New .ydnwc-dialog-form .row-hd{min-width:3.5em;_width:3.5em}
+#ydNoteWebClipper-New .ydnwc-dialog-form .btns-row{margin-left:4.2em}
+
+/* ie7 */
+#sb{*margin-left:-4.2em;}
+#ydNoteWebClipper .ydnwc-dialog-form .row-hd,#ydNoteWebClipper .ydnwc-dialog-form .row-bd{*display:inline;}
+#ydNoteWebClipper .ydnwc-dialog-text{padding:2px 3px 0}
