@@ -14,30 +14,25 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.clipper.dao.impl;
+package com.kingcore.cms.clipper.service;
 
-import com.kingcore.cms.base.dao.impl.CmsBaseDaoImpl;
-import com.kingcore.cms.clipper.dao.ClipperUpdateDao;
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.kingcore.cms.base.service.CmsBaseService;
+import com.kingcore.cms.entity.main.Channel;
 
 /**
  * <p>java类文件的说明...</p>
- * @author Zeven/wzw on Apr 29, 2013
+ * @author Zeven/wzw on Apr 30, 2013
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
  * @since	JDK5
  */
 
-public class ClipperUpdateDaoImpl extends CmsBaseDaoImpl implements
-		ClipperUpdateDao {
-
-	/**
-	 * <p>java方法的说明...</p>
-	 * @author Zeven on Apr 29, 2013
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+public interface ClipperUploadService extends CmsBaseService {
+	@Transactional(readOnly = true)
+	public List<Channel> getAllChannelList(Integer siteId, boolean hasContentOnly);
 
 }

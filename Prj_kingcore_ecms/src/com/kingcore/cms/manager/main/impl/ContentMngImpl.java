@@ -226,7 +226,11 @@ public class ContentMngImpl implements ContentMng, ChannelDeleteChecker {
 			userStep = 0;
 		} else {
 			CmsSite site = bean.getSite();
-			userStep = user.getCheckStep(site.getId());
+			if (user.getAdmin()) {
+				userStep = 2;
+			} else {
+				userStep = user.getCheckStep(site.getId());
+			}
 		}
 		if (draft != null && draft) {
 			bean.setStatus(ContentCheck.DRAFT);
