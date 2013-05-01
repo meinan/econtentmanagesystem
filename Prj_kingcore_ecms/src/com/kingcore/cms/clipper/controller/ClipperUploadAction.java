@@ -84,6 +84,7 @@ public class ClipperUploadAction extends CmsBaseAction {
 		//获取栏目列表
 		List<Channel> channelList = clipperUploadService.getAllChannelList(site.getId(), true);
 
+		System.out.println(""+  (request.getParameter("title")) );
 		model.addAttribute("channelList", channelList);
 		request.setAttribute("model", model);
 		//转向视图层
