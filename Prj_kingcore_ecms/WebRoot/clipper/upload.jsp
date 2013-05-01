@@ -136,7 +136,7 @@ $(document).ready(function(){
   
     </div>
     <div class="ydnwc-dialog-ft" id="tips">
-            <p class="ydnwc-dialog-tip"><img src="../images/feedback.gif" alt="意见反馈" align="absmiddle">&nbsp;&nbsp;<a target="_blank" href="/guestbook.jspx">意见反馈</a></p>
+            <p class="ydnwc-dialog-tip"><img src="/clipper/image/feedback.gif" alt="意见反馈" align="absmiddle">&nbsp;&nbsp;<a target="_blank" href="/guestbook.jspx">意见反馈</a></p>
     </div>
 
     <!-- loading -->
