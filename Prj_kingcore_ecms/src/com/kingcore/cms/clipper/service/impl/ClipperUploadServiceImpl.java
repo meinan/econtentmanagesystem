@@ -50,12 +50,19 @@ public class ClipperUploadServiceImpl extends CmsBaseServiceImpl implements
 		List<Channel> allList = new ArrayList<Channel>();
 		List<Channel> topList = dao.getTopList(siteId, hasContentOnly, true, false);
 		for (Channel channel : topList) {
-			allList.add(channel); //先添加本层
 			List<Channel> list2 = dao.getChildList(channel.getId(), true, true, true);
+			if (list2!=null && list2.size()>0) {
+				//channel.getChannelExt().setName("&lt;font color='#C0C0C0'&gt;"+channel.getChannelExt().getName()+"&lt;/font&gt;");
+				channel.getChannelExt().setName("-----"+channel.getChannelExt().getName() );
+			}
+			allList.add(channel); //先添加本层
 			for (Channel channel2 : list2) {
-				channel2.getChannelExt().setName("&nbsp;>"+channel2.getChannelExt().getName());
-				allList.add(channel2); //先添加本层
 				List<Channel> list3 = dao.getChildList(channel2.getId(), true, true, true);
+				channel2.getChannelExt().setName("&nbsp;>"+channel2.getChannelExt().getName());
+				if (list3!=null && list3.size()>0) {
+					channel2.getChannelExt().setName("-----"+channel2.getChannelExt().getName() );
+				}
+				allList.add(channel2); //先添加本层
 				for (Channel channel3 : list3) {
 					channel3.getChannelExt().setName("&nbsp;&nbsp;>"+channel3.getChannelExt().getName());
 					allList.add(channel3); //先添加本层,对多先支持3层，没有用迭代方式					
