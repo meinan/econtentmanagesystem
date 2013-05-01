@@ -21,6 +21,13 @@ $(document).ready(function(){
 	$('#txt').wysiwyg();
 });  
         function preSubmit () {
+            
+            var channelId = document.getElementById("channelId").value;
+            if (channelId==null || channelId=="") {
+                alert("请选择发布的栏目");
+                return false;
+            }
+            
             document.getElementById("sb").disabled = true;
             document.getElementById("cancelbtn").disabled = true;
             var v = document.getElementById("title");
@@ -70,6 +77,7 @@ $(document).ready(function(){
                         <div class="row-hd"><label for="channelId">栏目:</label></div>
                         <div class="row-bd">
                             <select id="channelId" name="channelId">
+                                <option value="">请选择栏目...</option>
 <c:forEach items="${model.channelList}" var="item" varStatus="status">
 <option value="${item.id}">${item.channelExt.name}</option>
 </c:forEach>                   
@@ -80,7 +88,7 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="row-hd"><label for="title">标题:</label></div>
                         <div class="row-bd">
-                            <input type="text" class="ydnwc-dialog-text title" id="title" name="title" value="百度一下，你就知道" maxlength="500">
+                            <input type="text" class="ydnwc-dialog-text title" id="title" name="title" value="这里加入标题。。。" maxlength="500">
                             <input type="hidden" value="/wcp1367207408791157" name="p" id="p">
                             <input type="hidden" value="" name="bs" id="bs">
                             <input type="hidden" value="5968" name="len" id="len">
