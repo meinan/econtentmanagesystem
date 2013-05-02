@@ -6,7 +6,7 @@
 
 var YWebClipperConfiguration = {
     logEnabled: !1,
-    clipperBaseURL: "http://www.zhongyi360.cn/clipper",
+    clipperBaseURL: "http://localhost:8080/clipper",
     clipperUploadApp: "/openPanel.jspx", // "/mapi/wcp?method=putfile&keyfrom=wcp",
     logurl: "/login.jsp", // "/mapi/ilogrpt?method=putwcplog",
     clipperClipType: "OnlyHTML",
