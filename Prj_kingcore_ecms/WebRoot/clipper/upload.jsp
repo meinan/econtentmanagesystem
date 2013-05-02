@@ -15,25 +15,76 @@
    <script src="/res/common/js/jquery.ext.js" type="text/javascript"></script>
    <script type="text/javascript" src="/component/jwysiwyg/jquery.wysiwyg.js"></script>
    <link rel="stylesheet" href="/component/jwysiwyg/jquery.wysiwyg.css" type="text/css" />
-  
+   
   <script language="javascript">
 $(document).ready(function(){ 
-	$('#txt').wysiwyg();
+	$('#txt').wysiwyg({
+    controls: {
+      strikeThrough : { visible : true },
+      underline     : { visible : true },
+      
+      separator00 : { visible : true },
+      
+      justifyLeft   : { visible : true },
+      justifyCenter : { visible : true },
+      justifyRight  : { visible : true },
+      justifyFull   : { visible : true },
+      
+      separator01 : { visible : true },
+      
+      indent  : { visible : true },
+      outdent : { visible : true },
+      
+      separator02 : { visible : false },
+      
+      subscript   : { visible : false },
+      superscript : { visible : false },
+      
+      separator03 : { visible : false },
+      
+      undo : { visible : false },
+      redo : { visible : false },
+      
+      separator04 : { visible : false },
+      
+      insertOrderedList    : { visible : false },
+      insertUnorderedList  : { visible : false },
+      insertHorizontalRule : { visible : false },
+      
+      h4mozilla : { visible : false  },
+      h5mozilla : { visible : false  },
+      h6mozilla : { visible : false  },
+      
+      h1 : { visible : false  },
+      h2 : { visible : false  },
+      h3 : { visible : false  },
+      h4 : { visible : false  },
+      h5 : { visible : false  },
+      h6 : { visible : false  },
+      
+      separator07 : { visible : false },
+      
+      cut   : { visible : false },
+      copy  : { visible : false },
+      paste : { visible : false }
+    }
+  });
 });  
         function preSubmit () {
             
             var channelId = document.getElementById("channelId").value;
             if (channelId==null || channelId=="") {
-                alert("请选择发布的栏目");
+                alert("请选择发布的栏目！");
+                return false;
+            }
+            var v = document.getElementById("title");
+            if (v != null && v.value == "") {
+                alert("请输入标题！");
                 return false;
             }
             
             document.getElementById("sb").disabled = true;
             document.getElementById("cancelbtn").disabled = true;
-            var v = document.getElementById("title");
-            if (v != null && v.value == "") {
-                v.value = "无标题笔记";
-            }
             //alert( document.getElementById("bs").value );
             //document.getElementById("content").style.display = "none";
             document.getElementById("loadingview").style.display = "block";
@@ -88,7 +139,7 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="row-hd"><label for="title">标题:</label></div>
                         <div class="row-bd">
-                            <input type="text" class="ydnwc-dialog-text title" id="title" name="title" value="这里加入标题。。。" maxlength="500">
+                            <input type="text" class="ydnwc-dialog-text title" id="title" name="title" value="${param.title}" maxlength="500">
                             <input type="hidden" value="/wcp1367207408791157" name="p" id="p">
                             <input type="hidden" value="" name="bs" id="bs">
                             <input type="hidden" value="5968" name="len" id="len">

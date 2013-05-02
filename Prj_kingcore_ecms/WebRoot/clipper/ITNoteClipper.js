@@ -11,7 +11,7 @@ var YWebClipperConfiguration = {
     logurl: "/login.jsp", // "/mapi/ilogrpt?method=putwcplog",
     clipperClipType: "OnlyHTML",
     clipperDomPrefix: "_YNote",
-    loadingHTML: '<div id="_YNoteLoaddingTips" name="_YNoteLoaddingTips" style="position:absolute;z-index:999999;top:50%;left:50%;width:180px;margin:-12px 0 0 -91px;font-weight:bold;text-align:center;line-height:22px;border:1px solid #fff999;background-color:rgba(255,249,153,.9)!important;background:#fff999;border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;">正在加载中，请稍候1717/div>',
+    loadingHTML: '<div id="_YNoteLoaddingTips" name="_YNoteLoaddingTips" style="position:absolute;z-index:999999;top:50%;left:50%;width:180px;margin:-12px 0 0 -91px;font-weight:bold;text-align:center;line-height:22px;border:1px solid #fff999;background-color:rgba(255,249,153,.9)!important;background:#fff999;border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;">正在加载中，请稍候…</div>',
     clipperFormFields: [["title", "text", "tl"], ["path", "text", "p"], ["content", "area", "bs"], ["source", "text", "src"], ["type", "text", "type"], ["userid", "text", "userid"], ["len", "text", "len"], ["charset", "text", "cs"], ["sign", "text", "e"]],
     clipperStyle: "position:fixed;right:10px;top:10px;padding-bottom:10px;font:12px/100% arial,sans-serif;color:#333; width: 420px;_right:expression(eval(document.documentElement.scrollLeft));_top:expression(eval(document.documentElement.scrollTop+10));_position:absolute;",
     styleMerge: {
@@ -105,7 +105,7 @@ var YWebClipperConfiguration = {
         mainContent: null,
         mainContentTag: null,
         container: window.document,
-        contentType: "3"
+        contentType: "1"
     }
 }; (function() {
     var e = function(e) {
@@ -574,11 +574,11 @@ function() {
             this.loadingView.style.display = "block";
             try {
                 var t = YWebClipperConfiguration.doc.container;
-                return this.hasSelection() ? (YNote.Common.log("has selection"), YWebClipperConfiguration.doc.contentType = "3", this.range = this.selector.getSelectionRange(), this.content = this.getSelectedContent(), this.state = YNote.Clipper.CLIPPED, this.content) : t.body ? (YNote.Common.log("no selection!"), this.content = this.getNodeText(t.body), this.state = YNote.Clipper.CLIPPED, this.content) : (YNote.Common.log("No Body!"), document.getElementById("_YNoteLoaddingTips").innerHTML = "抱歉，由于页面设置，无法获取扄17选内宄17", this.state = YNote.Clipper.ERROR_NO_BODY, YNote.Common.serverlog(2), "");
+                return this.hasSelection() ? (YNote.Common.log("has selection"), YWebClipperConfiguration.doc.contentType = "3", this.range = this.selector.getSelectionRange(), this.content = this.getSelectedContent(), this.state = YNote.Clipper.CLIPPED, this.content) : t.body ? (YNote.Common.log("no selection!"), this.content = this.getNodeText(t.body), this.state = YNote.Clipper.CLIPPED, this.content) : (YNote.Common.log("No Body!"), document.getElementById("_YNoteLoaddingTips").innerHTML = "抱歉，由于页面设置，无法获取所选内容", this.state = YNote.Clipper.ERROR_NO_BODY, YNote.Common.serverlog(2), "");
                 var n
             } catch(r) {
                 try {
-                    document.getElementById("_YNoteLoaddingTips").innerHTML = "抱歉，由于页面设置，整页抓取失败，请选择部分内容后重评17",
+                    document.getElementById("_YNoteLoaddingTips").innerHTML = "抱歉，由于页面设置，整页抓取失败，请选择部分内容后重试",
                     YNote.Common.serverlog(3)
                 } catch(i) {
                     YNote.Common.serverlog(4),
@@ -1133,7 +1133,6 @@ function() {
                 u[2] = this.creatDiv("yShade2", n, i, l, t),
                 u[3] = this.creatDiv("yShade3", s - r - n, i, r + n + l, t),
                 u[4] = this.creatDiv("yShade4", r, i, n - 5 + l, t - 5, f);
-                //drop by wzw
                 //for (var c = 0,
                 //h = u.length; c < h; c++) document.body.appendChild(u[c])
             }
