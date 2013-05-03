@@ -16,7 +16,7 @@
 
 package com.kingcore.cms.clipper.controller;
 
-import java.util.Enumeration;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +40,7 @@ import com.kingcore.cms.entity.main.ContentExt;
 import com.kingcore.cms.entity.main.ContentTxt;
 import com.kingcore.cms.manager.main.ContentMng;
 import com.kingcore.cms.web.CmsUtils;
-import com.kingcore.cms.web.WebErrors;
-import com.kingcore.common.util.StrUtils;
 import com.kingcore.common.web.RequestUtils;
-import com.kingcore.common.web.springmvc.MessageResolver;
 
 /**
  * <p>java类文件的说明...</p>
@@ -84,8 +81,32 @@ public class ClipperUploadAction extends CmsBaseAction {
 		//获取栏目列表
 		List<Channel> channelList = clipperUploadService.getAllChannelList(site.getId(), true);
 
-		System.out.println(""+  (request.getParameter("title")) );
+		String encodee = request.getParameter("encodee");
+		String title = "";
+		if (encodee!=null) { //gbk gb2312
+			try {
+				request.setCharacterEncoding(encodee);
+				title = request.getParameter("title");
+				title = java.net.URLDecoder.decode(title, "utf-8");  //与前端encodeURI配合 
+			} catch (UnsupportedEncodingException e) {
+				title = "";
+				log.error(e);
+			}
+		}
+		
+//		try {
+//			System.out.println(""+  title );
+//			System.out.println(""+  new String( title.getBytes(encodee),"utf-8" ) );
+//			System.out.println(""+  new String( title.getBytes("utf-8"), encodee) );
+//			System.out.println(""+  new String( title.getBytes("iso8859-1"), encodee) );
+//			System.out.println(""+  java.net.URLDecoder.decode(title, "utf-8") );
+//		} catch (UnsupportedEncodingException e) {
+//			log.error(e);
+//		}
+		
 		model.addAttribute("channelList", channelList);
+		model.addAttribute("title", title);
+		
 		request.setAttribute("model", model);
 		//转向视图层
 		requestForward(request,response,"/clipper/upload.jsp");
