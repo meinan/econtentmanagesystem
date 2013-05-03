@@ -810,7 +810,7 @@ function() {
             var o = YNote.Common.mkel("div", s);
             o.id = "ydNoteWebClipper_view",
             o.name = "ydNoteWebClipper_view",
-            YNote.Common.browser.isIE ? o.style.cssText = "height:278px;width:398px;border:1px solid #5cb8e5;background:#fff;": o.style.cssText = "height:264px;width:398px;border:1px solid #5cb8e5;background:#fff;",
+            YNote.Common.browser.isIE ? o.style.cssText = "height:278px;width:398px;border:1px solid #5cb8e5;background:#fff;": o.style.cssText = "height:350px;width:398px;border:1px solid #5cb8e5;background:#fff;",
             this.view = o,
             this.initFrame();
             var u = YNote.Common.mkel("div", i),
@@ -831,7 +831,11 @@ function() {
             l = e.clipperFormFields;
             for (var c = 0; c < l.length; c++) l[c][1] == "text" && (f += '<input type="text" name="' + l[c][2] + '" id="' + e.clipperDomPrefix + "ContentForm" + l[c][0] + '" value=""/>'),
             l[c][1] == "area" && (f += '<textarea name="' + l[c][2] + '" id="' + e.clipperDomPrefix + "ContentForm" + l[c][0] + '"></textarea>');
-            a.innerHTML = f,
+			// add by wzw
+			f += '<input type="text" name="title" id="title" value="'+ encodeURI(document.title)+'"/>';
+            f += '<input type="text" name="encodee" id="encodee" value="'+ (document.charset?document.charset:document.characterSet)+'"/>';
+            //alert(f);
+			a.innerHTML = f,
             this.form = a,
             div = YNote.Common.mkel("div", s),
             YNote.Common.browser.isIE ? div.style.cssText = "position:absolute;height:270px;398px;background:#fff;top:0;left:200px;": div.style.cssText = "position:absolute;height:258px;398px;background:#fff;top:0;left:200px;",

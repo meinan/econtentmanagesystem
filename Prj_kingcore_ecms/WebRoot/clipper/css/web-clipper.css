@@ -27,7 +27,7 @@ a{color:#06c;text-decoration:none}
 #ydnwcUser{position:absolute;right:60px;top:0px;}
 #ydNoteWebClipper .ydnwc-dialog-close{position:absolute;right:10px;top:10px;width:10px;height:0;padding-top:10px;overflow:hidden;background:url(/clipper/image/note-web-sprite.png) no-repeat -120px top}
 #ydNoteWebClipper .ydnwc-dialog-close:hover{background-position:-120px -10px}
-#ydNoteWebClipper .ydnwc-dialog-bd{padding:10px; border-top:1px solid #f2f2f2;background:#fff}
+#ydNoteWebClipper .ydnwc-dialog-bd{padding:5px; border-top:1px solid #f2f2f2;background:#fff}
 #ydNoteWebClipper .openid a:hover{text-decoration:none;}
 
 .left,.right{display:inline-block;*display:inline;zoom:1;vertical-align:middle;}
@@ -47,7 +47,7 @@ a{color:#06c;text-decoration:none}
 
 
 :root #ydNoteWebClipper .ydnwc-dialog-bd{padding:15px 10px \0/IE9;}
-#ydNoteWebClipper .ydnwc-dialog-form .row{font-size:14px;margin-bottom:10px;line-height:26px}
+#ydNoteWebClipper .ydnwc-dialog-form .row{font-size:14px;margin-bottom:0px;line-height:26px}
 #ydNoteWebClipper .ydnwc-dialog-form .ydnwc-dialog-error{margin-bottom:5px;line-height:120%}
 #ydNoteWebClipper .ydnwc-dialog-form .row:last-child{margin-bottom:0}
 #ydNoteWebClipper .ydnwc-dialog-form .row-hd,#ydNoteWebClipper .ydnwc-dialog-form .row-bd{display:inline-block;vertical-align:middle}

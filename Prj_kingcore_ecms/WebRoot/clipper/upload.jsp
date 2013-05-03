@@ -106,7 +106,7 @@ $(document).ready(function(){
 <div id="ydNoteWebClipper">
     <div id="ydNoteWebClipper-New">
             <div class="ydnwc-dialog-hd ydnwc-dialog-hd-closable">
-                <span class="ydnwc-dialog-title"><img src="/clipper/image/logo-web-clipper.png" alt="KingCore网页剪报" align="absmiddle"> KingCore网页剪报
+                <span class="ydnwc-dialog-title"><img src="/clipper/image/logo-web-clipper.png" alt="KingCore网页剪报" align="absmiddle"> KingCore网页剪报发布
                 </span>
                   <span id="logout">
                     
@@ -127,7 +127,7 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="row-hd"><label for="channelId">栏目:</label></div>
                         <div class="row-bd">
-                            <select id="channelId" name="channelId">
+                            <select id="channelId" name="channelId" style="width:310px;">
                                 <option value="">请选择栏目...</option>
 <c:forEach items="${model.channelList}" var="item" varStatus="status">
 <option value="${item.id}">${item.channelExt.name}</option>
@@ -139,7 +139,7 @@ $(document).ready(function(){
                     <div class="row">
                         <div class="row-hd"><label for="title">标题:</label></div>
                         <div class="row-bd">
-                            <input type="text" class="ydnwc-dialog-text title" id="title" name="title" value="${param.title}" maxlength="500">
+                            <input type="text" style="width:310px;" class="ydnwc-dialog-text title" id="title" name="title" value="${model.title}" maxlength="500">
                             <input type="hidden" value="/wcp1367207408791157" name="p" id="p">
                             <input type="hidden" value="" name="bs" id="bs">
                             <input type="hidden" value="5968" name="len" id="len">
@@ -149,7 +149,14 @@ $(document).ready(function(){
                         	<input type="hidden" value="true" name="confirm">
                         </div>
                     </div>
-                   <div style="width:390px;height:100px;" class="row">
+                    <div class="row">
+                        <div class="row-hd"><label for="title">摘要:</label></div>
+                        <div class="row-bd">
+                            <input type="text" style="width:310px;" class="ydnwc-dialog-text title" id="description" name="description" value="" maxlength="500">
+                       
+						</div>
+                    </div>
+                   <div style="width:390px;height:195px;margin-top:5px;" class="row">
                         <div class="row-hd">内容：</div>
                         <div class="row-bd">
 
@@ -174,20 +181,24 @@ $(document).ready(function(){
                         </div>
                     </div-->
                     <div class="row btns-row" style="height:50px">
-                        <input class="ydnwc-dialog-btn" name="sb" id="sb" type="submit" value="保 存">
-                        <input class="ydnwc-dialog-btn ydnwc-dialog-btn-gray" type="button" name="cancelbtn" id="cancelbtn" value="取 消">
+                        <div class="row-hd">
+                          <input class="ydnwc-dialog-btn" name="sb" id="sb" type="submit" value="保 存">
+                          <input class="ydnwc-dialog-btn ydnwc-dialog-btn-gray" type="button" name="cancelbtn" id="cancelbtn" value="取 消">
+                        </div>
+                        <div class="row-hd" align="right">
+                          <p class="ydnwc-dialog-tip"><img src="/clipper/image/feedback.gif" alt="意见反馈" align="absmiddle">&nbsp;&nbsp;<a target="_blank" href="/guestbook.jspx">意见反馈</a></p>
+                        </div>
                     </div>
 
         </form>
         <script type="text/javascript">
                 <!--
-                    setTimeout(function(){try{var us=document.getElementById("title");us.focus();us.select();}catch(e){}},100);
+                    setTimeout(function(){try{var us=document.getElementById("channelId");us.focus();us.select();}catch(e){}},100);
                 -->
          </script>
   
-    </div>
-    <div class="ydnwc-dialog-ft" id="tips">
-            <p class="ydnwc-dialog-tip"><img src="/clipper/image/feedback.gif" alt="意见反馈" align="absmiddle">&nbsp;&nbsp;<a target="_blank" href="/guestbook.jspx">意见反馈</a></p>
+    </div> 
+            
     </div>
 
     <!-- loading -->
