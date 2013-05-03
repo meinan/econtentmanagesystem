@@ -107,8 +107,8 @@ public class ClipperUploadAction extends CmsBaseAction {
 		model.addAttribute("channelList", channelList);
 		model.addAttribute("title", title);
 		
-		request.setAttribute("model", model);
 		//转向视图层
+		request.setAttribute("model", model);
 		requestForward(request,response,"/clipper/upload.jsp");
 		
 		return null;
