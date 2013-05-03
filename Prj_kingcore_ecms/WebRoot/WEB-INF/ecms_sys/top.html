@@ -89,15 +89,15 @@ setTimeout( "countUnreadMsg() ",1000*60*10);
                                     </td>
                                     <td align="right">
                                          <form action="index.do" target="_top" method="get">
-											<select name="${siteParam}" onchange="this.form.submit();">
+											<select name="${siteParam}" id="${siteParam}" onchange="this.form.submit();">
 											  <#list siteList as s>
-								              <option value="${s.id}"<#if s.id==site.id> selected="selected"</#if>>${s.name}</option>
+								              <option title="${s.protocol+s.domain}" value="${s.id}"<#if s.id==site.id> selected="selected"</#if>>${s.name}</option>
 								              </#list>
 								            </select>
 							            </form>
                                     </td>
                                     <td width="100">
-                                    &nbsp;<a id="view_index" href="${site.url}" target="_blank"><@s.m "global.admin.viewFrontIndex"/></a>
+                                    &nbsp;<a id="view_index" href="javascript:window.open(document.getElementById('${siteParam}').options[document.getElementById('${siteParam}').selectedIndex].title)" target="_blank"><@s.m "global.admin.viewFrontIndex"/></a>
                                     <!--
                                     &nbsp;<a style="color:#FFF" href="javascript:alert($(document).width()+','+$(document).height())">【窗口大小】</a>
                                     -->
