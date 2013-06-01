@@ -170,6 +170,9 @@ dl.rmpl dd.line{border-bottom:1px dashed #ccc;}
 .left_top h2 a,ul li a,ul.ysyl h2 a:visited{background:url(../img/) 0 -100px; color:#244f94; padding-left:12px;}
 .left_top1 h2{height:32px; line-height:32px; padding-left:15px; font-size:14px;}
 .left_top1 h2 a,ul.ysyl h2 a:visited{background:url(../img/) 0 -100px; color:#244f94; padding-left:12px;}
+/*add by wzw*/
+.left_top ul li{height:32px; line-height:32px; padding-left:15px; font-size:14px;}
+.left_top ul li a,ul li a:visited{background:url(../img/) 0 -100px; color:#244f94; padding-left:12px;}
 
 .left_top2{height:32px;}
 .left_top2 h2{height:32px; line-height:32px; padding-left:15px; font-size:14px;}

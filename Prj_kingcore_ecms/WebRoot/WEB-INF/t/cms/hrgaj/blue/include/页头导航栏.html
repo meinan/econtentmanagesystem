@@ -1,13 +1,45 @@
 <div id="header" class="box">
-  <div id="logo" class="page box">
-    <div class="logo fl" onclick="window.location.href='${base}/'"></div>
-	
-	<div id="search fr" class="page3 box fr" style="padding-top:20px;">
-      <div class="searchform fr">
+  <div align="center" style="height:141px;" id="logo" class="page box">
+    <div class="logo fl" onclick="window.location.href='${base}/'">
+	   <img title="XX公安信息网" src="/${res}/pic/topLogo.jpg" style="margin:0px 0px 0px 0px;"/>
+    </div>
+  </div>
+  
+  <!-- <div class="box"></div> -->
+  
+<div id="nav">
+	  <div id="menu" class="page box relative">
+		<dl id="topmenu">  
+		[@cms_channel_list]
+		<dt class="menu_first"><a href="${base}/" target="_self" [#if !channel??]class="selected"[/#if]><span>首页</span></a></dt>
+		[#list tag_list as c]
+		<li class="nav_menu_line"></li>
+		<dt><a href="${c.url}" target="_self" [#if channel??&&channel.id==c.id] class="selected" [/#if]><span>${c.name}</span></a></dt>
+		[/#list]
+		[/@cms_channel_list]
+	        <li class="nav_menu_line"></li>
+                <dt><a href="/guestbook.jspx" target="blank">旧版回顾</a></dt>
+             <!--      <dt><a href="http://bbs.kingcore.com" target="blank">论坛</a></dt> -->
+	  </dl>
+	  </div> 
+</div>
+
+<div class="page box">
+    <div style="font-size: 14px;width:610px;height:40px;line-height:40px;color:#000;text-align:left;" class="fl"><div class="fl" style="width:75px;height:39px"><font color="red"><b>最新通知:</b></font></div>
+      <marquee align="left" behavior="scroll" direction="left" width="530" loop="-1" scrollamount="10" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()"> 
+         [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='68' recommend='1']
+	       [#list tag_list as a]
+			 <img src="/${res}/img/newInfo.gif"/><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+		   [/#list] 
+		 [/@cms_content_list]
+	  
+      </marquee></div>
+	<div id="search fr" class="page3 box fr" style="width:365px;padding-top:0px;">
+      <div style="width: 359px;" class="searchform fr">
 	  <form action="${base}/search.jspx" target="_blank">
-        <input name="q" value="${q!'请输入关键词'}" type="text" id="txtKey" onfocus="if(this.value=='请输入关键词')this.value=''" onblur="if(this.value=='')this.value='请输入关键词'" maxlength="50" autocomplete="off" / style="width:381px !important; width:375px;">
+        <input name="q" value="${q!'请输入关键词'}" type="text" id="txtKey" onfocus="if(this.value=='请输入关键词')this.value=''" onblur="if(this.value=='')this.value='请输入关键词'" maxlength="50" autocomplete="off" / style="width:165px !important; width:145px;">
 		<span id="fid_box">
-		<select name="channelId" id="fid" style="width:85px;">
+		<select name="channelId" id="fid" style="width:85px;border:solid 1px #d8d8d8;">
 		  <option value="">所有信息</option>
 		  [@cms_channel_list]
 		  [#list tag_list as c]
@@ -20,27 +52,7 @@
       </form>
 	  </div>
     </div>
-</div>
-  
-  <div class="box"></div>
-  
-<div id="nav">
-	  <div id="menu" class="page box relative">
-		<dl id="topmenu">  
-		[@cms_channel_list]
-		<dt class="menu_first"><a href="${base}/" target="_self" [#if !channel??]class="selected"[/#if]><span>网站首页</span></a></dt>
-		[#list tag_list as c]
-		<li class="nav_menu_line"></li>
-		<dt><a href="${c.url}" target="_self" [#if channel??&&channel.id==c.id] class="selected" [/#if]><span>${c.name}</span></a></dt>
-		[/#list]
-		[/@cms_channel_list]
-	        <li class="nav_menu_line"></li>
-                <dt><a href="/guestbook.jspx" target="blank">旧版回顾</a></dt>
-             <!--      <dt><a href="http://bbs.kingcore.com" target="blank">论坛</a></dt> -->
-	  </dl>
-	  </div> 
-</div>
-    
+</div>    
 	
 	
 </div>
