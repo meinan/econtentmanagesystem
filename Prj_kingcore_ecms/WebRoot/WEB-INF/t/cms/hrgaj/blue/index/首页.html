@@ -31,14 +31,54 @@ function HoverLi(m,n,counter){
 	g('tbc_'+m+n).className='dis';	
 	g('tb_'+m+n).className='curr';
 }
+/*by wzw*/
+function changDiv(obj){
+	var idx;
+	var pObj = $(obj).parent().parent().parent().parent();
+	//alert( $(obj).parent().parent().parent().html() );
+	pObj.find("ul[class=titleUl]").eq(0).find("li").each(
+	    function(i){
+	    	if((this)==(obj)){
+	    		idx=i;
+	    		$(this).addClass("seledLi");
+			    //$(this).css("background-image","url('/${res}/img/images/newstbg.jpg')");
+	    	}else{
+   				//$(this).css("background-image","none");
+	    		$(this).removeClass("seledLi");
+	    	}
+	    });
+	pObj.find("ul[class=list w355]").each(
+	    function(i){
+	    	if(idx==i){
+			    $(this).show();
+	    	}else{
+   				$(this).hide();
+	    	}
+	  });
+}
+
 </script>
-.navL1{font-size:13px; position:relative}
-.navL1 ul{}
-.navL1 ul li{float:left;}
-.navL1 li{float:left; width:91px; padding:3px 0 0 0; line-height:22px;}
-.navL1 a{text-decoration:none}
-.navL1 .more{position:absolute; right:10px; top:7px}
-<style>
+<style type="text/css">
+.titleDiv{
+  border-left:solid 1px #d8d8d8;border-right:solid 1px #d8d8d8;
+  background-image:url('/${res}/img/lefttitle1_bgs2.jpg');background-repeat:repeat-x;
+}
+.titleDiv h2{height:32px; line-height:32px; padding-left:0px; font-size:14px;}
+.titleUl li{
+	float:left;
+	width:80px;
+	padding-left:0px;
+    margin-top:1px;
+	text-align:center;
+}
+.seledLi{
+   margin-top:1px;
+   background-image:url('/${res}/img/images/newstbg.jpg');background-repeat:repeat-x;
+   
+  /*
+   border:1px solid #c4c1bb; border-bottom:none;background:#fff; width:92px!important; font-weight:bold;
+  */
+}
 </style>
 </head>
 
@@ -48,9 +88,9 @@ function HoverLi(m,n,counter){
 [#include "../include/页头导航栏.html"/]
 <!--header_end-->
 
-<div id="main">
+<div style="margin-top:0px;" id="main">
 
-<div id="wrapper" style="margin-bottom:6px;">
+<div id="wrapper" style="margin-bottom:6px;margin-top:5px;">
      <!-- 新闻 -->
 	 <div style="width:345px;" class="news-focus fl mr10">
 
@@ -59,14 +99,18 @@ function HoverLi(m,n,counter){
      </div>
 	 <!-- 综合要闻 -->
 	 <div class="w355 fl" style="width:365px;margin-bottom:0px;">
-		<div style="background-image:url('/${res}/img/lefttitle1_bgm1.jpg');background-repeat:no-repeat" class="left_top box">
-	      <h2><a href="/tcmbj/index.jhtml" target="_blank">综合要闻</a></h2>
+		<div style="" class="titleDiv left_top box">
+	      <h2>
+	       [@cms_channel id='58']
+                <a style="" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+            [/@cms_channel]
+	      </h2>
 	    </div>
 	    
 		  <div style="width:363px;height:233px;" class="left_div box h230">
 	      <div class="mt5">
 	        <ul class="list w355">
-                [@cms_content_list channelId='58' count='6' typeId='4' titLen='20' append='...' channelOption='1']
+                [@cms_content_list channelId='58' count='10' titLen='20' append='...' channelOption='1']
                     [#list tag_list as a]
               	  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                     [/#list]
@@ -81,11 +125,11 @@ function HoverLi(m,n,counter){
 	 	<div class="rb_right_top"><h2><a href="#">公告栏</a></h2></div>
 		<div class="rb_right_div" style="height:232px;">
 			<ul class="order">
-              [@cms_content_list count='9' titLen='15' orderBy='8' channelOption='1' channelId='103']
-                  [#list tag_list as a]
-                  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-                  [/#list]
-              [/@cms_content_list]
+			  [@cms_content_list channelId='76' count='9' titLen='15' orderBy='8' channelOption='1']
+			  [#list tag_list as a]
+			  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#list]
+			  [/@cms_content_list]
 			</ul>
 		</div>
 	 </div> 
@@ -98,26 +142,40 @@ function HoverLi(m,n,counter){
 <div class="w720 fl box mt0">
 <div class="w250 fl">
 <div class="w250 fl" style="margin-bottom:0px;margin-right:8px;">
-		<div style="width:250px;border-left:solid 1px #d8d8d8;border-right:solid 1px #d8d8d8;background-image:url('/${res}/img/lefttitle1_bgs2.jpg');background-repeat:no-repeat" class="left_top box">
-		  <h2><a href="/dcyj/index.jhtml" target="_blank">网站导航</a></h2>
+		<div style="width:250px;" class="titleDiv left_top box">
+		  <h2><a href="javascript:void(0);" target="_blank">网站导航</a></h2>
 		</div>
 		
 		  <div style="height:84px;" class="w250 left_div box">
 		  <div class="mt5">
-			<ul class="list w250">
+			<ul style="padding:0px;list-style-type:disc;background-image:none;" class="list w250">
+		        [@cms_channel_list parentId=66]
+				[#list tag_list as sub]
+				
+                    [@cms_channel id='${sub.id}']
+                       <li style="margin-left:5px;background-image:url('/${res}/img/navLink.jpg');background-repeat:no-repeat;background-position:left center;"><a style="margin-left:3px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a></li>
+                    [/@cms_channel]
+                    
+				[/#list]
+				[/@cms_channel_list] 			
+			
 			</ul>
 		  </div>	
 		</div>
 		<!--<div class="left_low"></div>-->
 </div>
 <div class="w250 fl" style="margin-top:6px;margin-right:0px;">
-		<div style="width:250px;border-left:solid 1px #d8d8d8;border-right:solid 1px #d8d8d8;background-image:url('/${res}/img/lefttitle1_bgs2.jpg');background-repeat:no-repeat" class="left_top box">
-		  <h2><a href="/dcyj/index.jhtml" target="_blank">办公助手</a></h2>
+		<div style="width:250px;" class="titleDiv left_top box">
+		  <h2><a href="javascript:void(0);" target="_blank">办公助手</a></h2>
 		</div>
-		
 		  <div style="height:84px;" class="w250 left_div box">
 		  <div class="mt5">
-			<ul class="list w250">
+			<ul style="padding:0px;" class="list w250">
+	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='67']
+        [#list tag_list as a]
+		<li style="float:left;">[#if a_index!=0]|[/#if]<a style="padding:5px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		[/#list]
+	  [/@cms_content_list] 
 			</ul>
 		  </div>	
 		</div>
@@ -131,24 +189,18 @@ function HoverLi(m,n,counter){
 
 <div class="w720 fr box">-->
 <!--news_begin-->
-<div style="margin-left:10px;" class="fl">
-  <div style="background:url(/${res}/img/lefttitle1_bg4.jpg); width:460px; height:33px;">
-    <span style="color:#2b4099; font-size:14px; font-weight:bold; line-height:33px; padding-left:25px;">通知通报</span>
-  </div>
-  <div class="fl" style="padding:5px; width:454px; height:203px; border:1px #d8d8d8 solid; padding:2px;">
-     <ul class="topnews w450 line">
-	 [@cms_content_list channelId='276' count='1' typeId='4' descLen='60' append='...' channelOption='1']
-		[#list tag_list as a]		
-		<li class="toptext[#if a_index gt 0] line[/#if]">
-		  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
-		  <p style="white-space:normal;">[@text_cut s=a.desc len=descLen append=append/]</p>
-		</li>
-		
-		[/#list]
-	  [/@cms_content_list]
-	  </ul>  
-	 [@cms_content_list count='6' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='276']
-      <ul class="topnews">
+<div style="width:460px;margin-left:10px;" class="fl">
+    <div style="" class="titleDiv left_top box">
+      <h2>
+        [@cms_channel id='68']
+               <a style="" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+           [/@cms_channel]
+         </h2>
+     </div>
+    <div class="fl" style="padding:5px; width:454px; height:203px; border:1px #d8d8d8 solid; padding:2px;">
+     
+	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='68']
+      <ul style="height:208px;border-bottom:0px;" class="topnews">
 		[#list tag_list as a]
 		<li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a><em>${a.date?string(dateFormat)}</em></li>
 		[/#list]
@@ -164,10 +216,10 @@ function HoverLi(m,n,counter){
 <div class="w250 fr">
  	<div class="rb_right_top"><h2><a href="#">XX公安简报</a></h2></div>
 	<div class="rb_right_div" style="height:299px;">
-		<ul class="order">
-		  [@cms_content_list count='10' titLen='15' orderBy='8' channelOption='1']
+		<ul style="list-style-type:disc;background-image:none;" class="order">
+		  [@cms_content_list channelId='77' count='12' titLen='15' orderBy='8' channelOption='1']
 		  [#list tag_list as a]
-		  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 		  [/#list]
 		  [/@cms_content_list]
 		</ul>
@@ -187,21 +239,40 @@ function HoverLi(m,n,counter){
 <!-- 第三栏 -->
 <div class="w720 fl box mt10">
   <div class="w355 fl h259" style="margin-bottom:0px;">
-		<div class="navL1 left_top box">
-		  <ul id="newsNav2">
-         <li class="none" onmouseover="ChangDiv('newsNav2','cardNavL1',0,'boxNews0_')"><a href="/col/73.htm">最新文件</a></li>
-         <li onmouseover="ChangDiv('newsNav2','cardNavL1',1,'boxNews0_')" class="none"><a href="/col/48.htm">政策法规</a></li>          
-       </ul>
-		  <!-- <ul>
-		    <li>[@cms_channel id='58']<a href="${tag_bean.url}" target="_blank">部门工作</a>[/@cms_channel]</li>
-		    <li>[@cms_channel id='58']<a href="${tag_bean.url}" target="_blank">警情快报</a>[/@cms_channel]</li>
-		  </ul> -->
+		<div style="" class="left_top box titleDiv">
+		  <h2><ul class="titleUl">
+            <li class="seledLi" style=background-color:#fff;padding-left:0px;" onmouseover="changDiv(this);">
+               [@cms_channel id='69']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>
+            <li style="padding-left:0px;" onmouseover="changDiv(this);">
+                [@cms_channel id='70']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>          
+          </ul></h2>
 		</div>
 		
 		  <div class="left_div box h230">
 		  <div class="mt5">
-			<ul class="list w355">
-			[@cms_content_list channelId='58' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			<ul style="display:block;" class="list w355">
+			[@cms_content_list channelId='69' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			  [#list tag_list as a]
+			  [#if a_index = 0]
+			  <li class="toptext">
+			  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
+			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
+			  </li>
+			  [#else]
+			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#if]
+			  [/#list]
+			 [/@cms_content_list]
+			</ul>
+			
+			<ul style="display:none;" class="list w355">
+			[@cms_content_list channelId='70' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -220,14 +291,25 @@ function HoverLi(m,n,counter){
 	</div>
     <!--3td_rgt begin-->
    <div class="w355 fl h259" style="margin-bottom:0px;margin-left:8px;">
-		<div class="left_top box">
-		  <h2>[@cms_channel id='58']<a href="fds" target="_blank">政工动态、教育培训</a>[/@cms_channel]</h2>
+		<div style="" class="left_top box titleDiv">
+		  <h2><ul class="titleUl">
+            <li class="seledLi" style="padding-left:0px;" onmouseover="changDiv(this);">
+               [@cms_channel id='71']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>
+            <li style="padding-left:0px;" onmouseover="changDiv(this);">
+                [@cms_channel id='72']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>          
+          </ul></h2>
 		</div>
 		
 		  <div class="left_div box h230">
 		  <div class="mt5">
-			<ul class="list w355">
-			[@cms_content_list channelId='58' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			<ul style="display:block;" class="list w355">
+			[@cms_content_list channelId='71' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -240,13 +322,42 @@ function HoverLi(m,n,counter){
 			  [/#list]
 			 [/@cms_content_list]
 			</ul>
+			
+			<ul style="display:none;" class="list w355">
+			[@cms_content_list channelId='72' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			  [#list tag_list as a]
+			  [#if a_index = 0]
+			  <li class="toptext">
+			  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
+			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
+			  </li>
+			  [#else]
+			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#if]
+			  [/#list]
+			 [/@]
+			</ul>
 		  </div>	
 		</div>
 		<div class="left_low"></div>
 	</div>
 </div>
 
-	<div class="w250 fr mt10">
+
+<div class="w250 fr mt10">
+ 	<div class="rb_right_top"><h2><a href="#">应用系统</a></h2></div>
+	<div class="rb_right_div" style="height:299px;">
+		<ul style="list-style-type:disc;background-image:none;" class="order">
+		  [@cms_content_list channelId='78' count='10' titLen='15' orderBy='8' channelOption='1']
+		  [#list tag_list as a]
+		  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		  [/#list]
+		  [/@cms_content_list]
+		</ul>
+	</div>
+</div>
+
+	<!-- <div class="w250 fr mt10">
 		<div class="blue_right_top"><h2><a href="#">应用系统</a></h2></div>
 		<div class="blue_right_div" style="height:249px !important;height:245px;">
 		<div class="rmpl">
@@ -254,8 +365,7 @@ function HoverLi(m,n,counter){
 		</div>
 		</div>
 		<div class="pink_right_low"></div>
-		
-	</div>
+	</div> -->
 
 	<!-- 图片链接 -->
 	<div class="w355 fl " style="margin-top:15px;"> 
@@ -264,9 +374,9 @@ function HoverLi(m,n,counter){
 	<div class="w355 fl " style="margin-top:15px;margin-left:10px;">
 		<img title="公安民警读书学习园地" src="/${res}/pic/linkPic1.gif" style="margin:0px 0px 0px 0px;"/>
 	</div>
-	
+	 
 <!--mright_begin mt10-->		
-	<div class="w250 fr">
+	<div class="w250 fr mt10">
 		<div class="blue_right_top"><h2><a href="#" target="_blank">信息排行</a></h2></div>
 		<div class="blue_right_div" style="height:360px !important;height:358px;">
 			[@cms_comment_list count='5'  checked='1' textLen='50' append='...']
@@ -284,14 +394,40 @@ function HoverLi(m,n,counter){
 	 
   <div class="w720 fl box">
 	<div class="w355 fl" style="margin-top:15px;">
-		<div class="left_top box">
-		  <h2>[@cms_channel id='58']<a href="啊啊啊" target="_blank">数据通报、协查通报</a>[/@cms_channel]</h2>
-		</div>
+		<div style="" class="left_top box titleDiv">
+		  <h2><ul class="titleUl">
+            <li class="seledLi" style="padding-left:0px;" onmouseover="changDiv(this);">
+               [@cms_channel id='73']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>
+            <li style="padding-left:0px;" onmouseover="changDiv(this);">
+                [@cms_channel id='74']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>          
+          </ul></h2>
+		</div> 
 		
 		  <div class="left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
-			[@cms_content_list channelId='58' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='73' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			  [#list tag_list as a]
+			  [#if a_index = 0]
+			  <li class="toptext">
+			  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
+			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
+			  </li>
+			  [#else]
+			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#if]
+			  [/#list]
+			 [/@cms_content_list]
+			</ul>
+			
+			<ul style="display:none;" class="list w355">
+			[@cms_content_list channelId='74' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -310,14 +446,40 @@ function HoverLi(m,n,counter){
 	</div>
 	
 	<div class="w355 fl" style="margin-top:15px;margin-left:10px;">
-		<div class="left_top box">
-		  <h2>[@cms_channel id='58']<a href="啊啊" target="_blank">数据通报、协查通报</a>[/@cms_channel]</h2>
-		</div>
+		<div style="" class="left_top box titleDiv">
+		  <h2><ul class="titleUl">
+            <li class="seledLi" style="padding-left:0px;" onmouseover="changDiv(this);">
+               [@cms_channel id='75']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>
+            <li style="padding-left:0px;" onmouseover="changDiv(this);">
+                [@cms_channel id='61']
+                <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
+                [/@cms_channel]
+            </li>          
+          </ul></h2>
+		</div> 
 		
 		  <div class="left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
-			[@cms_content_list channelId='58' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='75' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			  [#list tag_list as a]
+			  [#if a_index = 0]
+			  <li class="toptext">
+			  <a href="${a.url}" title="${a.title}" target="_blank"><h3>${a.stit}</h3></a>
+			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
+			  </li>
+			  [#else]
+			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#if]
+			  [/#list]
+			 [/@cms_content_list]
+			</ul>
+			
+			<ul style="display:none;" class="list w355">
+			[@cms_content_list channelId='61' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
