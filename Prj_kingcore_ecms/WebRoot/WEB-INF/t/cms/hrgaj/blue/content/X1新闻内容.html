@@ -67,38 +67,63 @@ $(function() {
         <!--网友评论_Begin-->[#if channel.commentControl!=2] [#include "inc_comment_list.html"/] [#include "inc_comment_input.html"/] [/#if] <!--网友评论_End--></div>
         <div class="rb_low">&nbsp;</div>
         </div>
-        <div class="w250 fr mt5"><!--相关文章_Begin-->
-        <div class="rb_right_top">
-        <h2><a target="_blank" href="#">本文相关资讯</a></h2>
-        </div>
-        <div class="rb_right_div"><!--相关资讯_Begin-->
-        <div class="w98">[#if content.tagStr??] [@cms_content_list styleList='1-1' titLen='19' count='5' headMark='3' lineHeight='7' bottomLine='1' tagName=content.tagStr excludeId=content.id channelOption='1' emptyMsg='本文暂无相关资讯' emptyStyle='color:red;margin:5px;' tpl='2'/] [#else] 本文暂无TAG标签！ [/#if]</div>
-        <!--相关资讯_End--><!--最新图文_Begin-->
-        <h2>最新图文</h2>
-        <div class="w98">[@cms_content_list count='4' titLen='10' typeId='2' channelOption='1']
-        <ul class="list right_pic">[#list tag_list as d]
-            <li><a target="_blank" href="${d.url}"><img alt="${d.title}" src="${d.typeImg!site.defImg}" /></a><a title="${d.title}" target="_blank" href="${d.url}">[@text_cut s=d.stit len=titLen append=append/]</a> [/#list]</li>
-        </ul>
-        [/@cms_content_list]</div>
-        <!--最新图文_End--><!--本周热门资讯排行_Begin-->
-        <h2>本周热门资讯排行</h2>
-        <div class="w98">
-        <ul class="order">[@cms_content_list count='10' titLen='15' orderBy='7' channelOption='1'] [#list tag_list as a]
-            <li><a title="${a.title}" target="_blank" href="${a.url}">[@text_cut s=a.title len=titLen append=append/]</a> [/#list] [/@cms_content_list]</li>
-        </ul>
-        </div>
-        <!--本周热门资讯排行_End-->
-        <h2>精彩专题</h2>
-        <div class="w98">[@cms_topic_list count='4' descLen='30' append='...'] [#list tag_list as t]
-        <dl class="list[#if t_has_next] line[#else] mt5[/#if] box">
-            <dt><a target="_blank" href="${base}/topic/${t.id}.jspx">${t.name}</a> </dt>
-            <dd class="pic"><a href="${base}/topic/${t.id}.jspx"><img alt="" src="${t.titleImg!site.defImg}" /></a> </dd>
-            <dd class="text">[@text_cut s=t.description len=descLen append=append/] </dd>
-        </dl>
-        [/#list] [/@cms_topic_list]</div>
-        </div>
-        <div class="rb_right_low">&nbsp;</div>
-        <!--相关文章_End--></div>
+        
+  <div class="w250 fr">
+    <div class="rb_right_top">
+      <h2><a href="#">公告栏</a></h2>
+    </div>
+    <div class="rb_right_div">
+      <!--最新图文资讯_Begin-->
+      <div class="w98"> 
+			<ul class="order">
+			  [@cms_content_list channelId='76' count='9' titLen='15' orderBy='8' channelOption='1']
+			  [#list tag_list as a]
+			  <li><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#list]
+			  [/@cms_content_list]
+			</ul>
+       </div>
+     </div>  
+      <!--最新图文资讯_End-->
+    <div style="margin-top:10px;" class="rb_right_top">
+      <h2><a href="#">公安简报</a></h2>
+    </div>
+    <div class="rb_right_div">
+      <!--最新图文资讯_Begin-->
+      <div class="w98"> 
+			<ul style="list-style-type:disc;background-image:none;" class="order">
+			  [@cms_content_list channelId='77' count='12' titLen='15' orderBy='8' channelOption='1']
+			  [#list tag_list as a]
+			  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  [/#list]
+			  [/@cms_content_list]
+			</ul>
+       </div>
+     </div>  
+     
+      <!--本周热门资讯排行_Begin-->
+    <div style="margin-top:10px;" class="rb_right_top">
+      <h2><a href="#" target="_blank">信息排行</a></h2>
+    </div>
+    <div style="height:400px;" class="rb_right_div">
+      <div class="w98">
+ 			[@cms_comment_list count='5'  checked='1' textLen='50' append='...']
+			<dl class="rmpl">
+			[#list tag_list as c]
+				<dt><span>${(c.commentUser.username)!"匿名网友"}</span> 对 <a href="${c.content.url}" target="_blank">${c.content.title}</a> 评论道:</dt>
+				<dd>[@text_cut s=c.textHtml len=textLen append=append/]</dd>
+				<dd class="line"></dd>
+			[/#list]
+			</dl>
+			[/@cms_comment_list]
+      </div>
+      <!--本周热门资讯排行_End-->
+      
+    </div>
+    <div class="rb_right_low"></div>
+    <!--相关文章_End-->
+  </div>
+  
         </div>
         </div>
         <p>[#include "../include/页脚友情链接栏.html"/] [#include "../include/页脚信息栏.html"/]</p>

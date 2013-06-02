@@ -59,11 +59,15 @@ function changDiv(obj){
 
 </script>
 <style type="text/css">
+.listDiv{
+  border-top:0px;
+}
 .titleDiv{
+  height: 33px;
   border-left:solid 1px #d8d8d8;border-right:solid 1px #d8d8d8;
   background-image:url('/${res}/img/lefttitle1_bgs2.jpg');background-repeat:repeat-x;
 }
-.titleDiv h2{height:32px; line-height:32px; padding-left:0px; font-size:14px;}
+.titleDiv h2{height:33px; line-height:33px; padding-left:0px; font-size:14px;}
 .titleUl li{
 	float:left;
 	width:80px;
@@ -73,7 +77,7 @@ function changDiv(obj){
 }
 .seledLi{
    margin-top:1px;
-   background-image:url('/${res}/img/images/newstbg.jpg');background-repeat:repeat-x;
+   background-image:url('/${res}/img/lefttitle1_bgSel.jpg');background-repeat:repeat-x;
    
   /*
    border:1px solid #c4c1bb; border-bottom:none;background:#fff; width:92px!important; font-weight:bold;
@@ -107,7 +111,7 @@ function changDiv(obj){
 	      </h2>
 	    </div>
 	    
-		  <div style="width:363px;height:233px;" class="left_div box h230">
+		  <div style="border-top:0px;width:363px;height:233px;" class="left_div box h230">
 	      <div class="mt5">
 	        <ul class="list w355">
                 [@cms_content_list channelId='58' count='10' titLen='20' append='...' channelOption='1']
@@ -146,7 +150,7 @@ function changDiv(obj){
 		  <h2><a href="javascript:void(0);" target="_blank">网站导航</a></h2>
 		</div>
 		
-		  <div style="height:84px;" class="w250 left_div box">
+		  <div style="border-top:0px;height:84px;" class="w250 left_div box">
 		  <div class="mt5">
 			<ul style="padding:0px;list-style-type:disc;background-image:none;" class="list w250">
 		        [@cms_channel_list parentId=66]
@@ -168,14 +172,16 @@ function changDiv(obj){
 		<div style="width:250px;" class="titleDiv left_top box">
 		  <h2><a href="javascript:void(0);" target="_blank">办公助手</a></h2>
 		</div>
-		  <div style="height:84px;" class="w250 left_div box">
+		  <div style="border-top:0px;height:84px;" class="w250 left_div box">
 		  <div class="mt5">
 			<ul style="padding:0px;" class="list w250">
 	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='67']
         [#list tag_list as a]
 		<li style="float:left;">[#if a_index!=0]|[/#if]<a style="padding:5px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		[/#list]
-	  [/@cms_content_list] 
+		[/#list]		
+	  [/@cms_content_list]
+		<li style="float:left;">|<a style="padding:5px;" href="/download/index.jhtml" title="下载专区" target="_blank">下载专区</a></li>
+	        
 			</ul>
 		  </div>	
 		</div>
@@ -197,7 +203,7 @@ function changDiv(obj){
            [/@cms_channel]
          </h2>
      </div>
-    <div class="fl" style="padding:5px; width:454px; height:203px; border:1px #d8d8d8 solid; padding:2px;">
+    <div class="fl" style="padding:5px; width:454px; height:203px; border-top:0px;border:1px #d8d8d8 solid; padding:2px;">
      
 	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='68']
       <ul style="height:208px;border-bottom:0px;" class="topnews">
@@ -241,7 +247,7 @@ function changDiv(obj){
   <div class="w355 fl h259" style="margin-bottom:0px;">
 		<div style="" class="left_top box titleDiv">
 		  <h2><ul class="titleUl">
-            <li class="seledLi" style=background-color:#fff;padding-left:0px;" onmouseover="changDiv(this);">
+            <li class="seledLi" style="padding-left:0px;" onmouseover="changDiv(this);">
                [@cms_channel id='69']
                 <a style="padding-left:0px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a>
                 [/@cms_channel]
@@ -254,7 +260,7 @@ function changDiv(obj){
           </ul></h2>
 		</div>
 		
-		  <div class="left_div box h230">
+		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul style="display:block;" class="list w355">
 			[@cms_content_list channelId='69' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
@@ -306,7 +312,7 @@ function changDiv(obj){
           </ul></h2>
 		</div>
 		
-		  <div class="left_div box h230">
+		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul style="display:block;" class="list w355">
 			[@cms_content_list channelId='71' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
@@ -409,7 +415,7 @@ function changDiv(obj){
           </ul></h2>
 		</div> 
 		
-		  <div class="left_div box h230">
+		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
 			[@cms_content_list channelId='73' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
@@ -461,7 +467,7 @@ function changDiv(obj){
           </ul></h2>
 		</div> 
 		
-		  <div class="left_div box h230">
+		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
 			[@cms_content_list channelId='75' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
