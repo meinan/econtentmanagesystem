@@ -102,14 +102,21 @@ public class CmsFriendlinkAct {
 
 	@RequestMapping("/friendlink/o_priority.do")
 	public String priority(Integer[] wids, Integer[] priority,
-			Integer queryCtgId, HttpServletRequest request, ModelMap model) {
+			String queryCtgIdStr, HttpServletRequest request, ModelMap model) {
 		WebErrors errors = validatePriority(wids, priority, request);
 		if (errors.hasErrors()) {
 			return errors.showErrorPage(model);
 		}
 		manager.updatePriority(wids, priority);
 		log.info("update CmsFriendlink priority.");
-		return list(queryCtgId, request, model);
+		
+		Integer queryCtgId = null;
+		try {
+			queryCtgId = Integer.parseInt(queryCtgIdStr);
+		} catch (NumberFormatException e) {
+			log.error(e.getMessage());
+		}
+		return list( queryCtgId, request, model);
 	}
 
 	@RequestMapping("/friendlink/o_delete.do")
