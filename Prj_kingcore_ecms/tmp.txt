@@ -1,0 +1,13 @@
+
+	$("#"+spartId).find("div[class=left_div]").eq(0).find("ul").each(
+	    function(i){
+	    	if($(this)==$(obj)){
+			    $(this).css("background-image","url('/${res}/img/images/newstbg.jpg')");
+	    	}else{
+   				$(this).css("background-image","none");
+	    	}
+	    	$(obj).css("background-image","url('/${res}/img/images/newstbg.jpg')");
+	    });
+
+	    
+	    
