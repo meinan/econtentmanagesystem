@@ -1,11 +1,50 @@
 <div id="header" class="box">
-  <div align="center" style="height:141px;" id="logo" class="page box">
+
+<LINK href="/component/jqflash/css/163css.css" type=text/css rel=stylesheet>
+<SCRIPT src="/component/jqflash/js/163css.js" type=text/javascript></SCRIPT>
+<SCRIPT type=text/javascript>     
+	$(document).ready(function() {
+        $('#slider1').s3Slider({
+            timeOut: 3000 
+        });
+
+    });
+</SCRIPT>
+<!-- -->
+<div  style="width:980px;height:180px;padding-left:0px;background-image:url('/${res}/pic/t1_bkg.jpg');background-repeat:no-repeat;" id="logo" class="page box">
+  <div id="slider1" style="padding-left:500px;margin-top:10px;width:450px;height:170px;">
+	<div id=slider1Content>
+		<div style="padding-top:50px" class=slider1Image>
+			<A href="#" target=_self><div style="FONT-SIZE:40px;color:yellow;font-family:宋体;"><b>忠诚、为民、公正、廉洁</b></div></A>
+			<SPAN class=bottom></SPAN>
+		</div>
+		<div style="padding-top:30px" class=slider1Image>
+			<A href="#" target=_self><IMG src="/${res}/pic/outNet.jpg"></A>
+		    <SPAN class=right_bottom></SPAN>
+		</div>
+		<div style="padding-top:50px" class=slider1Image>
+			<A href="#" target=_self><div style="FONT-SIZE:40px;color:yellow;"><b>忠真智勇，奉献为民</b></div></A>
+		    <SPAN class=right_bottom></SPAN>
+		</div>
+		<div style="padding-top:20px" class=slider1Image>
+			<A href="#" target=_self><IMG src="/${res}/pic/gaBanGong.jpg"></A>
+		    <SPAN class=right_bottom></SPAN>
+		</div>
+		<div class=slider1Image>
+			<A href="#" target=""><div style="FONT-SIZE: 32px"></div></A>
+			<SPAN class=top><div style="FONT-SIZE: 22px"></SPAN>
+		</div> 
+	</div>
+  </div>
+</div>
+  
+  <!-- <div align="center" style="height:141px;" id="logo" class="page box">
     <div class="logo fl" onclick="window.location.href='${base}/'">
 	   <img title="XX公安信息网" src="/${res}/pic/topLogo.jpg" style="margin:0px 0px 0px 0px;"/>
     </div>
   </div>
   
-  <!-- <div class="box"></div> -->
+  <div class="box"></div> -->
   
 <div id="nav">
 	  <div id="menu" class="page box relative">
@@ -26,13 +65,15 @@
 
 <div class="page box">
     <div style="font-size: 14px;width:610px;height:40px;line-height:40px;color:#000;text-align:left;" class="fl"><div class="fl" style="width:75px;height:39px"><font color="red"><b>最新通知:</b></font></div>
-      <marquee align="left" behavior="scroll" direction="left" width="530" loop="-1" scrollamount="10" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()"> 
+      <marquee align="left" behavior="scroll" direction="left" width="530" height="30px" loop="-1" scrollamount="10" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()"> 
+         <ul>
          [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='68' recommend='1']
 	       [#list tag_list as a]
-			 <img src="/${res}/img/newInfo.gif"/><a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+			 <li style="float:left;padding-right:15px;align:center;"><img style="padding-top:13px;" class="fl" src="/${res}/img/newInfo.gif"/><a style="padding-left:1px" class="fl" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+		      </li>
 		   [/#list] 
 		 [/@cms_content_list]
-	  
+	     </ul>
       </marquee></div>
 	<div id="search fr" class="page3 box fr" style="width:365px;padding-top:0px;">
       <div style="width: 359px;" class="searchform fr">
