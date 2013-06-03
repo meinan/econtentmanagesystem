@@ -1,7 +1,15 @@
 <dl class="rmpl">
 [#list list as c]
-  <dt><span>${(c.commentUser.username)!"匿名网友"}</span> 于 ${c.createTime} 评论道:</dt>
-  <dd>${c.textHtml!}</dd>
+    
+  [#if c.content.channel.id==68]
+    <dt><span>${c.textHtml!}</span> 签收于 ${c.createTime}，签收人:${(c.commentUser.username)!"匿名"}</dt>
+    <dd style="height:1px;"></dd>
+  [#else]
+    <dt><span>${(c.commentUser.username)!"匿名网友"}</span> 于 ${c.createTime} 评论道:</dt>
+    <dd>${c.textHtml!}</dd>
+    
+  [/#if]
+  
   <dd class="line"></dd>
 [/#list]
 </dl>

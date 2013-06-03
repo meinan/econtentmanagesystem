@@ -50,8 +50,8 @@ function doQianShou(contentId){
 	
 </script>
 <style>
-*{margin:0;padding:0px;}
-body{padding:30px;}
+/**{margin:0;padding:0px;}
+body{padding:30px;} */
 #show{width:300px;height:200px;display:none;padding:1px;position:absolute;border:1px solid #4c77aa;background:#f2f7fd;z-index:11;zoom:1;}
 #show h3{background:#4c77aa;color:#fff;font-size:14px;padding:5px;}
 #show span{position:absolute;right:3px;top:3px;display:block;cursor:pointer;color:#fff;font-weight:bold;}
@@ -76,10 +76,11 @@ body{padding:30px;}
         <div class="w96">
         <h1>${content.title}</h1>
         <div class="msgbar">发布时间： ${content.releaseDate} &nbsp; 作者：${content.author!'本站编辑'} &nbsp; [#--来源： <a target="_blank" href="${content.originUrl!}">${content.origin!'本站原创'}</a> &nbsp; 浏览次数： &nbsp;我要评论() --]
-           <a target="_blank" href="#" onclick="doQianShou('${content.id}');return false;">我要签收</a> &nbsp; 
+           <a href="#commentDiv">我要签收</a> &nbsp; 
 [#if user??]
-          	<span onclick="Cms.collect('${base}','${content.id}',1,'cancelSpan','comfirmSpan')" id="comfirmSpan" style="cursor: pointer;">我要收藏</span>
+          	[#--<span onclick="Cms.collect('${base}','${content.id}',1,'cancelSpan','comfirmSpan')" id="comfirmSpan" style="cursor: pointer;">我要收藏</span>
           	<span onclick="Cms.collect('${base}','${content.id}',0,'cancelSpan','comfirmSpan')" id="cancelSpan"  style="cursor: pointer;">取消收藏</span>
+          	  --]
           	 <script type="text/javascript">
 				$(function() {
 				  Cms.collectexist("${base}","${content.id}","cancelSpan","comfirmSpan");
@@ -113,7 +114,7 @@ body{padding:30px;}
         </ul>
         </div>
         </div>
-        <!--网友评论_Begin-->[#if channel.commentControl!=2] [#include "inc_comment_list.html"/] [#include "inc_comment_input.html"/] [/#if] <!--网友评论_End--></div>
+        <!--网友评论_Begin-->[#if channel.commentControl!=2] [#include "inc_comment_list.html"/] [#include "inc_comment_input_通知通报.html"/] [/#if] <!--网友评论_End--></div>
         <div class="rb_low">&nbsp;</div>
         </div>
         
