@@ -19,8 +19,10 @@ $(function() {
 <div class="toolbar box">
    <div class="toolbar-inner">
     <div class="fl " id="logincontent">
-	[#if user??]欢迎您: ${user.username} &nbsp; ${user.group.name} &nbsp; <a href="logout.jspx?returnUrl=/">退出登录</a>[#else]
-	游客您好，您还没有登录哦！ <a href="${base}/register.jspx">免费注册</a>|<a href="${base}/login.jspx?returnUrl=${location}">登录</a>[/#if]
+	[#--
+	 [#if user??]欢迎您: ${user.username} &nbsp; ${user.group.name} &nbsp; <a href="logout.jspx?returnUrl=/">退出登录</a>[#else]
+	 游客您好，您还没有登录哦！ <a href="${base}/register.jspx">免费注册</a>|<a href="${base}/login.jspx?returnUrl=${location}">登录</a>[/#if]
+	--] 
 	</div>
     <div class="fr">
 	<a href="${base}/tag.jspx" target="_blank">Tags</a>|<a href="${base}/search.jspx" target="_blank">高级搜索</a>|<a href="${base}/rss.jspx" target="_blank">RSS订阅</a>|<a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.kingcoresoftware.com');">设为主页</a>|
@@ -29,11 +31,12 @@ $(function() {
   </div>
 </div>
 <div class="main">  
+	[#--
 	<div class="header box">
         <div class="brand">
             <h1><a href="${base}/"> ${site.name}</a></h1>
         </div>
-    </div>
+    </div> --]
 <form id="jvForm" action="${base}/login.jspx" method="post">
       <table width="800" border="0" align="center" cellpadding="0" cellspacing="5">		  
 			<tr>
@@ -84,9 +87,10 @@ $(function() {
                                  <tr>
                                   <td height="40" colspan="3" align="center"><input type="submit" value=" 登 录 " class="login-button"/>&nbsp;&nbsp;&nbsp;<a href="" target="_blank" class="forgot-password">忘记密码？</a></td>
                                 </tr>
+                                 [#--
                                  <tr>
                                   <td height="50" colspan="3" align="center" style="font-size:12px; color:#404040;">我还没有KingCoreCMS帐号？<a href="${base}/register.jspx" target="_blank" style="color:#1647a6;">马上注册</a></td>
-                  </tr>
+                                 </tr> --]
               </table>
 			 </div>
 			</td>
