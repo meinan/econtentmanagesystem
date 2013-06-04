@@ -38,9 +38,8 @@ import com.kingcore.common.hibernate3.Finder;
  */
 
 @Repository
-public class AdvertDaoImpl extends CmsBaseDaoImpl 
+public class AdvertDaoImpl extends CmsBaseDaoImpl<Content> 
    implements AdvertDao {
-
 
 	@SuppressWarnings("unchecked")
 	public List<Content> getListBySiteIdsForTag(Integer[] siteIds,

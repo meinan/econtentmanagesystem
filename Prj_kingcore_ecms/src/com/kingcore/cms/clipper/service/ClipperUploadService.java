@@ -31,7 +31,7 @@ import com.kingcore.cms.entity.main.Channel;
  * @since	JDK5
  */
 
-public interface ClipperUploadService extends CmsBaseService {
+public interface ClipperUploadService extends CmsBaseService<Channel> {
 	@Transactional(readOnly = true)
 	public List<Channel> getAllChannelList(Integer siteId, boolean hasContentOnly);
 

@@ -24,6 +24,6 @@ package com.kingcore.cms.base.dao;
  * @since	JDK5
  */
 
-public interface CmsBaseDao {
+public interface CmsBaseDao<T> {
 
 }

@@ -24,6 +24,6 @@ package com.kingcore.cms.base.service;
  * @since	JDK5
  */
 
-public interface CmsBaseService {
+public interface CmsBaseService<T> {
 
 }

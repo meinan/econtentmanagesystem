@@ -56,7 +56,7 @@ public class ClipperUploadAction extends CmsBaseAction {
 	private final static Logger log = Logger.getLogger(ClipperUploadAction.class);
 
 	@Autowired
-	private ClipperUploadService clipperUploadService;
+	private ClipperUploadService service;
 	@Autowired
 	private ContentMng manager;
 	
@@ -79,7 +79,7 @@ public class ClipperUploadAction extends CmsBaseAction {
 
 		CmsSite site = CmsUtils.getSite(request);
 		//获取栏目列表
-		List<Channel> channelList = clipperUploadService.getAllChannelList(site.getId(), true);
+		List<Channel> channelList = service.getAllChannelList(site.getId(), true);
 
 		String encodee = request.getParameter("encodee");
 		String title = "";

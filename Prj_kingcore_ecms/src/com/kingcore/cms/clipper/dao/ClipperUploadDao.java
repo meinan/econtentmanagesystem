@@ -17,6 +17,7 @@
 package com.kingcore.cms.clipper.dao;
 
 import com.kingcore.cms.base.dao.CmsBaseDao;
+import com.kingcore.cms.entity.main.Channel;
 
 /**
  * <p>java类文件的说明...</p>
@@ -26,6 +27,6 @@ import com.kingcore.cms.base.dao.CmsBaseDao;
  * @since	JDK5
  */
 
-public interface ClipperUploadDao extends CmsBaseDao {
+public interface ClipperUploadDao extends CmsBaseDao<Channel> {
 
 }

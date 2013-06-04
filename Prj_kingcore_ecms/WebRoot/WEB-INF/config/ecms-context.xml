@@ -168,11 +168,11 @@
 	
 	<bean id="cmsSiteFlowMng" class="com.kingcore.cms.manager.assist.impl.CmsSiteFlowMngImpl"/>
 	
-	<!-- Service -->
+	<!-- Service add by wzw -->
 	<bean id="advertService" class="com.kingcore.cms.advert.service.impl.AdvertServiceImpl"/>
 	<bean id="clipperUploadService" class="com.kingcore.cms.clipper.service.impl.ClipperUploadServiceImpl"/>
 
-	<!--DAO-->
+	<!-- Dao add by wzw -->
 	<bean id="advertDao" class="com.kingcore.cms.advert.dao.impl.AdvertDaoImpl"/>
 
 	<bean id="channelDao" class="com.kingcore.cms.dao.main.impl.ChannelDaoImpl"/>

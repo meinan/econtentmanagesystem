@@ -14,36 +14,33 @@
  * with WuZeven.
  */
 
-package com.kingcore.cms.base.dao.impl;
+package com.kingcore.cms.advert.bean;
 
-import com.kingcore.cms.base.dao.CmsBaseDao;
-import com.kingcore.common.hibernate3.HibernateBaseDao;
+import java.io.Serializable;
 
 /**
  * <p>java类文件的说明...</p>
- * @author Zeven/wzw on Apr 14, 2013
+ * @author Zeven/wzw on Jun 4, 2013
  * @version	1.0
  * @see		Object#equals(java.lang.Object)
  * @since	JDK5
  */
 
-public class CmsBaseDaoImpl<T>  extends HibernateBaseDao<T, Integer>
-    implements CmsBaseDao<T> {
+public class AdvertBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * <p>java方法的说明...</p>
-	 * @author Zeven on Apr 14, 2013
+	 * @author Zeven on Jun 4, 2013
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	protected Class<T> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
