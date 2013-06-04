@@ -38,10 +38,8 @@ import com.kingcore.cms.entity.main.Content;
 
 @Service
 @Transactional
-public class AdvertServiceImpl extends CmsBaseServiceImpl implements AdvertService {
-
-
-	private AdvertDao dao;
+public class AdvertServiceImpl extends CmsBaseServiceImpl<Content>
+                                        implements AdvertService {
 
 	@Transactional(readOnly = true)
 	public List<Content> getListBySiteIdsForTag(Integer[] siteIds,
@@ -59,6 +57,8 @@ public class AdvertServiceImpl extends CmsBaseServiceImpl implements AdvertServi
 		return cacheList;
 	}
 
+	private AdvertDao dao;  //wzw:基本dao使用通用变量名
+	
 	@Autowired
 	public void setDao(AdvertDao dao) {
 		this.dao = dao;
@@ -70,7 +70,6 @@ public class AdvertServiceImpl extends CmsBaseServiceImpl implements AdvertServi
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 

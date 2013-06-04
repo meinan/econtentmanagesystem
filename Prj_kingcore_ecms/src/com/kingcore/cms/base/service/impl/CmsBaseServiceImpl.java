@@ -26,7 +26,7 @@ import com.kingcore.cms.base.service.CmsBaseService;
  * @since	JDK5
  */
 
-public class CmsBaseServiceImpl implements CmsBaseService {
+public class CmsBaseServiceImpl<T> implements CmsBaseService<T> {
 
 	/**
 	 * <p>java方法的说明...</p>

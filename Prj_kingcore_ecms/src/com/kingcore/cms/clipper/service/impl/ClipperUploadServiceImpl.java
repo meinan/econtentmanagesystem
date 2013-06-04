@@ -39,8 +39,8 @@ import com.kingcore.cms.entity.main.Channel;
 
 @Service
 @Transactional
-public class ClipperUploadServiceImpl extends CmsBaseServiceImpl implements
-		ClipperUploadService {
+public class ClipperUploadServiceImpl extends CmsBaseServiceImpl<Channel> 
+                                implements ClipperUploadService {
 
 	@Autowired
 	private ChannelDao dao;

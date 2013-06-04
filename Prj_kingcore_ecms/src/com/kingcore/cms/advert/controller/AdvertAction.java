@@ -22,8 +22,6 @@ import com.kingcore.cms.advert.service.AdvertService;
 import com.kingcore.cms.base.controller.CmsBaseAction;
 import com.kingcore.cms.entity.main.Content;
 
-
-
 /**
  * <p>java类文件的说明...</p>
  * @author Zeven/wzw on Apr 14, 2013
@@ -32,14 +30,19 @@ import com.kingcore.cms.entity.main.Content;
  * @since	JDK5
  */
 @Controller
-@RequestMapping("/advert")//类级别,可以不需要,如果要了,下面所有的请求路径前都需要加入/aaa
+@RequestMapping("/advert") //类级别,可以不需要,如果要了,下面所有的请求路径前都需要加入/aaa
 public class AdvertAction extends CmsBaseAction {
 	private static final Logger log = LoggerFactory
-			.getLogger(AdvertAction.class);
+										.getLogger(AdvertAction.class);
 
 	public static final String COOKIE_ERROR_REMAINING = "_error_remaining";
 
 	private static final long Half_Day_Micsecd = 1000*60*60*12L;
+
+	@Autowired
+	private AdvertService service;   //wzw:基本service使用通用变量名
+//	@Autowired
+//	private UnifiedUserMng unifiedUserMng; 
 
 	@RequestMapping(value = "/directorAd.jspx", method = RequestMethod.GET)
 	public String directorAd(HttpServletRequest request,
@@ -54,12 +57,13 @@ public class AdvertAction extends CmsBaseAction {
 //		}else{//其他默认广告
 //			adHtmlStr = "<a href='http://www.zhongyi360.cn' target='_blank'><FONT SIZE='2px'>春夏季预防感冒</FONT></a>";
 //		}
+		
 		List<Content> list = null;
 		Object obj = request.getSession().getServletContext().getAttribute("Ad_Content_List");
 		Object date = request.getSession().getServletContext().getAttribute("Ad_Content_Time");
 		if(obj==null || date==null
 				|| (Calendar.getInstance().getTime().getTime()-((Date)date).getTime())> Half_Day_Micsecd ){
-			list = advertService.getListBySiteIdsForTag(null, null, null, null, //Boolean.FALSE, Boolean.FALSE,
+			list = service.getListBySiteIdsForTag(null, null, null, null, //Boolean.FALSE, Boolean.FALSE,
 							null, -1, null, 10);
 			request.getSession().getServletContext()
 				.setAttribute("Ad_Content_List", list );
@@ -87,9 +91,5 @@ public class AdvertAction extends CmsBaseAction {
 	private String convert(String title) {
 		return StringUtils.replace(title, "'", "&acute;");
 	}
-
-	@Autowired
-	private AdvertService advertService;
-//	@Autowired
-//	private UnifiedUserMng unifiedUserMng; 
+	
 }

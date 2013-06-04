@@ -18,6 +18,7 @@ package com.kingcore.cms.clipper.dao.impl;
 
 import com.kingcore.cms.base.dao.impl.CmsBaseDaoImpl;
 import com.kingcore.cms.clipper.dao.ClipperUploadDao;
+import com.kingcore.cms.entity.main.Channel;
 
 /**
  * <p>java类文件的说明...</p>
@@ -27,7 +28,7 @@ import com.kingcore.cms.clipper.dao.ClipperUploadDao;
  * @since	JDK5
  */
 
-public class ClipperUploadDaoImpl extends CmsBaseDaoImpl implements
+public class ClipperUploadDaoImpl extends CmsBaseDaoImpl<Channel> implements
 		ClipperUploadDao {
 
 	/**
