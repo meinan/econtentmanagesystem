@@ -362,6 +362,7 @@ public class TemplateAct {
 
 	@Autowired
 	private CmsLogMng cmsLogMng;
+	@Autowired   //add by wzw
 	private TplManager tplManager;
 	private CmsResourceMng resourceMng;
 	private CmsSiteMng cmsSiteMng;
