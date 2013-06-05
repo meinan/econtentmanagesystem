@@ -113,8 +113,19 @@
 			</props>
 		</property>
 	</bean>
+	
 	<context:annotation-config/>
 	
+	<!-- 主动扫描dao和service包(主动注入) 扫描符合@Controller的类
+	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	  -->
+	<context:component-scan base-package="com.kingcore.cms.*.controller,com.kingcore.cms.action.front,com.kingcore.cms.action.member" use-default-filters="false">
+	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 
 	<import resource="ecms-servlet-front-action.xml"/>
+	 -->
 
 </beans>
