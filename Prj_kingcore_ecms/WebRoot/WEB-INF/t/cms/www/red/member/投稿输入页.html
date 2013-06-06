@@ -6,7 +6,7 @@
 <link href="${resSys}/front.css" rel="stylesheet" type="text/css"/>
 <script src="${resSys}/jquery.js" type="text/javascript"></script>
 <script src="${resSys}/front.js" type="text/javascript"></script>
-<script src="${base}/thirdparty/fckeditor/fckeditor.js" type="text/javascript"></script>
+<script src="${base}/component/fckeditor/fckeditor.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../../${res}/css/member.css" />
 <script type="text/javascript">
 $(function() {
@@ -82,10 +82,10 @@ $(function() {
                  <td height="25" align="right" bgcolor="#f6fbff">内容：</td>
                  <td bgcolor="#FFFFFF">
                  <script type="text/javascript">
-                    [#assign editorBasePath="${base}/thirdparty/fckeditor/" filemanager="${editorBasePath}editor/filemanager/browser/default/browser.html"/]
+                    [#assign editorBasePath="${base}/component/fckeditor/" filemanager="${editorBasePath}editor/filemanager/browser/default/browser.html"/]
                     var txt = new FCKeditor("txt");
                     txt.BasePath = "${editorBasePath}";
-                    txt.Config["CustomConfigurationsPath"]="${base}/thirdparty/fckeditor/myconfig.js";
+                    txt.Config["CustomConfigurationsPath"]="${base}/component/fckeditor/myconfig.js";
                     
                     txt.Config["LinkBrowser"] = false ;
                     txt.Config["ImageBrowser"] = false ;
