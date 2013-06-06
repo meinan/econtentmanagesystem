@@ -10,13 +10,13 @@
 	>
 <#include "control.ftl"/><#rt/>
 <script type="text/javascript">
-<#local editorBasePath="${base}/thirdparty/fckeditor/" filemanager="${editorBasePath}editor/filemanager/browser/default/browser.html"/>
+<#local editorBasePath="${base}/component/fckeditor/" filemanager="${editorBasePath}editor/filemanager/browser/default/browser.html"/>
 var ${name} = new FCKeditor("${name}");
 ${name}.BasePath = "${editorBasePath}";
 <#--
-${name}.Config["CustomConfigurationsPath"]="${base}/thirdparty/fckeditor/myconfig.js?d="+new Date()*1;
+${name}.Config["CustomConfigurationsPath"]="${base}/component/fckeditor/myconfig.js?d="+new Date()*1;
 -->
-${name}.Config["CustomConfigurationsPath"]="${base}/thirdparty/fckeditor/myconfig.js";
+${name}.Config["CustomConfigurationsPath"]="${base}/component/fckeditor/myconfig.js";
 
 ${name}.Config["LinkBrowser"] = false ;
 ${name}.Config["ImageBrowser"] = false ;
