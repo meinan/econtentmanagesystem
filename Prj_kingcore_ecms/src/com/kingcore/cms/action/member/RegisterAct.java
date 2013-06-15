@@ -82,7 +82,7 @@ public class RegisterAct {
 		if (errors.hasErrors()) {
 			return FrontUtils.showError(request, response, model, errors);
 		}
-		//mode by wzw
+		//mode by wzw,增加是否发送激活邮件
 		String autoActivity = configMng.getMap().get("regist_auto_activity");
 		Boolean is_activity = "1".equals(autoActivity);
 		String ip = RequestUtils.getIpAddr(request);
@@ -98,7 +98,11 @@ public class RegisterAct {
 			try {
 				cmsUserMng.registerMember(username, email, password, ip, null, userExt,
 						is_activity, sender, msgTpl); //false
-				model.addAttribute("status", 0);
+				if(is_activity){
+					model.addAttribute("status", -1);
+				}else{
+					model.addAttribute("status", 0);
+				}
 			} catch (Exception e) {
 				// 发送邮件异常
 				model.addAttribute("status", 100);
