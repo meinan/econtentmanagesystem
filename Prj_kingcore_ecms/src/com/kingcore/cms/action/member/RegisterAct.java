@@ -82,19 +82,22 @@ public class RegisterAct {
 		if (errors.hasErrors()) {
 			return FrontUtils.showError(request, response, model, errors);
 		}
+		//mode by wzw
+		String autoActivity = configMng.getMap().get("regist_auto_activity");
+		Boolean is_activity = "1".equals(autoActivity);
 		String ip = RequestUtils.getIpAddr(request);
 		EmailSender sender = configMng.getEmailSender();
 		MessageTemplate msgTpl = configMng.getRegisterMessageTemplate();
-		if (sender == null) {
+		if (is_activity==false && sender == null) {
 			// 邮件服务器没有设置好
 			model.addAttribute("status", 4);
-		} else if (msgTpl == null) {
+		} else if (is_activity==false && msgTpl == null) {
 			// 邮件模板没有设置好
 			model.addAttribute("status", 5);
 		} else {
 			try {
 				cmsUserMng.registerMember(username, email, password, ip, null, userExt,
-						false, sender, msgTpl);
+						is_activity, sender, msgTpl); //false
 				model.addAttribute("status", 0);
 			} catch (Exception e) {
 				// 发送邮件异常
