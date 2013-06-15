@@ -31,8 +31,15 @@ $(function() {
     </div>
     <div class="box"></div>
     <div class="left_div1 box">
-		<div class="w96" style="min-height:800px;">
-		[@cms_content_page channelId=channel.id count=channel.pageSize sysPage='1' pageClass='pagination' styleList='1-1' ctgForm='1' ctgClass='red' lineHeight='10' bottomLine='1' headMark='4' dateFormat='yyyy-MM-dd' datePosition='2' dateClass='gray' channelOption='2' tpl='2'/]
+		<div class="w96" style="min-height:800px;padding-top:5px;">
+		  [@cms_content_list channelId=channel.id count='1000' titLen='15' orderBy='1' channelOption='1']
+		  <ul style="">
+		  [#list tag_list as a]
+		  <li style="float:left;width:200px;height:23px;padding-top:3px;"><a style="" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		  [/#list]
+		  </ul>
+		  [/@cms_content_list]
+        		
 		</div>
     </div>
     <div class="left_low"></div>	
