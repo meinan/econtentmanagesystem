@@ -28,32 +28,11 @@
 		</property>
 	</bean>
 	
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-		<property name="interceptors">
-			<list>
-				<ref bean="adminContextInterceptor"/>
-				<ref bean="adminLocaleIntercept"/>
-			</list>
-		</property>
-	</bean>
-	<bean id="adminContextInterceptor" class="com.kingcore.cms.web.AdminContextInterceptor">
-		<!--<property name="adminId" value="1"/>-->
-		<property name="auth" value="true"/>
-		<property name="loginUrl" value="/sysadmin/login.do"/>
-		<property name="returnUrl" value="/sysadmin/index.do"/>
-		<property name="excludeUrls">
-			<list>
-				<value>/login.do</value>
-				<value>/logout.do</value>
-			</list>
-		</property>
-	</bean>
-	<bean id="adminLocaleIntercept" class="com.kingcore.cms.web.AdminLocaleInterceptor"/>
-	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="cookieName" value="clientlanguage"/>
 		<property name="cookieMaxAge" value="-1"/>
 	</bean>
+	
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
@@ -64,14 +43,7 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="freemarkerViewResolver" class="com.kingcore.common.web.springmvc.RichFreeMarkerViewResolver">
-		<property name="prefix" value="/ecms_sys/"/>
-		<property name="suffix" value=".html"/>
-		<property name="contentType" value="text/html; charset=UTF-8"/>
-		<property name="exposeRequestAttributes" value="false"/>
-		<property name="exposeSessionAttributes" value="false"/>
-		<property name="exposeSpringMacroHelpers" value="true"/>
-	</bean>
+	
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF"/>
 		<property name="freemarkerVariables">
@@ -101,6 +73,39 @@
 		</property>
 	</bean>
 	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="adminContextInterceptor"/>
+				<ref bean="adminLocaleIntercept"/>
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- ============================= begin define special beans(by wzw) -->
+	<bean id="adminContextInterceptor" class="com.kingcore.cms.web.AdminContextInterceptor">
+		<!--<property name="adminId" value="1"/>-->
+		<property name="auth" value="true"/>
+		<property name="loginUrl" value="/sysadmin/login.do"/>
+		<property name="returnUrl" value="/sysadmin/index.do"/>
+		<property name="excludeUrls">
+			<list>
+				<value>/login.do</value>
+				<value>/logout.do</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="adminLocaleIntercept" class="com.kingcore.cms.web.AdminLocaleInterceptor"/>
+	
+	<bean id="freemarkerViewResolver" class="com.kingcore.common.web.springmvc.RichFreeMarkerViewResolver">
+		<property name="prefix" value="/ecms_sys/"/>
+		<property name="suffix" value=".html"/>
+		<property name="contentType" value="text/html; charset=UTF-8"/>
+		<property name="exposeRequestAttributes" value="false"/>
+		<property name="exposeSessionAttributes" value="false"/>
+		<property name="exposeSpringMacroHelpers" value="true"/>
+	</bean>
+	
 	<context:annotation-config/>
 
 	<!-- add by wzw,some special controllers -->
@@ -108,12 +113,12 @@
 	<bean id="staticAct" class="com.kingcore.cms.staticpage.StaticAct"/>	
 	<bean id="cmsStatististAct" class="com.kingcore.cms.statistic.CmsStatisticAct"/>
 
-	<!-- 主动扫描dao和service包(主动注入) 扫描符合@Controller的类
-	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-	  -->
 	<context:component-scan base-package="com.kingcore.cms.action.admin" use-default-filters="false">
 	  <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	  <!-- 主动扫描dao和service包(主动注入) 扫描符合@Controller的类即可 (by wzw)。
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		-->
 	</context:component-scan>
 	
 	<!-- 包含action
