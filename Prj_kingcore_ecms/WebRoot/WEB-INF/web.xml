@@ -132,14 +132,14 @@
         </init-param>
         <load-on-startup>3</load-on-startup>
     </servlet>
-    <servlet-mapping>
+    <!-- <servlet-mapping>
         <servlet-name>JspServlet</servlet-name>
         <url-pattern>*.jsp</url-pattern>
     </servlet-mapping>
-    <servlet-mapping><!-- jspex -->
+    <servlet-mapping>jspex
         <servlet-name>JspServlet</servlet-name>
         <url-pattern>*.jspw</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
 	
 	<!-- <servlet>
 		<servlet-name>Install</servlet-name>
@@ -159,14 +159,15 @@
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.jhtml</url-pattern>
 	</servlet-mapping>
+	<!--  -->
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.jspx</url-pattern>
 	</servlet-mapping>
-	<!-- <servlet-mapping>
+	<!--  -->  <servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.jsp</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DispatcherServletForFront</servlet-name>
 		<url-pattern>*.htm</url-pattern>
