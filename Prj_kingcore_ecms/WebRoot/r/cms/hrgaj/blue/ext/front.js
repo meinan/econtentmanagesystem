@@ -4,9 +4,9 @@ function frontOnDutyToday(){
 	//alert(week);
 	for(var i=0; i<dutyData.length; i++){
 		if(dutyData[i][0]==week){
-	   		return "今日值班  局领导："+dutyData[i][1]
-	   		            +"  值班长："+dutyData[i][2]
-	   		            +"  接警员："+dutyData[i][3];
+	   		return "<font color='red'><B>今日值班</B>  局领导：</font>"+dutyData[i][1]
+	   		            +"  <font color='red'>值班长：</font>"+dutyData[i][2]
+	   		            +"  <font color='red'>接警员：</font>"+dutyData[i][3];
 		}
 	}
 }

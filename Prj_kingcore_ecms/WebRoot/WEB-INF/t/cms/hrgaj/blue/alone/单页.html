@@ -64,10 +64,10 @@ $(function() {
     <div class="rb_right_div">
       <!--最新图文资讯_Begin-->
       <div class="w98"> 
-			<ul style="list-style-type:disc;background-image:none;" class="order">
-			  [@cms_content_list channelId='77' count='12' titLen='15' orderBy='8' channelOption='1']
+			<ul style="list-style:none;list-style-type:disc;background-image:none;width:248px;">
+			  [@cms_content_list channelId='77' count='12' titLen='5' orderBy='8' channelOption='1']
 			  [#list tag_list as a]
-			  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li style="float:left;width:75px;border:solid 1px #CACACA;margin:2px;"><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=5 append=append/]</a></li>
 			  [/#list]
 			  [/@cms_content_list]
 			</ul>

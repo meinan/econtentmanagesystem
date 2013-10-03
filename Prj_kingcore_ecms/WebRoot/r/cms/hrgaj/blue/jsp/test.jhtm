@@ -1,0 +1,9 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@page import="com.kingcore.framework.bean.DbBean;"%>
+
+<% 
+DbBean dbBean = new DbBean();
+String sql = "select count(0) from jc_channel";
+int cnt = dbBean.queryForInt(sql);
+out.print("查询的记录总数为：" + cnt );
+%> 

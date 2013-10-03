@@ -59,6 +59,127 @@ function changDiv(obj){
 	  });
 }
 
+/** 
+ * 鼠标移上去显示层 
+ * @param divId 显示的层ID 
+ * @returns 
+ */  
+$.fn.myHoverTip = function(divId) {   
+	var timer = null;
+    var div = $("#" + divId); //要浮动在这个元素旁边的层   
+    //alert(divId);
+    div.css("position", "absolute");//让这个层可以绝对定位   
+    var self = $(this); //当前对象   
+    //alert(divId); 
+    self.hover(function() {   
+    	//alert(divId);
+        div.css("display", "block");  
+        var p = self.position(); //获取这个元素的left和top  
+        var x = p.left + self.width();//获取这个浮动层的left  
+        var docWidth = $(document).width();//获取网页的宽  
+        if (x > docWidth - div.width() - 20) {  
+            x = p.left - div.width() ;  
+        }  
+        div.css("left", $(this).offset().left+80);//x);  
+        div.css("top", $(this).offset().top );   //600 );// p.top);  
+        div.show();   
+    	//alert(p.left+80);
+    	//alert( p.top );
+    },  
+    function() {  
+        //div.css("display", "none");  
+		timer = window.setTimeout(function(){div.css("display", "none")}, 100);
+    }  
+    );   
+    //alert(divId);
+    	//alert(11);
+
+	 
+    div.hover(function() {  
+        window.clearTimeout(timer);  
+    },  
+    function() {  
+        div.css("display", "none");  
+    }  
+    );  
+    return this;  
+} 
+
+$(document).ready(function(){
+
+	//$(document).find("div[class=_top_link]").each(function(i){
+	//	var _id = $(this)
+	//		$(this).removeClass("hover")        }    );
+			
+	for(var i=0;i<5;i++){
+	//alert(i);
+    	$('#lx_'+i).myHoverTip('det_'+i);
+	}
+	
+	$("#GuangGao").adFloat({width:372,height:118,top:0,left:0});
+});
+
+(function($){
+	$.fn.adFloat=function(options){
+		return new AdFloat(this,options);
+	}
+	var AdFloat=function(element,options){
+		this.element=$(element);
+		this.options=$.extend({
+			width:100,		//默认的广告的宽
+			height:150,		//默认的广告的高
+			top:0,			//默认的广告的Y坐标
+			left:0,			//默认的广告的X坐标
+			delay:30,		//延迟
+			step:4			//默认的广告每次移动的距离(像素)
+		},options);
+		this.interval=null;
+		this.xPos=this.options.left;
+		this.yPos=this.options.top;
+		this.yon=0;
+		this.xon=0;
+		this.isPause=false;
+		this.init();
+	};
+	AdFloat.prototype={
+		init:function(){
+			var me=this;
+			me.element.css("display","block");
+			me.element.css({position:"absolute",left:me.options.left,top:me.options.top,width:me.options.width,height:me.options.height,overflow:"hidden"})	
+			me.element.hover(function(){clearInterval(me.interval)},function(){me.interval=setInterval(function(){me.changePos();},me.options.delay);});
+			$(document).ready(function(){me.start();});
+		},
+		changePos:function(){
+			var me=this;
+			var clientWidth=$(window).width();
+			var clientHeight=$(window).height();
+			var Hoffset=me.options.height;
+			var Woffset=me.options.width;	
+			me.element.css({left:me.xPos+$(document).scrollLeft(),top:me.yPos+$(document).scrollTop()});
+			if(me.yon){
+				me.yPos=me.yPos+me.options.step;	
+			}else{
+				me.yPos=me.yPos-me.options.step;	
+			}
+			if(me.yPos<0){me.yon=1;me.yPos=0;}
+			if(me.yPos>=(clientHeight-Hoffset)){me.yon=0;me.yPos=(clientHeight-Hoffset);}
+			if(me.xon){
+				me.xPos=me.xPos+me.options.step;	
+			}else{
+				me.xPos=me.xPos-me.options.step;	
+			}
+			if(me.xPos<0){me.xon=1;me.xPos=0;}
+			if(me.xPos>=(clientWidth-Woffset)){me.xon=0;me.xPos=(clientWidth-Woffset);}
+		},
+		start:function(){
+			var me=this;
+			me.element.css("top",me.yPos);
+			me.interval=setInterval(function(){me.changePos();},me.options.delay);	
+		}	
+	}	
+})(jQuery);
+
+
 </script>
 <style type="text/css">
 .listDiv{
@@ -100,7 +221,7 @@ function changDiv(obj){
      <!-- 新闻 -->
 	 <div style="width:345px;" class="news-focus fl mr10">
 
-          [@cms_content_list typeId='3' styleList='3-1' titLen='20' count='5' flashWidth='345' flashHeight='246' textHeight='20' channelOption='1' tpl='2'/] 
+          [@cms_content_list typeId='3' styleList='3-1' titLen='26' count='5' flashWidth='345' flashHeight='246' textHeight='20' channelOption='1' tpl='2'/] 
 
      </div>
 	 <!-- 综合要闻 -->
@@ -116,9 +237,9 @@ function changDiv(obj){
 		  <div style="border-top:0px;width:363px;height:233px;" class="left_div box h230">
 	      <div class="mt5">
 	        <ul class="list w355">
-                [@cms_content_list channelId='58' count='9' titLen='20' append='...' channelOption='1']
-                    [#list tag_list as a]
-              	  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+                [@cms_content_list channelId='58' count='9' titLen='26' append='...' channelOption='1']
+                    [#list tag_list as a]  [#-- ${a.url} --]
+              	  <li> <a href="/${res}/jsp/test.jhtm?id=${a.id}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                     [/#list]
                  [/@cms_content_list]  
 	        </ul>
@@ -145,7 +266,7 @@ function changDiv(obj){
 <div class="page box">
 
 <!--焦点图片_begin-->
-<div class="w720 fl box mt0">
+<div class="w720 fl box mt0" style="margin-bottom:0px;height:290px;">
 <div class="w250 fl" style="margin-right:10px;">
 <div class="w250 fl" style="margin-bottom:0px;margin-right:0px;">
 		<div style="width:250px;" class="titleDiv left_top box">
@@ -159,9 +280,10 @@ function changDiv(obj){
 				[#list tag_list as sub]
 				
                     [@cms_channel id='${sub.id}']
-                       <li style="margin-left:5px;background-image:url('/${res}/img/navLink.jpg');background-repeat:no-repeat;background-position:left center;"><a style="margin-left:3px;" href="${tag_bean.url}" target="_blank" >${tag_bean.name}</a></li>
+                       <li style="margin-left:5px;background-image:url('/${res}/img/navLink.jpg');background-repeat:no-repeat;background-position:left center;"><a id="lx_${sub_index}" style="margin-left:3px;" href="${tag_bean.url}" target="_blank">${tag_bean.name}</a></li>
                     [/@cms_channel]
-                    
+ 
+		                    
 				[/#list]
 				[/@cms_channel_list] 			
 			
@@ -170,22 +292,38 @@ function changDiv(obj){
 		</div>
 		<!--<div class="left_low"></div>-->
 </div>
+<!-- 视频 -->
 <div class="w250 fl" style="margin-top:6px;margin-right:0px;">
 		<div style="width:250px;" class="titleDiv left_top box">
-		  <h2><a href="javascript:void(0);" target="_blank">办公助手</a></h2>
+		  <h2>[@cms_channel id='46']<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>[/@cms_channel]</h2>
 		</div>
-		  <div style="border-top:0px;height:84px;" class="w250 left_div box">
-		  <div class="mt5">
-			<ul style="padding:0px;" class="list w250">
-	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='67']
-        [#list tag_list as a]
-		<li style="float:left;">[#if a_index!=0]|[/#if]<a style="padding:5px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
-		[/#list]		
-	  [/@cms_content_list]
-		<li style="float:left;">|<a style="padding:5px;" href="/download/index.jhtml" title="下载专区" target="_blank">下载专区</a></li>
-	        
-			</ul>
-		  </div>	
+		  <div style="border-top:0px;height:130px;" class="w250 left_div box">
+	  	  
+	      <div class="mt5" style="height:130px;width:250px;">
+	        <dl class="list line box" style="height:130px;">
+	          <dd class="pic" style="margin-top:1px;border:0px solid blue;height:130px;width:88px;">
+                [@cms_content_list channelId='46' count='1' titLen='12' append='...' channelOption='1']
+                    [#list tag_list as a]
+                    [#if a_index = 0]
+              	     <a href="${a.url}" title="${a.title}"><img src="${a.typeImg!site.defImg}" width="140" height="105"></a>
+              	     </br><FONT SIZE="2" COLOR="RED"><b>[@text_cut s=a.title len=6 append=append/]</b></FONT>
+                    [/#if]
+                    [/#list]
+                 [/@cms_content_list] 	             
+	          </dd>
+			  <dd style="border:0px solid red;width:140px;">
+	        <ul class="list">
+                [@cms_content_list channelId='46' count='5' titLen='9' append='...' channelOption='1']
+                    [#list tag_list as a]
+                    [#if a_index > 0]
+              	  <li style="line-height:21px;height:21px;margin-left:1px;margin-right:2px;background-image:url('/${res}/img/sp-icon.jpg');background-repeat:no-repeat;background-position:left center;"> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+                    [/#if]
+                    [/#list]
+                 [/@cms_content_list]  
+	        </ul> </dd>
+			</dl>
+	      </div>		  
+		   
 		</div>
 		<!--<div class="left_low"></div>-->
 </div>
@@ -196,7 +334,7 @@ function changDiv(obj){
 <!--精彩专题_end
 
 <div class="w720 fr box">-->
-<!--news_begin-->
+<!--news_begin 通知通报 -->
 <div style="width:455px;margin-left:0px;" class="fl">
     <div style="" class="titleDiv left_top box">
       <h2>
@@ -205,12 +343,12 @@ function changDiv(obj){
            [/@cms_channel]
          </h2>
      </div>
-    <div class="fl" style="padding:5px; width:450px; height:203px; border-top:0px;border:1px #d8d8d8 solid; padding:2px;">
+    <div class="fl" style="padding:5px; width:450px; height:249px; border-top:0px;border:1px #d8d8d8 solid; padding:2px;">
      
-	 [@cms_content_list count='8' titLen='20' append='...' dateFormat='MM-dd' channelOption='1' channelId='68']
+	 [@cms_content_list count='11' titLen='26' append='...' dateFormat='MM-dd' channelOption='1' channelId='68']
       <ul style="height:208px;border-bottom:0px;" class="topnews">
 		[#list tag_list as a]
-		<li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a><em>${a.date?string(dateFormat)}</em></li>
+		<li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a><em><a href="${a.url}#commentDiv" target="_blank"><font color="red"><b>签收</b></font><a>&nbsp;<a href="${a.url}#commentDiv" target="_blank"><font color="red"><b>签收列表</b></font></a></em></li>
 		[/#list]
 	  </ul >
 	  [/@cms_content_list] 
@@ -223,27 +361,48 @@ function changDiv(obj){
 <!--资讯排行榜_begin-->
 <div class="w250 fr">
  	<div class="rb_right_top"><h2><a href="#">XX公安简报</a></h2></div>
-	<div class="rb_right_div" style="height:299px;">
-		<ul style="list-style-type:disc;background-image:none;" class="order">
-		  [@cms_content_list channelId='77' count='12' titLen='15' orderBy='8' channelOption='1']
+	<div class="rb_right_div" style="height:240px;">
+		<ul style="list-style:none;list-style-type:disc;background-image:none;width:248px;">
+		  [@cms_content_list channelId='77' count='12' titLen='5' orderBy='8' channelOption='1']
 		  [#list tag_list as a]
-		  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		  <li style="float:left;width:75px;border:solid 1px #CACACA;margin:2px;"><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=5 append=append/]</a></li>
 		  [/#list]
 		  [/@cms_content_list]
 		</ul>
 	</div>
 </div>
+
+<div class="w250 fr" style="margin-top:6px;margin-right:0px;">
+		<div style="width:250px;" class="titleDiv left_top box">
+		  <h2><a href="javascript:void(0);" target="_blank">办公助手</a></h2>
+		</div>
+		  <div style="border-top:0px;height:85px;" class="w250 left_div box">
+		  <div class="mt5">
+			<ul style="padding:0px;" class="list w250">
+	 [@cms_content_list count='8' titLen='26' append='...' dateFormat='MM-dd' channelOption='1' channelId='67']
+        [#list tag_list as a]
+		<li style="float:left;">[#if a_index!=0]|[/#if]<a style="padding:5px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+		[/#list]		
+	  [/@cms_content_list]
+		<li style="float:left;">|<a style="padding:5px;" href="/download/index.jhtml" title="下载专区" target="_blank">下载专区</a></li>
+	        
+			</ul>
+		  </div>	
+		</div>
+		<!--<div class="left_low"></div>-->
+</div>
+
 <!--资讯排行榜_end
 </div>-->
 
 <!-- 图片链接 -->
-<div class="w355 fl " style="margin-top:10px;"> 
+<div class="w355 fl " style="margin-top:-15px;"> 
 	<img title="公安廉政教育长廊" src="/${res}/ext/linkLzjy.gif" style="margin:0px 0px 0px 0px;"/>
 </div>
-<div class="w355 fl " style="margin-top:10px;margin-left:10px;">
+<div class="w355 fl " style="margin-top:-15px;margin-left:10px;">
 	<img title="公安民警心理健康驿站" src="/${res}/ext/linkXljk.gif" style="margin:0px 0px 0px 0px;"/>
 </div>
-
+ 
 <!-- 第三栏 -->
 <div class="w720 fl box mt10">
   <div class="w355 fl h259" style="margin-bottom:0px;">
@@ -265,7 +424,7 @@ function changDiv(obj){
 		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul style="display:block;" class="list w355">
-			[@cms_content_list channelId='69' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='69' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -273,14 +432,14 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
 			</ul>
 			
 			<ul style="display:none;" class="list w355">
-			[@cms_content_list channelId='70' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='70' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -288,7 +447,7 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
@@ -317,7 +476,7 @@ function changDiv(obj){
 		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul style="display:block;" class="list w355">
-			[@cms_content_list channelId='71' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='71' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -325,14 +484,14 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
 			</ul>
 			
 			<ul style="display:none;" class="list w355">
-			[@cms_content_list channelId='72' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='72' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -340,7 +499,7 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@]
@@ -376,10 +535,10 @@ function changDiv(obj){
 	</div> -->
 
 	<!-- 图片链接 -->
-	<div class="w355 fl " style="margin-top:15px;"> 
+	<div class="w355 fl " style="margin-top:5px;"> 
 		<img title="公安民警网上训练中心" src="/${res}/ext/linkWsxl.gif" style="margin:0px 0px 0px 0px;"/>
 	</div>
-	<div class="w355 fl " style="margin-top:15px;margin-left:10px;">
+	<div class="w355 fl " style="margin-top:5px;margin-left:10px;">
 		<img title="公安民警读书学习园地" src="/${res}/ext/linkDsxx.gif" style="margin:0px 0px 0px 0px;"/>
 	</div>
 	 
@@ -420,7 +579,7 @@ function changDiv(obj){
 		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
-			[@cms_content_list channelId='73' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='73' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -428,14 +587,14 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
 			</ul>
 			
 			<ul style="display:none;" class="list w355">
-			[@cms_content_list channelId='74' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='74' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -443,7 +602,7 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
@@ -472,7 +631,7 @@ function changDiv(obj){
 		  <div class="listDiv left_div box h230">
 		  <div class="mt5">
 			<ul class="list w355">
-			[@cms_content_list channelId='75' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='75' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -480,14 +639,14 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
 			</ul>
 			
 			<ul style="display:none;" class="list w355">
-			[@cms_content_list channelId='61' count='6' titLen='20' descLen='50' append='...' orderBy='4' channelOption='1']
+			[@cms_content_list channelId='61' count='6' titLen='26' descLen='50' append='...' orderBy='4' channelOption='1']
 			  [#list tag_list as a]
 			  [#if a_index = 0]
 			  <li class="toptext">
@@ -495,7 +654,7 @@ function changDiv(obj){
 			  <p>[@text_cut s=a.description len=descLen append=append/]</p>
 			  </li>
 			  [#else]
-			  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
 			  [/#if]
 			  [/#list]
 			 [/@cms_content_list]
@@ -507,7 +666,7 @@ function changDiv(obj){
 	
 	
 </div>
-
+ 	
 
 <!--精彩图文_begin-->
 <!--精彩图文_end
@@ -524,5 +683,27 @@ function changDiv(obj){
 <!--foot_end-->
 </div>
 </div>
+
+
+				<!-- 弹出办公助手 -->  
+		        [@cms_channel_list parentId=66]
+				[#list tag_list as sub]
+				
+		<div id="det_${sub_index}" style="border:solid 1px #CACACA;background-color:#FFFFFF;position:absolute;display:none;width:160px;">
+		  [@cms_content_list channelId='${sub.id}' count='60' titLen='8' orderBy='1' channelOption='1']
+		  <ul style="width:180px;">
+		  [#list tag_list as aa]
+		  <li style="width:90px;" style="float:left;display:inline;"><a style="" href="${aa.url}" title="${aa.title}" target="_blank">[@text_cut s=aa.title len=5 append=append/]</a></li>
+		  [/#list]
+		  </ul>
+		  [/@cms_content_list]        		
+		</div>
+		                    
+				[/#list]
+				[/@cms_channel_list]
+
+<div id="GuangGao" style="display:none;border:1px solid grey;z-index:99;"><a href="http://www.baidu.com" target="_blank"><img src="/${res}/img/floatPic.jpg" /></a></div>
+
+				
 </body>
 </html>
