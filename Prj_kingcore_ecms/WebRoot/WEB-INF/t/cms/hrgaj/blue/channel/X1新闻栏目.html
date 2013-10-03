@@ -41,7 +41,7 @@ $(function() {
               <ul class="top-ul">
                 [@cms_content_list channelId='81' count='6' typeId='4' titLen='20' append='...' channelOption='1']
                     [#list tag_list as a]
-              	  <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+              	  <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                     [/#list]
                  [/@cms_content_list]   
               </ul>

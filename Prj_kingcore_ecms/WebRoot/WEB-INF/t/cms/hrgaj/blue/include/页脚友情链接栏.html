@@ -1,8 +1,10 @@
-<dl style="margin-top:10px;" class="hotlink">
+<dl style="margin-top:10px;border:#d8d8d8 0px solid;" class="hotlink">
+[#-- 
   <dt>友情链接:</dt>
   [@cms_friendlink_list]
   [#list tag_list as link]
   <dd><a href="${link.domain}" title="${link.description}" onclick="$.get('${base}/friendlink_view.jspx?id=${link.id}')" target="_blank">${link.name}</a></dd>
   [/#list]
   [/@cms_friendlink_list]
+--]
 </dl>

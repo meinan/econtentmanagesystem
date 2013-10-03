@@ -12,6 +12,10 @@
 <script src="/${res}/js/common.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {
+	//add by wzw on 
+	$(document).find('a[class="red"]').each(function(i){$(this).hide()});	
+	$(document).find('div[class="w96"]').show();
+	//end of add
 	Cms.siteFlow("${base}", location.href, document.referrer);
 });
 </script>

@@ -1,15 +1,29 @@
 <dl class="rmpl">
+<table style="border-collapse:collapse;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+  	  <td style="border:#ccc solid 1px;padding:5px;" width="150">签收单位</td>
+  	  <td style="border:#ccc solid 1px;padding:5px;" width="100">签收人</td>
+  	  <td style="border:#ccc solid 1px;padding:5px;" width="200">签收时间</td>
+  	</tr>
 [#list list as c]
     
   [#if c.content.channel.id==68]
-    <dt><span>${c.textHtml!}</span> 签收于 ${c.createTime}，签收人:${(c.commentUser.username)!"匿名"}</dt>
-    <dd style="height:1px;"></dd>
+    <tr>
+  	  <td style="border:#ccc solid 1px;padding:5px;">${c.textHtml!}</td>
+  	  <td style="border:#ccc solid 1px;padding:5px;">${(c.commentUser.username)!"匿名"}</td>
+  	  <td style="border:#ccc solid 1px;padding:5px;">${c.createTime}</td>
+  	</tr>
+    [#-- <dd style="height:1px;"></dd> --]
   [#else]
     <dt><span>${(c.commentUser.username)!"匿名网友"}</span> 于 ${c.createTime} 评论道:</dt>
     <dd>${c.textHtml!}</dd>
     
   [/#if]
   
+  [#if c.content.channel.id!=68]
   <dd class="line"></dd>
+  [/#if]
+  
 [/#list]
+</table>
 </dl>

@@ -5,6 +5,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/config/application-context.xml
+			/WEB-INF/config/kingcore-framework-context.xml
 			/WEB-INF/config/cache-context.xml
 			/WEB-INF/config/captcha-context.xml
 			/WEB-INF/config/ecms-core-context.xml
@@ -135,11 +136,11 @@
     <!-- <servlet-mapping>
         <servlet-name>JspServlet</servlet-name>
         <url-pattern>*.jsp</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>jspex
-        <servlet-name>JspServlet</servlet-name>
-        <url-pattern>*.jspw</url-pattern>
     </servlet-mapping> -->
+    <servlet-mapping>
+        <servlet-name>JspServlet</servlet-name>
+        <url-pattern>*.jhtm</url-pattern>
+    </servlet-mapping>
 	
 	<!-- <servlet>
 		<servlet-name>Install</servlet-name>

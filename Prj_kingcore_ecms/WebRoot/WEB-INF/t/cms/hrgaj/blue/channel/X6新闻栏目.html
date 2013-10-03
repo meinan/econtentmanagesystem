@@ -97,7 +97,7 @@ $(function() {
                    <ul class="news-ul">
                     [@cms_content_list count='5' titLen='22' orderBy='4' channelOption='1' channelId='${sub.id}' typeId='1' titLen='20' append='...']
                        [#list tag_list as a]
-                      <li><span><a href="${a.ctgUrl}" target="_blank">[${a.ctgName}]</a></span> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+                      <li> <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
                       [/#list]
                    [/@cms_content_list]  
                   </ul>

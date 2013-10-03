@@ -99,7 +99,10 @@ body{padding:30px;} */
         [/#if]
         <div class="content">${txt!}</div>
         <div class="pagebar">[#include "../style_page/content.html"/]</div>
+        
+        [#-- 
         <div class="tags"><strong>Tags：</strong> [#if content.tagStr??] [#list content.tags as t]<a target="_blank" href="${base}/tag/${t.id}.jspx">${t.name}</a>[/#list] [#else] 本文暂无Tags！ [/#if]</div>
+        
         <div class="other box">[#if channel.allowUpdown]
         <div class="ding fl" onclick="Cms.up('${base}',${content.id},${content.ups});">
         <p>顶</p>
@@ -113,8 +116,12 @@ body{padding:30px;} */
             <li><strong>下一篇：</strong>[@cms_content id=content.id next='0' channelId=channel.id][#if tag_bean??]<a href="${tag_bean.url}">${tag_bean.title}</a>[#else]没有了[/#if][/@cms_content]</li>
         </ul>
         </div>
+        --]
+        
+        
         </div>
-        <!--网友评论_Begin-->[#if channel.commentControl!=2] [#include "inc_comment_list.html"/] [#include "inc_comment_input_通知通报.html"/] [/#if] <!--网友评论_End--></div>
+        <div class="other box" style="height:25px;text-align:left;"><b>已签收列表：</b></div>
+        <!--网友评论_Begin-->[#if channel.commentControl!=2] [#include "inc_comment_list.html"/] </br></br> [#include "inc_comment_input_通知通报.html"/] [/#if] <!--网友评论_End--></div>
         <div class="rb_low">&nbsp;</div>
         </div>
         
@@ -141,10 +148,10 @@ body{padding:30px;} */
     <div class="rb_right_div">
       <!--最新图文资讯_Begin-->
       <div class="w98"> 
-			<ul style="list-style-type:disc;background-image:none;" class="order">
-			  [@cms_content_list channelId='77' count='12' titLen='15' orderBy='8' channelOption='1']
+			<ul style="list-style:none;list-style-type:disc;background-image:none;width:248px;">
+			  [@cms_content_list channelId='77' count='12' titLen='5' orderBy='8' channelOption='1']
 			  [#list tag_list as a]
-			  <li><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a></li>
+			  <li style="float:left;width:75px;border:solid 1px #CACACA;margin:2px;"><a style="padding-left:0px;" href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=5 append=append/]</a></li>
 			  [/#list]
 			  [/@cms_content_list]
 			</ul>
